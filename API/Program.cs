@@ -15,6 +15,15 @@ builder.Services.ConfigureIdentityServices(builder.Configuration);
 
 #endregion
 
+builder.Services.AddCors(o =>
+{
+    o.AddPolicy("CorsPolicy", b =>
+    b.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    );
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,11 +31,17 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.UseCors("CorsPolicy");
+
 app.MapControllers();
 
 app.Run();
+
+
+

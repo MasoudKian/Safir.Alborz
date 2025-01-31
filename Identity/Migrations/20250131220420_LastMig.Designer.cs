@@ -4,6 +4,7 @@ using Identity.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Identity.Migrations
 {
     [DbContext(typeof(SafirIdentityDbContext))]
-    partial class SafirIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250131220420_LastMig")]
+    partial class LastMig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,6 +54,29 @@ namespace Identity.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "cb275765-1cac-4652-a03f-f8871dd575d1",
+                            Description = "Responsible for the entire site",
+                            Name = "PowerAdmin",
+                            NormalizedName = "POWERADMIN"
+                        },
+                        new
+                        {
+                            Id = "717f2382-d718-455d-a238-47df91977d71",
+                            Description = "Just admin ... ",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "4d3dcfaf-9228-41d4-947e-b267194a5356",
+                            Description = "User site ... ",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Identity.Model.ApplicationUser", b =>
@@ -221,13 +247,6 @@ namespace Identity.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "745cfc52-13b9-4a4c-baad-f4b11536c49e",
-                            RoleId = "cb275765-1cac-4652-a03f-f8871dd575d1"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

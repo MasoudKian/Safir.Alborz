@@ -10,23 +10,26 @@ namespace Identity.Configuration
         public void Configure(EntityTypeBuilder<ApplicationUser> builder)
         {
             var passHasher = new PasswordHasher<ApplicationUser>();
-            builder.HasData(
-                new ApplicationUser()
-                {
-                    Id = "745cfc52-13b9-4a4c-baad-f4b11536c49e", // شناسه یکتا برای کاربر
-                    UserName = "PowerAdmin", // ایمیل کاربر
-                    NormalizedUserName = "POWERADMIN",
-                    Email = "masoudkiannejad@gmail.com", // ایمیل کاربر
-                    NormalizedEmail = "MASOUDKIANNEJAD@GMAIL.COM",
-                    EmailConfirmed = true, // تأیید ایمیل
-                    FirstName = "Power", // نام
-                    LastName = "Admin", // نام خانوادگی
-                    PasswordHash = passHasher.HashPassword(null,"P@wer_Admin^123"),
-                    CreatedDate = DateTime.Now, // تاریخ ایجاد
-                    LastUpdateDate = DateTime.Now, // تاریخ به‌روزرسانی
-                    Code = "1",
-                    
-                });
+
+            var user = new ApplicationUser()
+            {
+                Id = "745cfc52-13b9-4a4c-baad-f4b11536c49e", // شناسه یکتا برای کاربر
+                UserName = "PowerAdmin",
+                NormalizedUserName = "POWERADMIN",
+                Email = "masoudkiannejad@gmail.com",
+                NormalizedEmail = "MASOUDKIANNEJAD@GMAIL.COM",
+                EmailConfirmed = true,
+                FirstName = "Power",
+                LastName = "Admin",
+                CreatedDate = new DateTime(2024, 01, 31, 12, 0, 0), // ✅ مقدار ثابت
+                LastUpdateDate = new DateTime(2024, 01, 31, 13, 1, 1), // ✅ مقدار ثابت
+                Code = "1",
+            };
+
+            // مقداردهی به PasswordHash
+            user.PasswordHash = passHasher.HashPassword(user, "P@wer_Admin^123");
+
+            builder.HasData(user);
         }
     }
 }
