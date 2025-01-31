@@ -22,6 +22,13 @@ namespace Identity.Configuration
                     Name = "Admin",
                     NormalizedName = "ADMIN",
                     Description = "Just admin ... ",
+                },
+                new ApplicationRole
+                {
+                    Id = "4d3dcfaf-9228-41d4-947e-b267194a5356",
+                    Name = "User",
+                    NormalizedName = "USER",
+                    Description = "User site ... ",
                 }
             );
         }

@@ -9,7 +9,7 @@ namespace Identity.Model
         public string? Code { get; set; }
         public string? Image { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public DateTime LastUpdateDate { get; set; } = DateTime.Now;
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? LastUpdateDate { get; set; } = DateTime.Now;
     }
 }
