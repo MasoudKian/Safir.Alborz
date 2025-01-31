@@ -8,11 +8,9 @@
 
   <ItemGroup>
     <Folder Include="DTOs\" />
-    <Folder Include="Contracts\Interfaces\" />
     <Folder Include="Behaviors\" />
     <Folder Include="CQRS\" />
     <Folder Include="Exceptions\" />
-    <Folder Include="Contracts\" />
     <Folder Include="Utils\" />
     <Folder Include="Validation\" />
     <Folder Include="Contracts\Services\" />
