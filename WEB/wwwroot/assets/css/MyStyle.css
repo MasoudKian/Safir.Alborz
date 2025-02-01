@@ -1,0 +1,11 @@
+﻿.btn-login-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* تنظیم فضای داخلی */
+}
+
+    .btn-login-social img {
+        max-width: 35px;
+        
+    }
