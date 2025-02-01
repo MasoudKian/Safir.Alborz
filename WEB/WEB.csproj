@@ -10,4 +10,16 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\admin\dist\.DS_Store" />
+    <None Include="wwwroot\admin\dist\css\.DS_Store" />
+    <None Include="wwwroot\admin\dist\images\.DS_Store" />
+    <None Include="wwwroot\admin\dist\js\.DS_Store" />
+    <None Include="wwwroot\admin\dist\js\vendors\.DS_Store" />
+    <None Include="wwwroot\admin\src\.DS_Store" />
+    <None Include="wwwroot\admin\src\css\.DS_Store" />
+    <None Include="wwwroot\admin\src\images\.DS_Store" />
+    <None Include="wwwroot\admin\src\js\.DS_Store" />
+  </ItemGroup>
+
 </Project>
