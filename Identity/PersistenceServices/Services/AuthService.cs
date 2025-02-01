@@ -4,6 +4,7 @@ using Application.Utils;
 using Azure.Core;
 using Identity.Model;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -34,8 +35,10 @@ namespace Identity.PersistenceServices.Services
 
         public async Task<RegisterResponse> RegisterAsync(RegisterRequest authRequest)
         {
-            var existUser = await _userManager.FindByNameAsync(authRequest.UserName);
-            if (existUser != null) throw new Exception($"user name '{authRequest.UserName}' already exist");
+            var existUser = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == authRequest.Email
+            || u.UserName == authRequest.UserName);
+            if (existUser != null) throw new Exception($"User with this email or username already exists.");
+
 
             var user = new ApplicationUser()
             {
@@ -49,11 +52,15 @@ namespace Identity.PersistenceServices.Services
                 LastUpdateDate = DateTime.Now,
             };
 
-            var existUserEmail = await _userManager.FindByEmailAsync(authRequest.Email);
-            if (existUserEmail != null) throw new Exception($"Email '{authRequest.Email}' already exist");
-
             // todo register user
             var res = await _userManager.CreateAsync(user, authRequest.Password);
+
+            if (!res.Succeeded)
+            {
+                var errors = string.Join(", ", res.Errors.Select(e => e.Description));
+                throw new Exception($"Error! {errors}");
+            }
+
             if (res.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "User");
@@ -68,6 +75,8 @@ namespace Identity.PersistenceServices.Services
 
         public async Task<AuthResponse> LoginAsync(AuthRequest authRequest)
         {
+
+
             var user = await _userManager.FindByEmailAsync(authRequest.Email);
             if (user == null)
             {
@@ -82,7 +91,18 @@ namespace Identity.PersistenceServices.Services
                 throw new Exception($"credentials for {authRequest.Email} arent valid.");
             }
 
+            //if (!user.EmailConfirmed)
+            //{
+            //    throw new Exception($"Email {authRequest.Email} is not confirmed yet.");
+            //}
+
+
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
+
+            // ✅ دریافت نقش‌های کاربر
+            var roles = await _userManager.GetRolesAsync(user);
+            string redirectUrl = roles.Contains("Admin") ? "/admin/dashboard" : "/user/dashboard";
+
 
             AuthResponse response = new()
             {
@@ -90,6 +110,7 @@ namespace Identity.PersistenceServices.Services
                 Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
                 Email = user.Email!,
                 UserName = user.UserName!,
+                //RedirectUrl = redirectUrl // ✅ اضافه کردن مسیر هدایت
             };
 
             return response;
@@ -101,20 +122,26 @@ namespace Identity.PersistenceServices.Services
             var roles = await _userManager.GetRolesAsync(user);
 
             var roleClaims = new List<Claim>();
-            for (int i = 0; i < roles.Count; i++)
+            foreach (var role in roles)
             {
-                roleClaims.Add(new Claim(ClaimTypes.Role, roles[i]));
+                roleClaims.Add(new Claim(ClaimTypes.Role, role));
             }
-            var claims = new[]
+
+            var expirationTime = DateTime.UtcNow.AddMinutes(_jwtSettings.Value.DurationInMinutes);
+            var expUnixTime = new DateTimeOffset(expirationTime).ToUnixTimeSeconds(); // مقدار `exp` به‌صورت `long`
+
+            var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub,user.UserName !),
-                new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email,user.Email!),
-                new Claim(CustomeClaimTypes.Code,user.Code!),
-                new Claim(CustomeClaimTypes.Uid,user.Id),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName!),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email!),
+                new Claim(CustomeClaimTypes.Code, user.Code!),
+                new Claim(CustomeClaimTypes.Uid, user.Id),
+                new Claim(JwtRegisteredClaimNames.Exp, expUnixTime.ToString(), ClaimValueTypes.Integer64) // ✅ به‌عنوان `Integer64`
             }
             .Union(userClaims)
-            .Union(roleClaims);
+            .Union(roleClaims)
+            .ToList(); // `ToList()` اضافه شد تا `IEnumerable<Claim>` را تبدیل به `List<Claim>` کنیم
 
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Value.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
@@ -123,13 +150,14 @@ namespace Identity.PersistenceServices.Services
                 issuer: _jwtSettings.Value.Issuer,
                 audience: _jwtSettings.Value.Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.Value.DurationInMinutes),
+                expires: expirationTime, // مقدار `expires` برای اعتبار توکن
                 signingCredentials: signingCredentials);
 
             return jwtSecurityToken;
-
-            #endregion
         }
+
+
+
+        #endregion
     }
 }
- 

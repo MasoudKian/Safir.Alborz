@@ -11,5 +11,7 @@
         public string Email { get; set; } = string.Empty;
 
         public string Token { get; set; } = string.Empty;
+
+        public string RedirectUrl { get; set; } = string.Empty; // ✅ مسیر هدایت کاربر بعد از لاگین
     }
 }
