@@ -51,6 +51,22 @@ namespace Identity.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4d30875f-1ec8-455e-bffa-7c5f958db186",
+                            Description = "Responsible for the entire site",
+                            Name = "PowerAdmin",
+                            NormalizedName = "POWERADMIN"
+                        },
+                        new
+                        {
+                            Id = "4d3dcfaf-9228-41d4-947e-b267194a5356",
+                            Description = "Just User site ... ",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Identity.Model.ApplicationUser", b =>
@@ -134,6 +150,29 @@ namespace Identity.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "80b54bba-8dca-476f-a4ee-f6b48681f8d6",
+                            AccessFailedCount = 0,
+                            Code = "1",
+                            ConcurrencyStamp = "0c2f17bf-a8f4-4241-90dc-738e43275b62",
+                            CreatedDate = new DateTime(2024, 1, 31, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "masoudkiannejad@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Power",
+                            LastName = "Admin",
+                            LastUpdateDate = new DateTime(2024, 1, 31, 13, 1, 1, 0, DateTimeKind.Unspecified),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MASOUDKIANNEJAD@GMAIL.COM",
+                            NormalizedUserName = "POWERADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFCPvHBRHTDU7Sk9kifbVcQ+kdRitso2U2emHX686dOMOgh+dGEvsJqX+y+dlN3rbg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "8d0309ba-2e68-49a3-92fb-f18720f251c0",
+                            TwoFactorEnabled = false,
+                            UserName = "PowerAdmin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -225,8 +264,8 @@ namespace Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "745cfc52-13b9-4a4c-baad-f4b11536c49e",
-                            RoleId = "cb275765-1cac-4652-a03f-f8871dd575d1"
+                            UserId = "80b54bba-8dca-476f-a4ee-f6b48681f8d6",
+                            RoleId = "4d30875f-1ec8-455e-bffa-7c5f958db186"
                         });
                 });
 

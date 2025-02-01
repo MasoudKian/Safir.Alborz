@@ -23,10 +23,10 @@ namespace Identity.DbContext
         {
             base.OnModelCreating(builder);
 
-            
 
-            //builder.ApplyConfiguration(new RoleConfiguration());
-            //builder.ApplyConfiguration(new UserConfiguration());
+
+            builder.ApplyConfiguration(new RoleConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
             builder.ApplyConfiguration(new UserRoleConfiguration());
 
         }

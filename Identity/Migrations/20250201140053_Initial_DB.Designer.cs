@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Identity.Migrations
 {
     [DbContext(typeof(SafirIdentityDbContext))]
-    [Migration("20250131220826_SetUserRole")]
-    partial class SetUserRole
+    [Migration("20250201140053_Initial_DB")]
+    partial class Initial_DB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,15 @@ namespace Identity.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "4d30875f-1ec8-455e-bffa-7c5f958db186",
+                            Description = "Responsible for the entire site",
+                            Name = "PowerAdmin",
+                            NormalizedName = "POWERADMIN"
+                        });
                 });
 
             modelBuilder.Entity("Identity.Model.ApplicationUser", b =>
@@ -137,6 +146,29 @@ namespace Identity.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "80b54bba-8dca-476f-a4ee-f6b48681f8d6",
+                            AccessFailedCount = 0,
+                            Code = "1",
+                            ConcurrencyStamp = "fbe18be7-51a1-4711-96d1-3eb9e4b18ec9",
+                            CreatedDate = new DateTime(2024, 1, 31, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "masoudkiannejad@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Power",
+                            LastName = "Admin",
+                            LastUpdateDate = new DateTime(2024, 1, 31, 13, 1, 1, 0, DateTimeKind.Unspecified),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MASOUDKIANNEJAD@GMAIL.COM",
+                            NormalizedUserName = "POWERADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDn/F5gDRzYTSxij5HYjnxKSLQ4wvmYm7zAwt20nMCIBcov0mciM2ARAEz4xh6tihg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "98a4c1b3-a190-4d6d-b789-fe338c948ace",
+                            TwoFactorEnabled = false,
+                            UserName = "PowerAdmin"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -228,8 +260,8 @@ namespace Identity.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "745cfc52-13b9-4a4c-baad-f4b11536c49e",
-                            RoleId = "cb275765-1cac-4652-a03f-f8871dd575d1"
+                            UserId = "80b54bba-8dca-476f-a4ee-f6b48681f8d6",
+                            RoleId = "4d30875f-1ec8-455e-bffa-7c5f958db186"
                         });
                 });
 

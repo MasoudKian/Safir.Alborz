@@ -12,9 +12,9 @@ namespace Identity.Configuration
             builder.HasData(
                 new IdentityUserRole<string>
                 {
-                    UserId = "745cfc52-13b9-4a4c-baad-f4b11536c49e", // شناسه یکتا برای کاربر
+                    UserId = "80b54bba-8dca-476f-a4ee-f6b48681f8d6", // شناسه یکتا برای کاربر
                     
-                    RoleId = "cb275765-1cac-4652-a03f-f8871dd575d1",
+                    RoleId = "4d30875f-1ec8-455e-bffa-7c5f958db186",
                 });
         }
     }

@@ -13,7 +13,7 @@ namespace Identity.Configuration
 
             var user = new ApplicationUser()
             {
-                Id = "745cfc52-13b9-4a4c-baad-f4b11536c49e", // شناسه یکتا برای کاربر
+                Id = "80b54bba-8dca-476f-a4ee-f6b48681f8d6", // شناسه یکتا برای کاربر
                 UserName = "PowerAdmin",
                 NormalizedUserName = "POWERADMIN",
                 Email = "masoudkiannejad@gmail.com",
