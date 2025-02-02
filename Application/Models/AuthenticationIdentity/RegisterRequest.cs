@@ -15,11 +15,11 @@ namespace Application.Models.AuthenticationIdentity
         public string Email { get; set; } = string.Empty;
 
         [Required]
-        [MinLength(6)]
+        [MinLength(6, ErrorMessage = "نام کاربری باید حداقل 6 کاراکتر باشد.")]
         public string UserName { get; set; } = string.Empty;
 
         [Required]
-        [MinLength(8)]
+        [MinLength(8, ErrorMessage = "حداقل تعداد کاراکتر مجاز رمزعبور 8 می باشد.")]
         public string Password { get; set; } = string.Empty;
     }
 }

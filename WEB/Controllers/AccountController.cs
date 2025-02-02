@@ -7,12 +7,18 @@ namespace WEB.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly AuthServices _authService;
+        #region ctor DI
 
-        public AccountController(AuthServices authService)
+        private readonly AuthWebServices _authService;
+
+        public AccountController(AuthWebServices authService)
         {
             _authService = authService;
         }
+
+        #endregion
+
+        #region Register
 
         [HttpGet("register")]
         public IActionResult Register()
@@ -21,6 +27,7 @@ namespace WEB.Controllers
         }
 
         [HttpPost("register")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterVM model)
         {
             if (ModelState.IsValid)
@@ -34,11 +41,36 @@ namespace WEB.Controllers
                     UserName = model.UserName!
                 };
 
+
+
                 await _authService.RegisterAsync(request);
 
                 return RedirectToAction("Login", "Account");
             }
             return View(model);
         }
+
+        #endregion
+
+
+        #region Login
+
+        [HttpGet("login")]
+        public IActionResult Login(string returnUrl = null!)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost("login")]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(LoginVM login)
+        {
+            if (!ModelState.IsValid) return View(login);
+
+
+            return View();
+        }
+        #endregion
     }
 }

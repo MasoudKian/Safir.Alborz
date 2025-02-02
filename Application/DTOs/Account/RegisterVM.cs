@@ -21,7 +21,8 @@ namespace Application.DTOs.Account
 
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         [Display(Name = "نام کاربری")]
-        [MaxLength(20)]
+        [MaxLength(20, ErrorMessage = "نام کاربری باید حداکثر از 20 حرف باشد")]
+        [MinLength(6, ErrorMessage = "نام کاربری باید حداقل 6 کاراکتر باشد")]
         public string? UserName { get; set; }
 
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

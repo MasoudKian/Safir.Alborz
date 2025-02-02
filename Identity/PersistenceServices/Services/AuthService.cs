@@ -77,12 +77,16 @@ namespace Identity.PersistenceServices.Services
         {
 
 
-            var user = await _userManager.FindByEmailAsync(authRequest.Email);
-            if (user == null)
-            {
-                throw new Exception($"user with {authRequest.Email} not fount.");
-            }
+            //var user = await _userManager.FindByEmailAsync(authRequest.Email);
+            //if (user == null)
+            //{
+            //    throw new Exception($"user with {authRequest.Email} not fount.");
+            //}
 
+            //var result = await _signInManager.PasswordSignInAsync(user.UserName!, authRequest.Password
+            //    , false, lockoutOnFailure: false);
+
+            var user = await _userManager.FindByEmailAsync(authRequest.Email) ?? throw new Exception($"user with {authRequest.Email} not fount.");
             var result = await _signInManager.PasswordSignInAsync(user.UserName!, authRequest.Password
                 , false, lockoutOnFailure: false);
 

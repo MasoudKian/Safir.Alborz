@@ -1,3 +1,4 @@
+using WEB.Models.Api;
 using WEB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +8,9 @@ builder.Services.AddControllersWithViews();
 
 // For API
 builder.Services.AddHttpClient();
-//builder.Services.AddHttpClient<AuthServices>(client =>
-//{
-//    client.BaseAddress = new Uri("https://localhost:7235/");
-//});
-
-builder.Services.AddScoped<AuthServices, AuthServices>();
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
+builder.Services.AddScoped<AuthWebServices, AuthWebServices>();
+// For API
 
 var app = builder.Build();
 
