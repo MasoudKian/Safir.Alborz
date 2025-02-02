@@ -64,13 +64,36 @@ namespace WEB.Controllers
 
         [HttpPost("login")]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginVM login)
+        public async Task<IActionResult> Login(LoginVM login)
         {
-            if (!ModelState.IsValid) return View(login);
+            if (!ModelState.IsValid)
+            {
+                return View(login);
+            }
 
+            try
+            {
+                // ایجاد یک شیء AuthRequest از LoginVM
+                var authRequest = new AuthRequest
+                {
+                    Email = login.UsernameOrEmail, // اینجا می‌توانید از نام کاربری یا ایمیل استفاده کنید
+                    Password = login.Password
+                };
 
-            return View();
+                // فراخوانی متد LoginAsync از AuthService
+                var response = await _authService.LoginAsync(authRequest);
+
+                // می‌توانید کاربر را به صفحه مناسب هدایت کنید
+                return LocalRedirect(response.RedirectUrl); // استفاده از URL مناسب
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(login);
+            }
         }
+
+
         #endregion
     }
 }

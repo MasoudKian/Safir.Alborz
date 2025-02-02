@@ -1,5 +1,4 @@
-﻿@model RegisterVM
-
+﻿@model LoginVM
 @{
     Layout = null;
 }
@@ -9,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>ثبت نام</title>
+    <title>ورود</title>
     <meta name="description" content="Apexa - Business Consulting HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
@@ -48,16 +47,15 @@
     <!-- main-area -->
     <main class="fix">
         <!-- about-area -->
-        <section class="register__area-one">
+        <section class="login__area-one">
             <div class="container">
                 <div class="text-center mb-55">
-                    <h1 class="text-48-bold">ایجاد حساب کاربری</h1>
+                    <h1 class="text-48-bold">خوش آمدید !</h1>
                 </div>
                 <div class="box-form-login">
                     <div class="head-login">
-                        <h3> ثبت نام </h3>
-                        <p>امروز یک حساب کاربری ایجاد کنید و استفاده از پلتفرم ما را شروع کنید</p>
-                        <p>حساب کاربری دارید ؟ <a class='link-bold' asp-controller="Account" asp-action="Login">وارد</a> شوید.</p>
+                        <h3>ورود</h3>
+                        <p>با ایمیل و رمز ورود خود وارد شوید</p>
                         <div class="container">
                             <div class="row">
                                 <div class="form-group col-6">
@@ -72,49 +70,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="text-or"><span>یا</span></div>
+                        <form asp-controller="Account" asp-action="Login" method="post">
+                            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
 
-                        <div class="text-or">
-                            <span>یا</span>
-                        </div>
+                            <div asp-validation-summary="All" class="text-danger"></div>
 
-                        <form asp-controller="Account" asp-action="Register" method="post">
+
                             <div class="form-login">
                                 <div class="form-group">
-                                    <input asp-for="FirstName" type="text" class="form-control account" placeholder="نام" />
-                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    <input asp-for="UsernameOrEmail" type="text" class="form-control account" placeholder="نام کاربری / ایمیل" />
+                                    <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input asp-for="LastName" type="text" class="form-control account" placeholder="نام خانوادگی" />
-                                    <span asp-validation-for="LastName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="Email" type="text" class="form-control email-address" placeholder="ایمیل" />
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="UserName" type="text" class="form-control account" placeholder="نام کاربری" />
-                                    <span asp-validation-for="UserName" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input asp-for="Password" type="password" class="form-control" placeholder="رمزعبور" />
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="رمز عبور" />
                                     <span asp-validation-for="Password" class="text-danger"></span>
                                 </div>
-                                <div class="form-group">
-                                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="تکرار رمز عبور" />
-                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                                </div>
                                 <div class="box-forgot-pass">
-
-                                    <label class="cb-remember" value="1" /> <span><a asp-controller="Home" asp-action="Privacy">با ثبت نام در سایت شرایط و قوانین سایت رو پذیرفته اید.</a></span>
-
+                                    <label>
+                                        <input asp-for="RemeberMe" type="checkbox" class="cb-remember" /> یادآوری
+                                    </label>
+                                    <a asp-controller="Account" asp-action="ForgotPassword">رمز عبور خود را فراموش کردید؟</a>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" class="btn btn-login" value="ثبت نام" />
+                                    <input type="submit" class="btn btn-login" value="ورود" />
                                 </div>
-                                
+                                <p>حساب کاربری ندارید! <a class='link-bold' asp-controller="Account" asp-action="Register">ثبت نام</a> کنید.</p>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>

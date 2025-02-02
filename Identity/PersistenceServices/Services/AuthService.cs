@@ -86,7 +86,22 @@ namespace Identity.PersistenceServices.Services
             //var result = await _signInManager.PasswordSignInAsync(user.UserName!, authRequest.Password
             //    , false, lockoutOnFailure: false);
 
-            var user = await _userManager.FindByEmailAsync(authRequest.Email) ?? throw new Exception($"user with {authRequest.Email} not fount.");
+            ApplicationUser user;
+
+            if (authRequest.Email.Contains("@"))
+            {
+                // اگر ورودی یک ایمیل است، کاربر را با ایمیل پیدا کنید
+                user = await _userManager.FindByEmailAsync(authRequest.Email)
+                    ?? throw new Exception($"کاربری با ایمیل {authRequest.Email} پیدا نشد.");
+            }
+            else
+            {
+                // در غیر این صورت، کاربر را با نام کاربری پیدا کنید
+                user = await _userManager.FindByNameAsync(authRequest.Email)
+                    ?? throw new Exception($"کاربری با نام کاربری {authRequest.Email} پیدا نشد.");
+            }
+
+            //var user = await _userManager.FindByEmailAsync(authRequest.Email) ?? throw new Exception($"user with {authRequest.Email} not fount.");
             var result = await _signInManager.PasswordSignInAsync(user.UserName!, authRequest.Password
                 , false, lockoutOnFailure: false);
 
@@ -105,7 +120,7 @@ namespace Identity.PersistenceServices.Services
 
             // ✅ دریافت نقش‌های کاربر
             var roles = await _userManager.GetRolesAsync(user);
-            string redirectUrl = roles.Contains("Admin") ? "/admin/dashboard" : "/user/dashboard";
+            string redirectUrl = roles.Contains("Admin") ? "/admin/dashboard" : "/";
 
 
             AuthResponse response = new()
@@ -114,7 +129,7 @@ namespace Identity.PersistenceServices.Services
                 Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
                 Email = user.Email!,
                 UserName = user.UserName!,
-                //RedirectUrl = redirectUrl // ✅ اضافه کردن مسیر هدایت
+                RedirectUrl = redirectUrl // ✅ اضافه کردن مسیر هدایت
             };
 
             return response;
