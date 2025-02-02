@@ -8,13 +8,13 @@ namespace API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AuthController : ControllerBase
     {
         #region ctor DI
 
         private readonly IAuthService _authService;
 
-        public AccountController(IAuthService authService)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }

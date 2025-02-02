@@ -1,6 +1,6 @@
 ﻿@{
-    // var fullName = ViewBag.FullName ?? "کاربر مهمان";
-    // var role = ViewBag.Role;
+    var fullName = ViewBag.FullName ?? "کاربر مهمان";
+    var role = ViewBag.Role;
 }
 
 <header class="tg-header__style-four transparent-header">
@@ -85,7 +85,7 @@
                                             </svg>
                                         </a>
                                     </li>
-                                    @* @if (User.Identity!.IsAuthenticated)
+                                    @if (User.Identity!.IsAuthenticated)
 
                                     {
                                         <!-- زمانی که کاربر لاگین است -->
@@ -119,9 +119,9 @@
                                     {
                                         <!-- زمانی که کاربر لاگین نیست -->
                                         <li class="header-btn">
-                                            <a asp-controller="Account" asp-action="Register" class="btn">ورود</a>
+                                            <a asp-controller="Account" asp-action="Register" class="btn">ورود - ثبت نام</a>
                                         </li>
-                                    } *@
+                                    }
 
 
 

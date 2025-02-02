@@ -1,0 +1,149 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html class="no-js" lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>برگه ثبت نام</title>
+    <meta name="description" content="Apexa - Business Consulting HTML Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS here -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/odometer.css">
+    <link rel="stylesheet" href="/assets/css/swiper-bundle.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/default.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="/assets/css/font-css/iransans.css">
+
+    <link rel="stylesheet" href="/assets/css/MyStyle.css">
+</head>
+<body>
+    <!--Preloader-->
+    <div id="preloader">
+        <div id="loader" class="loader">
+            <div class="loader-container">
+                <div class="loader-icon"><img src="/assets/img/logo/preloader.png" alt="Preloader"></div>
+            </div>
+        </div>
+    </div>
+    <!--Preloader-end -->
+    <!-- Scroll-top -->
+    <button class="scroll__top scroll-to-target" data-target="html">
+        <i class="fas fa-angle-up"></i>
+    </button>
+    <!-- Scroll-top-end-->
+    <!-- main-area -->
+    <main class="fix">
+        <!-- about-area -->
+        <section class="register__area-one">
+            <div class="container">
+                <div class="text-center mb-55">
+                    <h1 class="text-48-bold">ایجاد حساب کاربری</h1>
+                </div>
+                <div class="box-form-login">
+                    <div class="head-login">
+                        <h3>ثبت نام یا ورود</h3>
+                        <p>امروز یک حساب کاربری ایجاد کنید و استفاده از پلتفرم ما را شروع کنید</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <a asp-controller="Account" asp-action="LoginWithGoogle" class="btn btn-login-social">
+                                        <img src="/assets/img/login/google.svg" alt="Google Login" />
+                                    </a>
+                                </div>
+                                <div class="form-group col-6">
+                                    <a href="#" class="btn btn-login-social">
+                                        <img src="/assets/img/login/chat_5217391.png" alt="Chat Login" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="text-or">
+                            <span>یا</span>
+                        </div>
+
+                        @* <form asp-controller="Account" asp-action="Register" method="post">
+                            <div class="form-login">
+                                <div class="form-group">
+                                    <input asp-for="FirstName" type="text" class="form-control account" placeholder="نام" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="LastName" type="text" class="form-control account" placeholder="نام خانوادگی" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Email" type="text" class="form-control email-address" placeholder="ایمیل" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="UserName" type="text" class="form-control account" placeholder="نام کاربری" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="رمزعبور" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="تکرار رمز عبور" />
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                </div>
+                                <div class="box-forgot-pass">
+
+                                    <label class="cb-remember" value="1" /> <span><a asp-controller="Home" asp-action="Privacy">با ثبت نام در سایت شرایط و قوانین سایت رو پذیرفته اید.</a></span>
+
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-login" value="ثبت نام" />
+                                </div>
+                                <p>حساب کاربری دارید ؟ <a class='link-bold' asp-controller="Account" asp-action="Login">وارد</a> شوید.</p>
+                            </div>
+                        </form> *@
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- about-area-end -->
+    </main>
+    <!-- main-area-end -->
+    <!-- JS here -->
+    <script src="/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/jquery.odometer.min.js"></script>
+    <script src="/assets/js/jquery.appear.js"></script>
+    <script src="/assets/js/gsap.js"></script>
+    <script src="/assets/js/ScrollTrigger.js"></script>
+    <script src="/assets/js/SplitText.js"></script>
+    <script src="/assets/js/gsap-animation.js"></script>
+    <script src="/assets/js/jquery.parallaxScroll.min.js"></script>
+    <script src="/assets/js/swiper-bundle.js"></script>
+    <script src="/assets/js/ajax-form.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        const text = document.querySelector('.circle');
+        text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
+        const element = document.querySelectorAll('.circle span');
+        for (let i = 0; i < element.length; i++) {
+            element[i].style.transform = "rotate(" + i * 17 + "deg)"
+        }
+    </script>
+</body>
+</html>

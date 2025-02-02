@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
     <Folder Include="Behaviors\" />
     <Folder Include="CQRS\" />
     <Folder Include="Exceptions\" />
