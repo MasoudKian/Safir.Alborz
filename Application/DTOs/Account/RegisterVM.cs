@@ -28,8 +28,8 @@ namespace Application.DTOs.Account
         [Display(Name = "رمز عبور")]
         [MinLength(8)]
         [MaxLength(8)]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
-            ErrorMessage = "رمز عبور باید شامل حداقل یک حرف کوچک، یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد.")]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
+        //    ErrorMessage = "رمز عبور باید شامل حداقل یک حرف کوچک، یک حرف بزرگ، یک عدد و یک کاراکتر خاص باشد.")]
         public string Password { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]

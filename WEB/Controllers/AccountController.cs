@@ -27,16 +27,16 @@ namespace WEB.Controllers
             {
                 var request = new RegisterRequest
                 {
-                    Email = model.Email,
-                    Password = model.Password,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    UserName = model.UserName
+                    Email = model.Email!,
+                    Password = model.Password!,
+                    FirstName = model.FirstName!,
+                    LastName = model.LastName!,
+                    UserName = model.UserName!
                 };
 
-                var response = await _authService.RegisterAsync(request);
-                // می‌توانید اطلاعات کاربر جدید را پردازش کنید
-                return RedirectToAction("Index", "Home"); // یا هر صفحه‌ای که می‌خواهید
+                await _authService.RegisterAsync(request);
+
+                return RedirectToAction("Login", "Account");
             }
             return View(model);
         }

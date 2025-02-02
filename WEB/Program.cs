@@ -7,6 +7,10 @@ builder.Services.AddControllersWithViews();
 
 // For API
 builder.Services.AddHttpClient();
+//builder.Services.AddHttpClient<AuthServices>(client =>
+//{
+//    client.BaseAddress = new Uri("https://localhost:7235/");
+//});
 
 builder.Services.AddScoped<AuthServices, AuthServices>();
 

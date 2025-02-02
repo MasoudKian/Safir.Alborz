@@ -34,7 +34,7 @@ namespace Identity.PersistenceServices
                     m => m.MigrationsAssembly(typeof(SafirIdentityDbContext).Assembly.FullName));
                 
             });
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<SafirIdentityDbContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication(options =>
