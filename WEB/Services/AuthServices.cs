@@ -2,25 +2,25 @@
 
 namespace WEB.Services
 {
-    public class AuthService
+    public class AuthServices
     {
         private readonly HttpClient _httpClient;
 
-        public AuthService(HttpClient httpClient)
+        public AuthServices(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
         public async Task<AuthResponse> LoginAsync(AuthRequest request)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/v1/account/login", request);
+            var response = await _httpClient.PostAsJsonAsync("api/v1/Auth/login", request);
             response.EnsureSuccessStatusCode(); // خطا را پرتاب می‌کند اگر وضعیت HTTP نشان‌دهنده‌ی خطا باشد
             return await response.Content.ReadFromJsonAsync<AuthResponse>();
         }
 
         public async Task<RegisterResponse> RegisterAsync(RegisterRequest request)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/v1/account/register", request);
+            var response = await _httpClient.PostAsJsonAsync("api/v1/Auth/register", request);
             response.EnsureSuccessStatusCode(); // خطا را پرتاب می‌کند اگر وضعیت HTTP نشان‌دهنده‌ی خطا باشد
             return await response.Content.ReadFromJsonAsync<RegisterResponse>();
         }

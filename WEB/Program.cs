@@ -1,3 +1,5 @@
+using WEB.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,8 @@ builder.Services.AddControllersWithViews();
 
 // For API
 builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<AuthServices, AuthServices>();
 
 var app = builder.Build();
 
