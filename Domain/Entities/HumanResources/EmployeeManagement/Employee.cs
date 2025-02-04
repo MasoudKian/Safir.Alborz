@@ -1,5 +1,6 @@
 ﻿using Domain.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Reflection;
 
 namespace Domain.Entities.HumanResources.EmployeeManagement
@@ -7,9 +8,6 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
 
     public class Employee : BaseEntity
     {
-        // Relation for ApplicationUser
-        public string? UserId { get; set; } 
-
 
         [Display(Name = "کد ملی")]
         public string IRCode { get; set; } = string.Empty;
@@ -43,6 +41,22 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
 
         [Display(Name = "شماره تماس فامیل درجه 1")]
         public string FamiliarPhone { get; set; } = string.Empty;
+
+
+        #region Relation
+
+        // Relation for ApplicationUser
+        public string? UserId { get; set; }
+
+
+
+        public Department? Department { get; set; }
+        public int DepartmentId { get; set; }
+
+        public Position? Position { get; set; }
+        public int PositionId { get; set; }
+
+        #endregion
 
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SafirDbContext))]
-    partial class SafirDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250204122846_SetRelations_Em_DE_PO")]
+    partial class SetRelations_Em_DE_PO
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Department");
                 });
 
             modelBuilder.Entity("Domain.Entities.HumanResources.EmployeeManagement.Employee", b =>
@@ -171,7 +174,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Positions");
+                    b.ToTable("Position");
                 });
 
             modelBuilder.Entity("Domain.Entities.HumanResources.EmployeeManagement.Employee", b =>
