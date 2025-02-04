@@ -8,7 +8,7 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
     public class Employee : BaseEntity
     {
         // Relation for ApplicationUser
-        public string UserId { get; set; } = string.Empty;
+        public string? UserId { get; set; } 
 
 
         [Display(Name = "کد ملی")]
