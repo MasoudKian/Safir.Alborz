@@ -35,7 +35,6 @@ namespace Application.DTOs.HumanResources
         public string Address { get; set; } = string.Empty;
 
         [Display(Name = "شناسه")]
-        [Required]
         public string EmployeeCode { get; set; } = string.Empty;
 
         [Display(Name = "مقطع تحصیلی")]
@@ -54,6 +53,10 @@ namespace Application.DTOs.HumanResources
         [Display(Name = "شماره تماس فامیل درجه 1")]
         [Required]
         public string FamiliarPhone { get; set; } = string.Empty;
+
+        [Display(Name = "رمز عبور")]
+        [Required]
+        public string Password { get; set; } = string.Empty;
 
 
     }

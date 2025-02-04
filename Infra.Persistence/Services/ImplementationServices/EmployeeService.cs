@@ -73,10 +73,10 @@ namespace Persistence.Services.ImplementationServices
             {
                 FirsName = employeeDTO.FirstName,
                 LastName = employeeDTO.LastName,
-                UserName = employeeDTO.EmployeeCode,
+                UserName = newEmployee.EmployeeID,
                 Email = employeeDTO.Email!,
-                Code = employeeDTO.EmployeeCode,
-                Password = employeeDTO.IRCode,
+                Code = newEmployee.EmployeeID,
+                Password = employeeDTO.Password,
                 
             };
 
