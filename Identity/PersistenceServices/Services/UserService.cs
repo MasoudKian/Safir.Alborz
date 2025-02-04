@@ -39,5 +39,15 @@ namespace Identity.PersistenceServices.Services
 
             return user.Id;
         }
+
+        public async Task DeleteApplicationUserAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+            }
+        }
+
     }
 }

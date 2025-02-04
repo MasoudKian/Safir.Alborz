@@ -8,5 +8,6 @@ namespace Application.Contracts.Interfaces.UserServices
             (AddUserForEmployeeDTO userForEmployeeDTO);
 
 
+        Task DeleteApplicationUserAsync(string userName);
     }
 }

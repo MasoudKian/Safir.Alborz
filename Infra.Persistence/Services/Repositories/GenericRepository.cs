@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Interfaces.IGeneric;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using Persistence.Context;
 
 namespace Persistence.Services.Repository
@@ -45,9 +46,9 @@ namespace Persistence.Services.Repository
             throw new NotImplementedException();
         }
 
-        public Task<T> GetEntityById(int id)
+        public async Task<T> GetEntityById(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public Task<bool> IsEntityExist(int id)
@@ -63,6 +64,16 @@ namespace Persistence.Services.Repository
         public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _context.Database.BeginTransactionAsync();
+        }
+
+        public void DeletePermanent(T entity)
+        {
+            _dbSet.Remove(entity);
         }
     }
 }

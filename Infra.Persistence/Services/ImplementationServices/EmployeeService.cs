@@ -38,52 +38,81 @@ namespace Persistence.Services.ImplementationServices
         public async Task<AddEmployeeResult> RegisterEmployeeAsync
             (AddEmployeeDTO employeeDTO, string currentUser)
         {
-            var isExistEmployee = await EmployeeExistsByIrCodeAsync(employeeDTO.IRCode);
-            if (isExistEmployee)
+
+            using var transaction = await _employeeGenericRepository.BeginTransactionAsync();
+
+            try
             {
-                return AddEmployeeResult.ThereIs;
+
+                var isExistEmployee = await EmployeeExistsByIrCodeAsync(employeeDTO.IRCode);
+                if (isExistEmployee)
+                {
+                    return AddEmployeeResult.ThereIs;
+                }
+
+                var employeeCode = GenerateCode.GenerateEmployeeCode();
+
+                var newEmployee = new Employee()
+                {
+                    FirstName = employeeDTO.FirstName,
+                    LastName = employeeDTO.LastName,
+                    IRCode = employeeDTO.IRCode,
+                    BirthCertificateNumber = employeeDTO.BirthCertificateNumber,
+                    Mobile = employeeDTO.Mobile,
+                    Email = employeeDTO.Email,
+                    Address = employeeDTO.Address,
+                    EmployeeID = employeeCode,
+                    Education = employeeDTO.Education,
+                    FieldOfStudy = employeeDTO.FieldOfStudy,
+                    DateOfEmployment = employeeDTO.DateOfEmployment,
+                    FamiliarPhone = employeeDTO.FamiliarPhone,
+                    Password = employeeDTO.IRCode,
+
+                    RegisteredBy = currentUser,
+
+                };
+
+                var createdEmployee = await _employeeGenericRepository.CreateAsync(newEmployee);
+                Console.WriteLine($"Employee Created: {createdEmployee.EmployeeID}");
+
+                var user = new AddUserForEmployeeDTO()
+                {
+                    FirsName = employeeDTO.FirstName,
+                    LastName = employeeDTO.LastName,
+                    UserName = newEmployee.EmployeeID,
+                    Email = employeeDTO.Email!,
+                    Code = newEmployee.EmployeeID,
+                    Password = employeeDTO.Password,
+
+                };
+
+                var userId = await _userService.CreateEmployeeWithApplicationUser(user);
+                Console.WriteLine($"User Created with ID: {userId}");
+
+                await transaction.CommitAsync();
+
+                return AddEmployeeResult.Success;
             }
-
-            var employeeCode = GenerateCode.GenerateEmployeeCode();
-
-            var newEmployee = new Employee()
+            catch (Exception)
             {
-                FirstName = employeeDTO.FirstName,
-                LastName = employeeDTO.LastName,
-                IRCode = employeeDTO.IRCode,
-                BirthCertificateNumber = employeeDTO.BirthCertificateNumber,
-                Mobile = employeeDTO.Mobile,
-                Email = employeeDTO.Email,
-                Address = employeeDTO.Address,
-                EmployeeID = employeeCode,
-                Education = employeeDTO.Education,
-                FieldOfStudy = employeeDTO.FieldOfStudy,
-                DateOfEmployment = employeeDTO.DateOfEmployment,
-                FamiliarPhone = employeeDTO.FamiliarPhone,
-                Password = employeeDTO.IRCode,
-                
-                RegisteredBy = currentUser,
-                 
-            };
 
-            var createdEmployee = await _employeeGenericRepository.CreateAsync(newEmployee);
-            Console.WriteLine($"Employee Created: {createdEmployee.EmployeeID}");
+                // در صورت بروز خطا، Transaction را Rollback کن
+                await transaction.RollbackAsync();
 
-            var user = new AddUserForEmployeeDTO()
-            {
-                FirsName = employeeDTO.FirstName,
-                LastName = employeeDTO.LastName,
-                UserName = newEmployee.EmployeeID,
-                Email = employeeDTO.Email!,
-                Code = newEmployee.EmployeeID,
-                Password = employeeDTO.Password,
-                
-            };
+                // اگر ثبت ApplicationUser موفق نبود، Employee را حذف کن
+                var existingEmployee = await _employeeRepository.GetEmployeeByIrCodeAsync(employeeDTO.IRCode);
+                if (existingEmployee != null)
+                {
+                    // حذف Employee
+                     _employeeGenericRepository.DeletePermanent(existingEmployee);
+                }
 
-            var userId = await _userService.CreateEmployeeWithApplicationUser(user);
-            Console.WriteLine($"User Created with ID: {userId}");
+                // اگر ثبت Employee موفق نبود، ApplicationUser را حذف کن
+                // برای حذف ApplicationUser، می‌توانی یک روش مشابه در UserService ایجاد کنی
+                // await _userService.DeleteApplicationUserAsync(user.UserName);
 
-            return AddEmployeeResult.Success;   
+                throw new Exception("ثبت با مشکلی مواجه شد");
+            }
             
         }
     }

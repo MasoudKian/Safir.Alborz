@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Application.Contracts.Interfaces.IGeneric
 {
@@ -9,8 +10,13 @@ namespace Application.Contracts.Interfaces.IGeneric
         Task<T> CreateAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
+
+        void DeletePermanent(T entity);
         IQueryable<T> GetAllEntitiesAsync();
         Task<IReadOnlyList<T>> GetAllEntitiesAsyncJustForRead();
         Task SaveChangesAsync();
+
+
+        Task<IDbContextTransaction> BeginTransactionAsync();
     }
 }
