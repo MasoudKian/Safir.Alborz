@@ -22,6 +22,8 @@ namespace Persistence.Context
         {
             base.OnModelCreating(modelBuilder);
 
+            #region Employee , Demartment , Position
+
             // تنظیم رابطه Department -> Positions
             modelBuilder.Entity<Department>()
                 .HasMany(d => d.Positions)
@@ -42,6 +44,10 @@ namespace Persistence.Context
                 .WithOne(e => e.Position)
                 .HasForeignKey(e => e.PositionId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            #endregion
+
+
         }
     }
 }
