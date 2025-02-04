@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Interfaces.IGeneric;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Context;
 
 namespace Persistence.Services.Repository
 {
@@ -9,10 +10,10 @@ namespace Persistence.Services.Repository
     {
         #region ctor DI
 
-        private readonly DbContext _context;
+        private readonly SafirDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(SafirDbContext context)
         {
             _context = context;
             _dbSet = context.Set<T>();
@@ -25,7 +26,7 @@ namespace Persistence.Services.Repository
             entity.RegisteredDate = DateTime.Now;
             entity.UpdateDate = DateTime.Now;
             await _dbSet.AddAsync(entity);
-            await SaveChagnesAsync();
+            await SaveChangesAsync();
             return entity;
         }
 
@@ -59,7 +60,7 @@ namespace Persistence.Services.Repository
             throw new NotImplementedException();
         }
 
-        public async Task SaveChagnesAsync()
+        public async Task SaveChangesAsync()
         {
             await _context.SaveChangesAsync();
         }

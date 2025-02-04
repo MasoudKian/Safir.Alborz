@@ -8,7 +8,7 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
 
 
         // شناسه بخش مرتبط
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
 
         public Department? Department { get; set; }

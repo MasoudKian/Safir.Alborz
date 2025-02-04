@@ -1,4 +1,5 @@
 ﻿using Application.Contracts.Interfaces.Identity;
+using Application.Contracts.Interfaces.UserServices;
 using Application.Models.AuthenticationIdentity;
 using Identity.DbContext;
 using Identity.Model;
@@ -59,7 +60,7 @@ namespace Identity.PersistenceServices
             #endregion
 
             services.AddTransient<IAuthService, AuthService>();
-
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }
