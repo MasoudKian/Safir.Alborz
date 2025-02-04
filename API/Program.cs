@@ -1,4 +1,5 @@
 using Identity.PersistenceServices;
+using Persistence.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddOpenApi();
 #region Configurations
 
 builder.Services.ConfigureIdentityServices(builder.Configuration);
+builder.Services.ConfigurePersistenceServices(builder.Configuration);
+
 //builder.Services.ConfigureIdentityServices(builder.Configuration);
 
 #endregion
