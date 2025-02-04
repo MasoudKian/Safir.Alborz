@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{48946034-F57B-4475-8EB9-848C013F6020}"
 EndProject
@@ -37,6 +37,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UintTests", "UintTests", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{084C3163-4528-4C9B-A415-27D07FDF434E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Infra.Persistence\Persistence.csproj", "{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{C25DF37A-FC52-4CEB-8935-54A56486C2D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C25DF37A-FC52-4CEB-8935-54A56486C2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C25DF37A-FC52-4CEB-8935-54A56486C2D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,5 +89,6 @@ Global
 		{C25DF37A-FC52-4CEB-8935-54A56486C2D6} = {8EFCF1D0-FA60-4519-87C2-2E04A82DF5B4}
 		{E05D212D-08D3-4DA2-9ADC-AA43E75ED6D1} = {92E7EEFF-5915-4A8F-9803-DC4DAAAFB5F7}
 		{084C3163-4528-4C9B-A415-27D07FDF434E} = {92E7EEFF-5915-4A8F-9803-DC4DAAAFB5F7}
+		{118D6014-F1E4-4EEA-8DFC-AD11EAA074CB} = {DE704E15-3DCD-4EB5-A2B3-E922FE43F99D}
 	EndGlobalSection
 EndGlobal
