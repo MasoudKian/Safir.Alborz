@@ -5,5 +5,11 @@ namespace Application.Contracts.Interfaces.Repositories
     public interface IEmployeeRepository
     {
         Task<Employee> GetEmployeeByIrCodeAsync(string irCode);
+
+        Task<Employee> EmployeeExistsByBirthCertificateNumberAsync(string birthCertificateNumber);
+
+        Task<Employee> EmployeeExistsByMobileAsync(string mobile);
+
+        Task<Employee> EmployeeExistsByEmailAsync(string email);
     }
 }

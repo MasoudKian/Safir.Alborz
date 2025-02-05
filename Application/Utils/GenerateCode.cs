@@ -2,6 +2,14 @@
 {
     public static class GenerateCode
     {
+        public static string GenerateCodeUser()
+        {
+            Random random = new();
+            // تولید عددی بین 10000 و 99999
+            string randomNumber = random.Next(10000, 100000).ToString();
+            return randomNumber;
+        }
+
         public static string GenerateEmployeeCode()
         {
             Random random = new();

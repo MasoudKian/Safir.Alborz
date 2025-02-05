@@ -47,15 +47,8 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
         [Display(Name = "شماره تماس فامیل درجه 1")]
         public string FamiliarPhone { get; set; } = string.Empty;
 
-        public string Password { get; set; } = string.Empty;
-
 
         #region Relation
-
-        // Relation for ApplicationUser
-        public string? UserId { get; set; }
-
-
 
         public Department? Department { get; set; }
         public int? DepartmentId { get; set; }

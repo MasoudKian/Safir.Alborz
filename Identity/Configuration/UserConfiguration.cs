@@ -23,7 +23,7 @@ namespace Identity.Configuration
                 LastName = "Admin",
                 CreatedDate = new DateTime(2024, 01, 31, 12, 0, 0), // ✅ مقدار ثابت
                 LastUpdateDate = new DateTime(2024, 01, 31, 13, 1, 1), // ✅ مقدار ثابت
-                Code = "1",
+
             };
 
             // مقداردهی به PasswordHash

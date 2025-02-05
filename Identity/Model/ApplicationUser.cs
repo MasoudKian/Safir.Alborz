@@ -6,7 +6,6 @@ namespace Identity.Model
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; } 
-        public string? Code { get; set; }
         public string? Image { get; set; }
 
         public DateTime? CreatedDate { get; set; } = DateTime.Now;

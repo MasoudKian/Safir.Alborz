@@ -39,14 +39,14 @@ namespace Identity.PersistenceServices.Services
             || u.UserName == authRequest.UserName);
             if (existUser != null) throw new Exception($"User with this email or username already exists.");
 
-
+            var userCode = GenerateCode.GenerateCodeUser();
             var user = new ApplicationUser()
             {
-                Code = new Random().Next(100000, 999999).ToString(),
+
                 Email = authRequest.Email,
                 FirstName = authRequest.FirstName,
                 LastName = authRequest.LastName,
-                UserName = authRequest.UserName,
+                UserName = userCode,
                 Image = "",
                 CreatedDate = DateTime.Now,
                 LastUpdateDate = DateTime.Now,
@@ -154,7 +154,6 @@ namespace Identity.PersistenceServices.Services
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName!),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email!),
-                new Claim(CustomeClaimTypes.Code, user.Code!),
                 new Claim(CustomeClaimTypes.Uid, user.Id),
                 new Claim(JwtRegisteredClaimNames.Exp, expUnixTime.ToString(), ClaimValueTypes.Integer64) // ✅ به‌عنوان `Integer64`
             }

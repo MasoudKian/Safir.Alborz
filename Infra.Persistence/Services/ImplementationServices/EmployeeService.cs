@@ -26,14 +26,37 @@ namespace Persistence.Services.ImplementationServices
         }
 
 
-
         #endregion
+
+        #region Check Exist User
 
         public async Task<bool> EmployeeExistsByIrCodeAsync(string irCode)
         {
             var employee = await _employeeRepository.GetEmployeeByIrCodeAsync(irCode);
             return employee != null;
         }
+
+        public async Task<bool> EmployeeExistsByMobileAsync(string mobile)
+        {
+            var employee = await _employeeRepository.EmployeeExistsByMobileAsync(mobile);
+            return employee != null;
+        }
+
+        public async Task<bool> EmployeeExistsByBirthCertificateNumberAsync(string birthCertificateNumber)
+        {
+            var employee = await _employeeRepository.EmployeeExistsByBirthCertificateNumberAsync(birthCertificateNumber);
+            return employee != null;
+        }
+
+        public async Task<bool> EmployeeExistsByEmailAsync(string email)
+        {
+            var employee = await _employeeRepository.EmployeeExistsByEmailAsync(email);
+            return employee != null;
+        }
+
+        #endregion
+
+        #region Add Employee
 
         public async Task<AddEmployeeResult> RegisterEmployeeAsync
             (AddEmployeeDTO employeeDTO, string currentUser)
@@ -44,11 +67,17 @@ namespace Persistence.Services.ImplementationServices
             try
             {
 
-                var isExistEmployee = await EmployeeExistsByIrCodeAsync(employeeDTO.IRCode);
-                if (isExistEmployee)
+                var isExistIRCode = await EmployeeExistsByIrCodeAsync(employeeDTO.IRCode);
+                var isExistMobile = await EmployeeExistsByMobileAsync(employeeDTO.Mobile);
+                var isExistEmail = await EmployeeExistsByEmailAsync(employeeDTO.Email!);
+                var isExistbirthCertificate = await EmployeeExistsByBirthCertificateNumberAsync(employeeDTO.BirthCertificateNumber);
+
+
+                if (isExistIRCode || isExistMobile || isExistEmail || isExistbirthCertificate)
                 {
                     return AddEmployeeResult.ThereIs;
                 }
+
 
                 var employeeCode = GenerateCode.GenerateEmployeeCode();
 
@@ -66,7 +95,6 @@ namespace Persistence.Services.ImplementationServices
                     FieldOfStudy = employeeDTO.FieldOfStudy,
                     DateOfEmployment = employeeDTO.DateOfEmployment,
                     FamiliarPhone = employeeDTO.FamiliarPhone,
-                    Password = employeeDTO.IRCode,
 
                     RegisteredBy = currentUser,
 
@@ -104,16 +132,18 @@ namespace Persistence.Services.ImplementationServices
                 if (existingEmployee != null)
                 {
                     // حذف Employee
-                     _employeeGenericRepository.DeletePermanent(existingEmployee);
+                    _employeeGenericRepository.DeletePermanent(existingEmployee);
                 }
 
                 // اگر ثبت Employee موفق نبود، ApplicationUser را حذف کن
-                // برای حذف ApplicationUser، می‌توانی یک روش مشابه در UserService ایجاد کنی
-                // await _userService.DeleteApplicationUserAsync(user.UserName);
+                var userName = employeeDTO.EmployeeCode; // فرض بر این است که EmployeeID برابر با UserName است
+                await _userService.DeleteApplicationUserAsync(userName);
 
                 throw new Exception("ثبت با مشکلی مواجه شد");
             }
-            
+
         }
+
+        #endregion
     }
 }

@@ -23,9 +23,8 @@ namespace Identity.PersistenceServices.Services
             {
                 FirstName = userForEmployeeDTO.FirsName,
                 LastName = userForEmployeeDTO.LastName,
-                UserName = userForEmployeeDTO.UserName,
+                UserName = userForEmployeeDTO.Code,
                 Email = userForEmployeeDTO.Email,
-                Code = userForEmployeeDTO.Code,
 
             };
 

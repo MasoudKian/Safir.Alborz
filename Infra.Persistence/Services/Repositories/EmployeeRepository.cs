@@ -16,9 +16,28 @@ namespace Persistence.Services.Repositories
 
         public async Task<Employee> GetEmployeeByIrCodeAsync(string irCode)
         {
-            var employee = await _context.Employees
+            var isExistIrCode = await _context.Employees
                 .SingleOrDefaultAsync(e => e.IRCode == irCode);
-            return employee;
+            return isExistIrCode!;
         }
+
+        public async Task<Employee> EmployeeExistsByBirthCertificateNumberAsync(string birthCertificateNumber)
+        {
+            var isExist = await _context.Employees.SingleOrDefaultAsync(e => e.BirthCertificateNumber == birthCertificateNumber);
+            return isExist!;
+        }
+
+        public async Task<Employee> EmployeeExistsByMobileAsync(string mobile)
+        {
+            var isMobileExist = await _context.Employees.SingleOrDefaultAsync(e => e.Mobile == mobile);
+            return isMobileExist!;
+        }
+
+        public async Task<Employee> EmployeeExistsByEmailAsync(string email)
+        {
+            var isEmailExist = await _context.Employees.SingleOrDefaultAsync(e => e.Email == email);
+            return isEmailExist!;
+        }
+
     }
 }
