@@ -6,11 +6,11 @@ namespace API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class HumanResourcesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IEmployeeService employeeService)
+        public HumanResourcesController(IEmployeeService employeeService)
         {
             _employeeService = employeeService;
         }

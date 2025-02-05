@@ -1,0 +1,11 @@
+﻿.side-menu__link--active {
+    background-color: rgb(207, 207, 207, 0.10)!important; /* پس‌زمینه مشکی نیمه‌شفاف */
+    border-radius: 2px; /* گرد کردن گوشه‌ها */
+    padding: 8px; /* ایجاد فاصله مناسب */
+    display: flex;
+    align-items: center;
+    justify-content: start; /* چینش محتوا در سمت راست */
+    transition: background-color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+    width: 100%; /* اطمینان از اینکه کل عرض را می‌گیرد */
+    text-decoration: none; /* حذف خط زیر متن */
+}
