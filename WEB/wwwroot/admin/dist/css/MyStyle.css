@@ -9,3 +9,9 @@
     width: 100%; /* اطمینان از اینکه کل عرض را می‌گیرد */
     text-decoration: none; /* حذف خط زیر متن */
 }
+.home {
+    border-block-end: solid 0.5px;
+    border-color: gainsboro;
+
+    background-color: #ffffff;
+}
