@@ -8,5 +8,6 @@ namespace Identity.PersistenceServices.Services.Interfaces
     {
         Task<IdentityResult> RegisterAsync(RegisterRequest request);
         Task<SignInResult> LoginAsync(AuthLoginRequest request);
+        Task LogoutAsync();
     }
 }

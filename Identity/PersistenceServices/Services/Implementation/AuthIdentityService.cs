@@ -60,5 +60,11 @@ namespace Identity.PersistenceServices.Services.Implementation
 
             return await _userManager.CreateAsync(user, request.Password);
         }
+
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
     }
 }

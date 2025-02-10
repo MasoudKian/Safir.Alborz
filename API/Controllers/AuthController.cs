@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/v1/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
+    //[Route("api/v1/[controller]")]
+    //[ApiController]
+    //public class AuthController : ControllerBase
+    //{
         //#region For JWT
 
         //#region ctor DI
@@ -64,5 +64,5 @@ namespace API.Controllers
 
         //#endregion
 
-    }
+    //}
 }
