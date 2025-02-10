@@ -1,7 +1,7 @@
 ﻿using Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.HumanResources
+namespace Application.DTOs.HumanResources.Employee
 {
     public class AddEmployeeDTO
     {

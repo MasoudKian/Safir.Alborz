@@ -3,6 +3,7 @@ using Application.Contracts.Interfaces.Repositories;
 using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices;
 using Application.DTOs.HumanResources;
+using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
 using Domain.Entities.HumanResources.EmployeeManagement;
 
@@ -93,7 +94,7 @@ namespace Persistence.Services.ImplementationServices
                     EmployeeID = employeeCode,
                     Education = employeeDTO.Education,
                     FieldOfStudy = employeeDTO.FieldOfStudy,
-                    DateOfEmployment = employeeDTO.DateOfEmployment,
+                    DateOfEmployment = Convert.ToDateTime(employeeDTO.DateOfEmployment),
                     FamiliarPhone = employeeDTO.FamiliarPhone,
 
                     RegisteredBy = currentUser,

@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.HumanResources
+﻿namespace Application.DTOs.HumanResources.Employee
 {
     public class AddUserForEmployeeDTO
     {

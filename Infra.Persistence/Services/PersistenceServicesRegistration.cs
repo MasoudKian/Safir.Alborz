@@ -3,6 +3,7 @@ using Application.Contracts.Interfaces.IGeneric;
 using Application.Contracts.Interfaces.Repositories;
 using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices;
+using Identity.DbContext;
 using Identity.PersistenceServices.Services;
 using Identity.PersistenceServices.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,8 @@ namespace Persistence.Services
         {
             services.AddDbContext<SafirDbContext>(options =>
             {
-                options.UseSqlServer(configuration
-                    .GetConnectionString("SAKConnectionString"));
+                options.UseSqlServer(configuration.GetConnectionString("SAKConnectionString"),
+                    m => m.MigrationsAssembly(typeof(SafirDbContext).Assembly.FullName));
             });
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

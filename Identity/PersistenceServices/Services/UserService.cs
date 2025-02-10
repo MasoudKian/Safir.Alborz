@@ -1,5 +1,5 @@
 ﻿using Application.Contracts.Interfaces.UserServices;
-using Application.DTOs.HumanResources;
+using Application.DTOs.HumanResources.Employee;
 using Identity.Model;
 using Microsoft.AspNetCore.Identity;
 

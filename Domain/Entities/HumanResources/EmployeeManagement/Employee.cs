@@ -37,10 +37,10 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
         public string FieldOfStudy { get; set; } = string.Empty;
 
         [Display(Name = "تاریخ استخدام")]
-        public string DateOfEmployment { get; set; } = string.Empty;
+        public DateTime? DateOfEmployment { get; set; }
 
         [Display(Name = "تاریخ خروج")]
-        public string DateOfExit { get; set; } = string.Empty;
+        public DateTime? DateOfExit { get; set; }
 
         [Display(Name = "شماره تماس فامیل درجه 1")]
         public string FamiliarPhone { get; set; } = string.Empty;

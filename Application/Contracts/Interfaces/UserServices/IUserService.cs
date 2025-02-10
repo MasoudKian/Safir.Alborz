@@ -1,4 +1,4 @@
-﻿using Application.DTOs.HumanResources;
+﻿using Application.DTOs.HumanResources.Employee;
 
 namespace Application.Contracts.Interfaces.UserServices
 {

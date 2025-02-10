@@ -1,5 +1,5 @@
 ﻿using Application.Contracts.InterfaceServices;
-using Application.DTOs.HumanResources;
+using Application.DTOs.HumanResources.Employee;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
