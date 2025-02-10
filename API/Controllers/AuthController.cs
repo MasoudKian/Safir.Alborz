@@ -10,55 +10,59 @@ namespace API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        #region ctor DI
+        //#region For JWT
 
-        private readonly IAuthService _authService;
+        //#region ctor DI
 
-        public AuthController(IAuthService authService)
-        {
-            _authService = authService;
-        }
+        //private readonly IAuthService _authService;
 
-        #endregion
+        //public AuthController(IAuthService authService)
+        //{
+        //    _authService = authService;
+        //}
+
+        //#endregion
 
 
-        [HttpPost("login")]
-        public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost("login")]
+        //public async Task<ActionResult<AuthResponse>> Login(AuthRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                var response = await _authService.LoginAsync(request);
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //    try
+        //    {
+        //        var response = await _authService.LoginAsync(request);
+        //        return Ok(response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
-        [HttpPost("register")]
-        public async Task<ActionResult<RegisterResponse>> Register(RegisterRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost("register")]
+        //public async Task<ActionResult<RegisterResponse>> Register(RegisterRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            try
-            {
-                var response = await _authService.RegisterAsync(request);
-                return Ok(response);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //    try
+        //    {
+        //        var response = await _authService.RegisterAsync(request);
+        //        return Ok(response);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
+
+        //#endregion
 
     }
 }
