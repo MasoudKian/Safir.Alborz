@@ -6,5 +6,7 @@ namespace Application.Contracts.InterfaceServices
     {
         Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment);
         Task<bool> DepartmentExistsAsync(string name);
+
+        Task<List<DepartmentListDTO>> GetAllDepartmentsAsync();
     }
 }

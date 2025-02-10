@@ -1,4 +1,5 @@
 ﻿using Application.Contracts.Interfaces.Repositories;
+using Application.DTOs.HumanResources.Department;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
@@ -35,9 +36,18 @@ namespace Persistence.Services.Repositories
             return await _context.Departments.AnyAsync(d => d.Name == departmentName);
         }
 
-        public async Task<List<Department>> GetAllAsync()
+        public async Task<List<DepartmentListDTO>> GetAllAsync()
         {
-            return await _context.Departments.Where(d=>!d.IsDelete).ToListAsync();
+            return await _context.Departments
+                .Where(d => !d.IsDelete)
+                .Select(d => new DepartmentListDTO
+                {
+                    Id = d.Id,
+                    Name = d.Name,
+                    EmployeeCount = d.Employees.Count(),
+                    CreatedDate = d.RegisteredDate,
+                })
+                .ToListAsync();
         }
     }
 }

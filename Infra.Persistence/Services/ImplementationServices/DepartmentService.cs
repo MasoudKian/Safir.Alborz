@@ -24,6 +24,12 @@ namespace Persistence.Services.ImplementationServices
             return await _departmentRepository.DepartmentExistsAsync(name);
         }
 
+        public async Task<List<DepartmentListDTO>> GetAllDepartmentsAsync()
+        {
+            var departments = await _departmentRepository.GetAllAsync();
+            return departments;
+        }
+
         /// <summary>
         /// ثبت بخش سازمان
         /// </summary>
@@ -46,6 +52,7 @@ namespace Persistence.Services.ImplementationServices
 
             await _departmentRepository.AddAsync(department);
             return AddDepartmentResult.Success;
+
 
         }
 
