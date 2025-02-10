@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Domain.Entities.HumanResources.EmployeeManagement
+﻿namespace Domain.Entities.HumanResources.EmployeeManagement
 {
     public class Position : BaseEntity
     {

@@ -1,7 +1,5 @@
 ﻿using Domain.Enums;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Reflection;
 
 namespace Domain.Entities.HumanResources.EmployeeManagement
 {
