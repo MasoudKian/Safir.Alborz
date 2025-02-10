@@ -18,7 +18,12 @@ namespace Persistence.Services.ImplementationServices
             _mapper = mapper;
         }
 
-
+        /// <summary>
+        /// ثبت بخش سازمان
+        /// </summary>
+        /// <param name="addDepartment"></param>
+        /// <param name="currentUser"></param>
+        /// <returns></returns>
         public async Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment
             , string currentUser)
         {

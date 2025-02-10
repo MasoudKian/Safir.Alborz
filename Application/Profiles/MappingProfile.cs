@@ -10,7 +10,7 @@ namespace Application.Profiles
         {
             #region Department
 
-            CreateMap<Department,AddDepartmentDTO>().ReverseMap();
+            CreateMap<AddDepartmentDTO,Department>().ReverseMap();
 
             #endregion
         }

@@ -14,6 +14,11 @@ namespace Persistence.Services.Repositories
             _context = context;
         }
 
+        /// <summary>
+        /// ثبت در دیتابیس
+        /// </summary>
+        /// <param name="department"></param>
+        /// <returns></returns>
         public async Task AddAsync(Department department)
         {
             await _context.Departments.AddAsync(department);

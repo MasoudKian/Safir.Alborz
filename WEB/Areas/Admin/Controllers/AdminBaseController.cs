@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WEB.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "PowerAdmin")]
+    [Authorize(Roles = "PowerAdmin")]
     [Area("admin")]
     public class AdminBaseController : Controller
     {

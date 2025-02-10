@@ -3,6 +3,7 @@ using Application.Contracts.Interfaces.IGeneric;
 using Application.Contracts.Interfaces.Repositories;
 using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices;
+using Application.Profiles;
 using Identity.DbContext;
 using Identity.PersistenceServices.Services;
 using Identity.PersistenceServices.Services.Implementation;
@@ -22,8 +23,7 @@ namespace Persistence.Services
         public static IServiceCollection ConfigurePersistenceServices
             (this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            //services.AddMediatR(Assembly.GetExecutingAssembly());
+
 
             services.AddDbContext<SafirDbContext>(options =>
             {
@@ -43,9 +43,10 @@ namespace Persistence.Services
 
 
 
+            services.AddAutoMapper(typeof(MappingProfile));
+            //services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
 
-
-            
 
 
             services.AddHttpClient<AuthIdentityService>(client =>
