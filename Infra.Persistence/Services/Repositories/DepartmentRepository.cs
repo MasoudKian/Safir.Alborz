@@ -30,6 +30,11 @@ namespace Persistence.Services.Repositories
             return await _context.Departments.FindAsync(id);
         }
 
+        public async Task<bool> DepartmentExistsAsync(string departmentName)
+        {
+            return await _context.Departments.AnyAsync(d => d.Name == departmentName);
+        }
+
         public async Task<List<Department>> GetAllAsync()
         {
             return await _context.Departments.Where(d=>!d.IsDelete).ToListAsync();

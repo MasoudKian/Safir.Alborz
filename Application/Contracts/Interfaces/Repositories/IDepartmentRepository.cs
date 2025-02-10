@@ -6,6 +6,7 @@ namespace Application.Contracts.Interfaces.Repositories
     {
         Task AddAsync(Department department);
         Task<Department?> GetByIdAsync(int id);
+        Task<bool> DepartmentExistsAsync(string departmentName);
         Task<List<Department>> GetAllAsync();
     }
 }

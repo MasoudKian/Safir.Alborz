@@ -13,15 +13,6 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
-        #region Department
-
-        [HttpPost]
-        public async Task<IActionResult> AddDepartment()
-        {
-            return View();
-        }
-
-        #endregion
 
         /// <summary>
         /// مدیریت استخدام

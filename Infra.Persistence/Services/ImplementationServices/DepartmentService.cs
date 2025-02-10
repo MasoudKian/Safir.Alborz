@@ -3,6 +3,7 @@ using Application.Contracts.InterfaceServices;
 using Application.DTOs.HumanResources.Department;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Services.ImplementationServices
 {
@@ -18,15 +19,20 @@ namespace Persistence.Services.ImplementationServices
             _mapper = mapper;
         }
 
+        public async Task<bool> DepartmentExistsAsync(string name)
+        {
+            return await _departmentRepository.DepartmentExistsAsync(name);
+        }
+
         /// <summary>
         /// ثبت بخش سازمان
         /// </summary>
         /// <param name="addDepartment"></param>
         /// <param name="currentUser"></param>
         /// <returns></returns>
-        public async Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment
-            , string currentUser)
+        public async Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment)
         {
+
             if (string.IsNullOrWhiteSpace(addDepartment.Name))
                 return AddDepartmentResult.Failure;
 
@@ -35,6 +41,7 @@ namespace Persistence.Services.ImplementationServices
 
             department.RegisteredDate = DateTime.UtcNow;
             department.UpdateDate = DateTime.UtcNow;
+
 
 
             await _departmentRepository.AddAsync(department);

@@ -1,13 +1,16 @@
 ﻿using Application.Contracts.InterfaceServices;
 using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Services.ImplementationServices;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    
     public class HumanResourcesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -49,9 +52,16 @@ namespace API.Controllers
         #region Department
 
         [HttpPost("Create-Department")]
+        
         public async Task<IActionResult> CreateDepartment([FromBody] AddDepartmentDTO dto)
         {
-            var result = await _departmentService.AddDepartment(dto,"Admin");
+            if (await _departmentService.DepartmentExistsAsync(dto.Name))
+            {
+                return BadRequest(new { message = "دپارتمان با این نام قبلاً ثبت شده است." });
+            }
+
+
+            var result = await _departmentService.AddDepartment(dto);
 
             if (result == AddDepartmentResult.Success)
                 return Ok(new { message = "دپارتمان با موفقیت اضافه شد" });

@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let modalMessage = document.getElementById("modal-message");
 
         if (!departmentName) {
-            modalMessage.textContent = "لطفاً نام بخش را وارد کنید!";
+            modalMessage.textContent = "لطفاً نام دپارتمان را وارد کنید!";
             modalMessage.classList.remove("text-success");
-            modalMessage.classList.add("text-red-500");
+            modalMessage.classList.add("text-danger");
             modal.classList.add("show");
             return;
         }
@@ -47,13 +47,13 @@ document.addEventListener("DOMContentLoaded", function () {
             let result = await response.json();
 
             if (response.ok) {
-                modalMessage.textContent = "ثبت بخش با موفقیت انجام شد.";
+                modalMessage.textContent = "ثبت دپارتمان با موفقیت انجام شد.";
                 modalMessage.classList.remove("text-red-500");
                 modalMessage.classList.add("text-success");
             } else {
-                modalMessage.textContent = "خطا در ثبت بخش. لطفاً مجدداً تلاش کنید.";
+                modalMessage.textContent = "دپارتمان با این نام قبلاً ثبت شده است.";
                 modalMessage.classList.remove("text-success");
-                modalMessage.classList.add("text-red-500");
+                modalMessage.classList.add("text-danger");
             }
 
             modal.classList.add("show");
