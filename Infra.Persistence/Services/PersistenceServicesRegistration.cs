@@ -36,6 +36,12 @@ namespace Persistence.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+            
+            
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+
+
 
 
 

@@ -1,6 +1,8 @@
 ﻿using Application.Contracts.InterfaceServices;
+using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
 using Microsoft.AspNetCore.Mvc;
+using Persistence.Services.ImplementationServices;
 
 namespace API.Controllers
 {
@@ -9,11 +11,16 @@ namespace API.Controllers
     public class HumanResourcesController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
+        private readonly IDepartmentService _departmentService;
 
-        public HumanResourcesController(IEmployeeService employeeService)
+        public HumanResourcesController(IEmployeeService employeeService
+            , IDepartmentService departmentService)
         {
             _employeeService = employeeService;
+            _departmentService = departmentService;
         }
+
+        #region Employee
 
         [HttpGet("exists/{irCode}")]
         public async Task<IActionResult> EmployeeExists(string irCode)
@@ -36,5 +43,22 @@ namespace API.Controllers
                 _ => BadRequest("Error registering employee")
             };
         }
+
+        #endregion
+
+        #region Department
+
+        [HttpPost("Create-Department")]
+        public async Task<IActionResult> CreateDepartment([FromBody] AddDepartmentDTO dto)
+        {
+            var result = await _departmentService.AddDepartment(dto,"Admin");
+
+            if (result == AddDepartmentResult.Success)
+                return Ok(new { message = "دپارتمان با موفقیت اضافه شد" });
+
+            return BadRequest(new { message = "ثبت دپارتمان ناموفق بود" });
+        }
+
+        #endregion
     }
 }
