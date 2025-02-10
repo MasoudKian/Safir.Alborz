@@ -1,8 +1,10 @@
-﻿using Application.DTOs.Account;
-using Application.DTOs.IdentityAccount;
+﻿using Application.DTOs.IdentityAccount;
+using Application.Utils;
 using Identity.Model;
 using Identity.PersistenceServices.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Identity.PersistenceServices.Services.Implementation
 {
@@ -12,15 +14,25 @@ namespace Identity.PersistenceServices.Services.Implementation
 
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public AuthIdentityService(UserManager<ApplicationUser> userManager
-            , SignInManager<ApplicationUser> signInManager)
+            , SignInManager<ApplicationUser> signInManager
+            , IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor; // تزریق IHttpContextAccessor
         }
 
         #endregion
+
+        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            return user!; // برگرداندن یوزر یا null
+
+        }
 
         public async Task<SignInResult> LoginAsync(AuthLoginRequest request)
         {
@@ -48,23 +60,55 @@ namespace Identity.PersistenceServices.Services.Implementation
         }
 
 
-        public async Task<IdentityResult> RegisterAsync(RegisterRequest request)
+        public async Task<IdentityResult> RegisterAsync(RegisterRequest register)
         {
-            var user = new ApplicationUser
+            var existUser = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == register.Email
+            || u.UserName == register.UserName);
+            if (existUser != null) throw new Exception($"User with this email or username already exists.");
+
+            var userCode = GenerateCode.GenerateCodeUser();
+
+            var user = new ApplicationUser()
             {
-                UserName = request.UserName,
-                Email = request.Email,
-                FirstName = request.FirstName,
-                LastName = request.LastName
+                FirstName = register.FirstName!,
+                LastName = register.LastName!,
+                Email = register.Email,
+                UserName = register.Email,
+                EmailConfirmed = true
             };
 
-            return await _userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(user, register.Password);
+            return result;
         }
 
 
         public async Task LogoutAsync()
         {
             await _signInManager.SignOutAsync();
+        }
+
+
+        public async Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            // دسترسی به HttpContext برای دریافت کاربر جاری
+            var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
+            return user;
+        }
+
+        public async Task<IList<string>> GetRolesAsync(ApplicationUser user)
+        {
+            return await _userManager.GetRolesAsync(user);
+        }
+
+        public async Task<bool> IsInRoleAsync(string roleName)
+        {
+            var user = await GetCurrentUserAsync(); // دریافت کاربر جاری
+            if (user == null)
+            {
+                throw new Exception("کاربر جاری پیدا نشد.");
+            }
+
+            return await _userManager.IsInRoleAsync(user, roleName);
         }
     }
 }

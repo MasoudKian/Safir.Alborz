@@ -1,6 +1,8 @@
+using Application.Contracts.Interfaces.APIs;
 using Identity.PersistenceServices;
 using Persistence.Services;
 using Scalar.AspNetCore;
+using WEB.Services.IdentityAPIs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +16,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.ConfigureIdentityServices(builder.Configuration);
 builder.Services.ConfigurePersistenceServices(builder.Configuration);
-
-//builder.Services.ConfigureIdentityServices(builder.Configuration);
-
+builder.Services.AddScoped<IAuthIdentityAPIService, AuthIdentityAPIService>();
 #endregion
 
 builder.Services.AddCors(o =>
@@ -36,13 +36,13 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
     app.MapOpenApi();
 }
-app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
+app.UseCors("CorsPolicy");
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors("CorsPolicy");
 
 app.MapControllers();
 

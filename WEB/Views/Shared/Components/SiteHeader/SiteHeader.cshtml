@@ -97,7 +97,7 @@
                                                     <li>
                                                         @if (role == "PowerAdmin")
                                                         {
-                                                            <a style="font-weight:bold;" href="@Url.Action("Index", "Home", new { area = "Admin" })">@ViewBag.FullName</a>
+                                                            <a style="font-weight:bold;" href="@Url.Action("AdminHome", "Home", new { area = "Admin" })">@ViewBag.FullName</a>
                                                         }
                                                         else if (role == "User")
                                                         {

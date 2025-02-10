@@ -1,16 +1,15 @@
-﻿using Application.Contracts.Interfaces.Identity;
+﻿using Application.Contracts.Interfaces.APIs;
 using Application.Contracts.Interfaces.UserServices;
-using Application.Models.AuthenticationIdentity;
 using Identity.DbContext;
 using Identity.Model;
 using Identity.PersistenceServices.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Identity.PersistenceServices.Services.Implementation;
+using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+using Microsoft.Extensions.Options;
 
 namespace Identity.PersistenceServices
 {
@@ -82,14 +81,29 @@ namespace Identity.PersistenceServices
             });
 
             // پیکربندی Identity
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 8;
+
+                // تنظیمات قفل شدن حساب
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+            })
                 .AddEntityFrameworkStores<SafirIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
             #endregion
 
             // ثبت سرویس‌های مربوط به احراز هویت
-            services.AddTransient<IAuthService, AuthService>();
+            //services.AddTransient<IAuthService, AuthService>();
+            services.AddScoped<IAuthIdentityService, AuthIdentityService>();
+
+            
             services.AddScoped<IUserService, UserService>();
 
             return services;

@@ -1,8 +1,10 @@
-﻿using Application.Contracts.Interfaces.IGeneric;
+﻿using Application.Contracts.Interfaces.APIs;
+using Application.Contracts.Interfaces.IGeneric;
 using Application.Contracts.Interfaces.Repositories;
 using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices;
 using Identity.PersistenceServices.Services;
+using Identity.PersistenceServices.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,16 @@ namespace Persistence.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+
+
+
+            
+
+
+            services.AddHttpClient<AuthIdentityService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:7156/"); // آدرس API خود را اینجا وارد کنید
+            });
 
             return services;
         }

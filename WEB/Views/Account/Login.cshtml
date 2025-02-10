@@ -1,4 +1,5 @@
-﻿@model LoginVM
+﻿@using Application.DTOs.IdentityAccount
+@model AuthLoginRequest
 @{
     Layout = null;
 }
@@ -79,8 +80,8 @@
 
                             <div class="form-login">
                                 <div class="form-group">
-                                    <input asp-for="UsernameOrEmail" type="text" class="form-control account" placeholder="نام کاربری / ایمیل" />
-                                    <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
+                                    <input asp-for="Email" type="text" class="form-control account" placeholder="نام کاربری / ایمیل" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <input asp-for="Password" type="password" class="form-control" placeholder="رمز عبور" />
@@ -88,7 +89,7 @@
                                 </div>
                                 <div class="box-forgot-pass">
                                     <label>
-                                        <input asp-for="RemeberMe" type="checkbox" class="cb-remember" /> یادآوری
+                                        <input asp-for="RememberMe" type="checkbox" class="cb-remember" /> یادآوری
                                     </label>
                                     <a asp-controller="Account" asp-action="ForgotPassword">رمز عبور خود را فراموش کردید؟</a>
                                 </div>

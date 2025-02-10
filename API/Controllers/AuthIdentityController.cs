@@ -58,5 +58,20 @@ namespace API.Controllers
             await _authIdentityService.LogoutAsync();
             return Ok("شما با موفقیت خارج شدید.");
         }
+
+
+        [HttpGet("is-in-role/{roleName}")]
+        public async Task<IActionResult> IsInRole(string roleName)
+        {
+            try
+            {
+                bool isInRole = await _authIdentityService.IsInRoleAsync(roleName);
+                return Ok(isInRole);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+        }
     }
 }

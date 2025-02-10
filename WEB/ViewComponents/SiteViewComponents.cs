@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Application.Contracts.Interfaces.APIs;
+using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -8,41 +9,37 @@ namespace WEB.ViewComponents
 
     public class SiteHeaderViewComponent : ViewComponent
     {
-        //private readonly UserManager<ApplicationUserIdentity> _userManager;
+        private readonly IAuthIdentityService _authIdentityService;
 
-        //public SiteHeaderViewComponent(UserManager<ApplicationUserIdentity> userManager)
-        //{
-        //    _userManager = userManager;
-        //}
-
-        public SiteHeaderViewComponent()
+        public SiteHeaderViewComponent(IAuthIdentityService authIdentityService)
         {
+            _authIdentityService = authIdentityService;
             
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            //if (HttpContext.User.Identity?.IsAuthenticated == true)
-            //{
-            //    var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
-            //    if (!string.IsNullOrEmpty(email))
-            //    {
-            //        var applicationUser = await _userManager.FindByEmailAsync(email);
-            //        if (applicationUser != null)
-            //        {
-            //            ViewBag.FullName = applicationUser.UserName;
+            if (HttpContext.User.Identity?.IsAuthenticated == true)
+            {
+                var email = HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
+                if (!string.IsNullOrEmpty(email))
+                {
+                    var currentUser = await _authIdentityService.GetCurrentUserAsync();
+                    if (currentUser != null)
+                    {
+                        ViewBag.FullName = currentUser.FirstName;
 
-            //            if (await _userManager.IsInRoleAsync(applicationUser, "PowerAdmin"))
-            //            {
-            //                ViewBag.Role = "PowerAdmin";
-            //            }
-            //            else if (await _userManager.IsInRoleAsync(applicationUser, "User"))
-            //            {
-            //                ViewBag.Role = "User";
-            //            }
-            //        }
-            //    }
-            //}
+                        if (await _authIdentityService.IsInRoleAsync("PowerAdmin"))
+                        {
+                            ViewBag.Role = "PowerAdmin";
+                        }
+                        else if (await _authIdentityService.IsInRoleAsync("User"))
+                        {
+                            ViewBag.Role = "User";
+                        }
+                    }
+                }
+            }
 
             return View("SiteHeader");
         }

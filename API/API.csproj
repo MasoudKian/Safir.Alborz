@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Identity\Identity.csproj" />
     <ProjectReference Include="..\Infra.Persistence\Persistence.csproj" />
+    <ProjectReference Include="..\WEB\WEB.csproj" />
   </ItemGroup>
 
 </Project>
