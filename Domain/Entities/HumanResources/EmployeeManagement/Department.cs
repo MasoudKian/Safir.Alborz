@@ -1,7 +1,10 @@
-﻿namespace Domain.Entities.HumanResources.EmployeeManagement
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Domain.Entities.HumanResources.EmployeeManagement
 {
     public class Department : BaseEntity
     {
+        [MaxLength(300)]
         public string Name { get; set; } = string.Empty;  // نام بخش
 
 
