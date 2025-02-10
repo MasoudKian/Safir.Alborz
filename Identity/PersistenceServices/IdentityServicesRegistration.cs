@@ -16,53 +16,84 @@ namespace Identity.PersistenceServices
 {
     public static class IdentityServicesRegistration
     {
-        public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services
-            , IConfiguration configuration)
+
+        //#region With JWT
+
+        //public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services
+        //    , IConfiguration configuration)
+        //{
+
+        //    #region JWT Setting
+
+        //    services.Configure<JWTSetting>(configuration.GetSection("JwtSettings"));
+
+        //    #endregion
+
+        //    #region Config Connection String
+
+
+        //    services.AddDbContext<SafirIdentityDbContext>(option =>
+        //    {
+        //        option.UseSqlServer(configuration.GetConnectionString("SAKIdentityConnectionString"),
+        //            m => m.MigrationsAssembly(typeof(SafirIdentityDbContext).Assembly.FullName));
+
+        //    });
+        //    services.AddIdentity<ApplicationUser, ApplicationRole>()
+        //        .AddEntityFrameworkStores<SafirIdentityDbContext>().AddDefaultTokenProviders();
+
+        //    services.AddAuthentication(options =>
+        //    {
+        //        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        //        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        //    }).AddJwtBearer(o =>
+        //    {
+        //        o.TokenValidationParameters = new TokenValidationParameters
+        //        {
+        //            ValidateIssuerSigningKey = true,
+        //            ValidateIssuer = true,
+        //            ValidateAudience = true,
+        //            ValidateLifetime = true,
+        //            ClockSkew = TimeSpan.Zero,
+        //            ValidIssuer = configuration["JwtSettings:Issuer"],
+        //            ValidAudience = configuration["JwtSettings:Audience"],
+        //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
+        //        };
+        //    });
+
+        //    #endregion
+
+        //    services.AddTransient<IAuthService, AuthService>();
+        //    services.AddScoped<IUserService, UserService>();
+
+        //    return services;
+        //}
+
+        //#endregion
+
+
+        public static IServiceCollection ConfigureIdentityServices(this IServiceCollection services, IConfiguration configuration)
         {
-
-            #region JWT Setting
-
-            services.Configure<JWTSetting>(configuration.GetSection("JwtSettings"));
-
-            #endregion
-
             #region Config Connection String
 
-
-            services.AddDbContext<SafirIdentityDbContext>(option =>
+            services.AddDbContext<SafirIdentityDbContext>(options =>
             {
-                option.UseSqlServer(configuration.GetConnectionString("SAKIdentityConnectionString"),
+                options.UseSqlServer(configuration.GetConnectionString("SAKIdentityConnectionString"),
                     m => m.MigrationsAssembly(typeof(SafirIdentityDbContext).Assembly.FullName));
-                
             });
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<SafirIdentityDbContext>().AddDefaultTokenProviders();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(o =>
-            {
-                o.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.Zero,
-                    ValidIssuer = configuration["JwtSettings:Issuer"],
-                    ValidAudience = configuration["JwtSettings:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
-                };
-            });
+            // پیکربندی Identity
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<SafirIdentityDbContext>()
+                .AddDefaultTokenProviders();
 
             #endregion
 
+            // ثبت سرویس‌های مربوط به احراز هویت
             services.AddTransient<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
 
             return services;
         }
+
     }
 }
