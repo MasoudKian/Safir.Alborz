@@ -16,14 +16,17 @@ namespace Persistence.Services.ImplementationServices
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IGenericRepository<Employee> _employeeGenericRepository;
         private readonly IUserService _userService;
+        private readonly IDepartmentService _departmentService;
 
         public EmployeeService(IEmployeeRepository employeeRepository
             , IGenericRepository<Employee> employeeGenericRepository
-            , IUserService userService)
+            , IUserService userService
+            ,IDepartmentService departmentService)
         {
             _employeeRepository = employeeRepository;
             _employeeGenericRepository = employeeGenericRepository;
             _userService = userService;
+            _departmentService = departmentService;
         }
 
 

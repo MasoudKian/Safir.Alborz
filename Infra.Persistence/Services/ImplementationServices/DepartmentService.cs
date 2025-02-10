@@ -30,12 +30,15 @@ namespace Persistence.Services.ImplementationServices
             return departments;
         }
 
-        /// <summary>
-        /// ثبت بخش سازمان
-        /// </summary>
-        /// <param name="addDepartment"></param>
-        /// <param name="currentUser"></param>
-        /// <returns></returns>
+        public async Task<GetDepartmentDTO> GetDepartmentByIdAsync(int id)
+        {
+            var dep = await _departmentRepository.GetByIdAsync(id);
+            return new GetDepartmentDTO
+            {
+                DepartmentId = dep.Id,
+            };
+        }
+
         public async Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment)
         {
 

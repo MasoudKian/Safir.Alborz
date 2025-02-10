@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.HumanResources.Department;
+using Domain.Entities.HumanResources.EmployeeManagement;
 
 namespace Application.Contracts.InterfaceServices
 {
@@ -6,6 +7,8 @@ namespace Application.Contracts.InterfaceServices
     {
         Task<AddDepartmentResult> AddDepartment(AddDepartmentDTO addDepartment);
         Task<bool> DepartmentExistsAsync(string name);
+
+        Task<GetDepartmentDTO> GetDepartmentByIdAsync(int id);
 
         Task<List<DepartmentListDTO>> GetAllDepartmentsAsync();
     }

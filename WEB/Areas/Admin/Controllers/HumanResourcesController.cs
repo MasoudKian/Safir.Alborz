@@ -6,6 +6,7 @@ namespace WEB.Areas.Admin.Controllers
     {
         #region Home
 
+        [HttpGet("Employee-Management")]
         public IActionResult EmployeeManagement()
         {
             return View();
@@ -13,11 +14,27 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
+        #region Add Employee
 
+        [HttpGet("Add-Employee")]
+        public IActionResult AddEmployee()
+        {
+            return View();  
+        }
+
+        //[HttpPost("Add-Employee")]
+        //public IActionResult AddEmployee()
+        //{
+        //    return View();
+        //}
+
+        #endregion
         /// <summary>
         /// مدیریت استخدام
         /// </summary>
         /// <returns></returns>
+        /// 
+        [HttpGet("Recruitment-Management")]
         public IActionResult RecruitmentManagement()
         {
             return View();

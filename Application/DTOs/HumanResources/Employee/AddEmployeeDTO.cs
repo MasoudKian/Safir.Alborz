@@ -58,6 +58,8 @@ namespace Application.DTOs.HumanResources.Employee
         [Required]
         public string Password { get; set; } = string.Empty;
 
+        public int DepartmentId { get; set; } // اضافه شدن این فیلد
+
 
     }
     public enum AddEmployeeResult
