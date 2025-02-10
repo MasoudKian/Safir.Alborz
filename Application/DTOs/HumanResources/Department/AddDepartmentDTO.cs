@@ -9,4 +9,11 @@ namespace Application.DTOs.HumanResources.Department
         [MaxLength(300)]
         public string Name { get; set; } = string.Empty;  // نام بخش
     }
+
+    public enum AddDepartmentResult
+    {
+
+        Success,
+        Failure
+    }
 }

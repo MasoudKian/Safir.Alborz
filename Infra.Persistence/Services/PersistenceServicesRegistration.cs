@@ -13,6 +13,7 @@ using Persistence.Context;
 using Persistence.Services.ImplementationServices;
 using Persistence.Services.Repositories;
 using Persistence.Services.Repository;
+using System.Reflection;
 
 namespace Persistence.Services
 {
@@ -21,6 +22,9 @@ namespace Persistence.Services
         public static IServiceCollection ConfigurePersistenceServices
             (this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            //services.AddMediatR(Assembly.GetExecutingAssembly());
+
             services.AddDbContext<SafirDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("SAKConnectionString"),
