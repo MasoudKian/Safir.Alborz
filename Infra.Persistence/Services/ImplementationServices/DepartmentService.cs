@@ -36,6 +36,7 @@ namespace Persistence.Services.ImplementationServices
             return new GetDepartmentDTO
             {
                 DepartmentId = dep.Id,
+                DepartmentName = dep.Name,
             };
         }
 

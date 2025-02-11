@@ -14,13 +14,21 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
         [MaxLength(500)]
         public string LastName { get; set; } = string.Empty;
 
+        [Display(Name = "آواتار")]
+        public string ImageAddress { get; set; } = string.Empty;
+
         [Display(Name = "کد ملی")]
         [MaxLength(10)]
         public string IRCode { get; set; } = string.Empty;
 
+
         [Display(Name = "شماره شناسنامه")]
         [MaxLength(50)]
         public string BirthCertificateNumber { get; set; } = string.Empty;
+
+        [Display(Name = "تاریخ تولد")]
+        [MaxLength(20)]
+        public string BirthDate { get; set; } = string.Empty;
 
         [Display(Name = "شماره تماس")]
         [MaxLength(11)]
@@ -65,5 +73,21 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
 
         #endregion
 
+    }
+
+
+    public enum Education
+    {
+        [Display(Name = "دیپلم")]
+        Diploma,
+
+        [Display(Name = "فوق دیپلم")]
+        PostgraduateDiploma,
+
+        [Display(Name = "لیسانس")]
+        Master,
+
+        [Display(Name = "دکترا")]
+        PHD
     }
 }

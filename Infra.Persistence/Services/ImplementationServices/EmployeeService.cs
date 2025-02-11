@@ -6,6 +6,9 @@ using Application.DTOs.HumanResources;
 using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
 using Domain.Entities.HumanResources.EmployeeManagement;
+using Microsoft.Extensions.Logging;
+using Persistence.Services.Repositories;
+using System.Linq;
 
 namespace Persistence.Services.ImplementationServices
 {
@@ -17,16 +20,19 @@ namespace Persistence.Services.ImplementationServices
         private readonly IGenericRepository<Employee> _employeeGenericRepository;
         private readonly IUserService _userService;
         private readonly IDepartmentService _departmentService;
+        private readonly ILogger _logger;
 
         public EmployeeService(IEmployeeRepository employeeRepository
             , IGenericRepository<Employee> employeeGenericRepository
             , IUserService userService
-            ,IDepartmentService departmentService)
+            , IDepartmentService departmentService
+            ,ILogger<EmployeeService> logger)
         {
             _employeeRepository = employeeRepository;
             _employeeGenericRepository = employeeGenericRepository;
             _userService = userService;
             _departmentService = departmentService;
+            _logger = logger;
         }
 
 
@@ -62,28 +68,57 @@ namespace Persistence.Services.ImplementationServices
 
         #region Add Employee
 
-        public async Task<AddEmployeeResult> RegisterEmployeeAsync
-            (AddEmployeeDTO employeeDTO, string currentUser)
+        public async Task<AddEmployeeResult> RegisterEmployeeAsync(AddEmployeeDTO employeeDTO, string currentUser)
         {
-
             using var transaction = await _employeeGenericRepository.BeginTransactionAsync();
 
             try
             {
-
                 var isExistIRCode = await EmployeeExistsByIrCodeAsync(employeeDTO.IRCode);
                 var isExistMobile = await EmployeeExistsByMobileAsync(employeeDTO.Mobile);
                 var isExistEmail = await EmployeeExistsByEmailAsync(employeeDTO.Email!);
                 var isExistbirthCertificate = await EmployeeExistsByBirthCertificateNumberAsync(employeeDTO.BirthCertificateNumber);
-
 
                 if (isExistIRCode || isExistMobile || isExistEmail || isExistbirthCertificate)
                 {
                     return AddEmployeeResult.ThereIs;
                 }
 
+                var department = await _departmentService.GetDepartmentByIdAsync(employeeDTO.DepartmentId);
+                if (department == null)
+                {
+                    return AddEmployeeResult.DepartmentNotFound;
+                }
 
-                var employeeCode = GenerateCode.GenerateEmployeeCode();
+                string departmentFirstLetter = GetFirstEnglishLetter.GetFirstEnglishLetterForDepartment(department.DepartmentName);
+                string randomCode = GenerateCode.GenerateEmployeeCode();
+                string employeeCode = $"{departmentFirstLetter}{randomCode}";
+
+                string imagePath = string.Empty;
+
+                if (employeeDTO.ProfileImage != null)
+                {
+                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
+                    var extension = Path.GetExtension(employeeDTO.ProfileImage.FileName).ToLower();
+
+                    if (!allowedExtensions.Contains(extension))
+                    {
+                        return AddEmployeeResult.Error;
+                    }
+
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Employees");
+                    Directory.CreateDirectory(uploadsFolder);
+
+                    string uniqueFileName = $"{Guid.NewGuid()}_{employeeDTO.ProfileImage.FileName}";
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await employeeDTO.ProfileImage.CopyToAsync(fileStream);
+                    }
+
+                    imagePath = $"/Images/Employees/{uniqueFileName}";
+                }
 
                 var newEmployee = new Employee()
                 {
@@ -95,58 +130,51 @@ namespace Persistence.Services.ImplementationServices
                     Email = employeeDTO.Email,
                     Address = employeeDTO.Address,
                     EmployeeID = employeeCode,
-                    Education = employeeDTO.Education,
+                    Education = (Education)employeeDTO.Education,
                     FieldOfStudy = employeeDTO.FieldOfStudy,
-                    DateOfEmployment = Convert.ToDateTime(employeeDTO.DateOfEmployment),
+                    DateOfEmployment = DateTime.Now,
                     FamiliarPhone = employeeDTO.FamiliarPhone,
-
+                    DepartmentId = employeeDTO.DepartmentId,
                     RegisteredBy = currentUser,
-
+                    RegisteredDate = DateTime.Now,
+                    UpdateDate = DateTime.Now,
+                    BirthDate = employeeDTO.BirthDate,
+                    ImageAddress = imagePath,
                 };
 
                 var createdEmployee = await _employeeGenericRepository.CreateAsync(newEmployee);
-                Console.WriteLine($"Employee Created: {createdEmployee.EmployeeID}");
+                _logger.LogInformation($"Employee Created: {createdEmployee.EmployeeID}");
 
                 var user = new AddUserForEmployeeDTO()
                 {
-                    FirsName = employeeDTO.FirstName,
-                    LastName = employeeDTO.LastName,
+                    FirsName = newEmployee.FirstName,
+                    LastName = newEmployee.LastName,
                     UserName = newEmployee.EmployeeID,
-                    Email = employeeDTO.Email!,
-                    Code = newEmployee.EmployeeID,
+                    Email = newEmployee.Email!,
                     Password = employeeDTO.Password,
-
                 };
 
                 var userId = await _userService.CreateEmployeeWithApplicationUser(user);
-                Console.WriteLine($"User Created with ID: {userId}");
+                _logger.LogInformation($"User Created with ID: {userId}");
 
                 await transaction.CommitAsync();
-
                 return AddEmployeeResult.Success;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                // در صورت بروز خطا، Transaction را Rollback کن
                 await transaction.RollbackAsync();
+                _logger.LogError(ex, "خطا در ثبت کارمند");
 
-                // اگر ثبت ApplicationUser موفق نبود، Employee را حذف کن
-                var existingEmployee = await _employeeRepository.GetEmployeeByIrCodeAsync(employeeDTO.IRCode);
-                if (existingEmployee != null)
+                var userName = employeeDTO.EmployeeCode;
+                if (!string.IsNullOrEmpty(userName))
                 {
-                    // حذف Employee
-                    _employeeGenericRepository.DeletePermanent(existingEmployee);
+                    await _userService.DeleteApplicationUserAsync(userName);
                 }
 
-                // اگر ثبت Employee موفق نبود، ApplicationUser را حذف کن
-                var userName = employeeDTO.EmployeeCode; // فرض بر این است که EmployeeID برابر با UserName است
-                await _userService.DeleteApplicationUserAsync(userName);
-
-                throw new Exception("ثبت با مشکلی مواجه شد");
+                throw new InvalidOperationException("خطایی در ثبت کارمند رخ داده است", ex);
             }
-
         }
+
 
         #endregion
     }

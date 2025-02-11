@@ -42,7 +42,7 @@ namespace Persistence.Services.Repositories
                 .Where(d => !d.IsDelete)
                 .Select(d => new DepartmentListDTO
                 {
-                    Id = d.Id,
+                    DepartmentId = d.Id,
                     Name = d.Name,
                     EmployeeCount = d.Employees.Count(),
                     CreatedDate = d.RegisteredDate,

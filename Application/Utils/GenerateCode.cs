@@ -17,7 +17,7 @@
             int randomNumber = random.Next(0, 100000);
             // تبدیل عدد به رشته و اضافه کردن صفرهای جلو در صورت نیاز
             string randomString = randomNumber.ToString("D5"); // 5 رقم
-            return "m_" + randomString; // افزودن 'm' در ابتدای رشته
+            return randomString; 
         }
     }
 }
