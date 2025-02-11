@@ -89,8 +89,8 @@ namespace Persistence.Services.ImplementationServices
                 {
                     return AddEmployeeResult.DepartmentNotFound;
                 }
-
-                string departmentFirstLetter = GetFirstEnglishLetter.GetFirstEnglishLetterForDepartment(department.DepartmentName);
+                // انتخاب 3 حرف اول دپارتمان مورد نظر
+                string departmentFirstLetter = GetDepartmentCode.GetDepartmentCodeByName(department.DepartmentName);
                 string randomCode = GenerateCode.GenerateEmployeeCode();
                 string employeeCode = $"{departmentFirstLetter}{randomCode}";
 
