@@ -41,6 +41,9 @@ namespace Persistence.Services
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IDepartmentService, DepartmentService>();
 
+            services.AddScoped<IPositionRepository, PositionRepository>();
+            services.AddScoped<IPositionService, PositionService>();
+
 
 
             services.AddAutoMapper(typeof(MappingProfile));

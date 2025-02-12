@@ -1,4 +1,5 @@
-﻿document.addEventListener("DOMContentLoaded", function () {
+﻿// Sidebar
+document.addEventListener("DOMContentLoaded", function () {
     const menuLinks = document.querySelectorAll(".side-menu__link");
     const currentPath = window.location.pathname; // آدرس صفحه‌ی فعلی
 
@@ -15,6 +16,49 @@
             menuLinks.forEach(item => item.classList.remove("side-menu__link--active"));
             this.classList.add("side-menu__link--active");
         });
+    });
+});
+// Sidebar
+
+// HumanResources
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("submit-position").addEventListener("click", async function () {
+        // دریافت مقدارهای ورودی
+        const positionTitle = document.getElementById("modal-form-1").value;
+        const departmentId = document.getElementById("modal-form-6").value;
+
+        if (!positionTitle || !departmentId) {
+            alert("لطفاً نام سمت و دپارتمان را انتخاب کنید.");
+            return;
+        }
+
+        // ایجاد آبجکت اطلاعات برای ارسال به API
+        const data = {
+            title: positionTitle,
+            departmentId: parseInt(departmentId) // مقدار را به عدد تبدیل می‌کنیم
+        };
+        debugger;
+        try {
+            const response = await fetch("https://localhost:7156/api/v1/HumanResources/Create-Position", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);
+                location.reload(); // صفحه را مجدداً بارگذاری می‌کنیم
+            } else {
+                alert(result.message || "خطایی رخ داده است.");
+            }
+        } catch (error) {
+            console.error("خطا در ارسال درخواست:", error);
+            alert("خطایی در ارسال اطلاعات به سرور رخ داده است.");
+        }
     });
 });
 
@@ -101,3 +145,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// HumanResources

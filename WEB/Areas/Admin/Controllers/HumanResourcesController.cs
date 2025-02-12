@@ -1,5 +1,6 @@
 ﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Employee;
+using Application.DTOs.HumanResources.Position;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
@@ -99,9 +100,6 @@ namespace WEB.Areas.Admin.Controllers
 
             return Json(departmentList); // ✅ مقدار صحیح ارسال شد
         }
-
-
-
 
         #region مدیریت استخدام
 

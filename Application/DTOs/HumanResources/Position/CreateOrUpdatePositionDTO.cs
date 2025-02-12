@@ -9,6 +9,7 @@ namespace Application.DTOs.HumanResources.Position
         [MaxLength(300)]
         public string Title { get; set; } = string.Empty;
 
+        [Required(ErrorMessage = "لطفاً دپارتمان را انتخاب کنید.")]
         public int? DepartmentId { get; set; }
     }
     public enum PositionResult
