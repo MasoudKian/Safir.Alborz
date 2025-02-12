@@ -9,6 +9,6 @@ namespace Application.Contracts.Interfaces.Repositories.HumanResources
         Task AddPosiitionAsync(Position position);
         Task<Position> GetByIdAsync(int id);
         Task<bool> PositionExistAsync(string positionName);
-        Task<List<PositionListDTO>> GetAllAsync();
+        Task<List<Position>> GetAllAsync();
     }
 }

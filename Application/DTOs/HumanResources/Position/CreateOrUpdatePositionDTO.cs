@@ -11,4 +11,10 @@ namespace Application.DTOs.HumanResources.Position
 
         public int? DepartmentId { get; set; }
     }
+    public enum PositionResult
+    {
+        Success,
+        IsThere,
+        Error
+    }
 }

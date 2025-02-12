@@ -21,20 +21,9 @@ namespace Persistence.Services.Repositories.HumanResources
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<PositionListDTO>> GetAllAsync()
+        public async Task<List<Position>> GetAllAsync()
         {
-            return await _dbContext.Positions
-                .Where(p => !p.IsDelete)
-                .Include(p => p.Department) // این خط باعث بارگذاری دپارتمان مربوطه می‌شود
-                .Select(p => new PositionListDTO
-                {
-                    PositionId = p.Id,
-                    Title = p.Title,
-                    CreatedDate = p.RegisteredDate,
-                    DepartmentId = p.DepartmentId,
-                    DepartmentName = p.Department.Name
-                })
-                .ToListAsync();
+            return await _dbContext.Positions.Where(p=>!p.IsDelete).ToListAsync();
         }
 
         public async Task<Position> GetByIdAsync(int id)
