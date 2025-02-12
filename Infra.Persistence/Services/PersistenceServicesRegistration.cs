@@ -1,8 +1,8 @@
 ﻿using Application.Contracts.Interfaces.APIs;
 using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories;
+using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Application.Contracts.Interfaces.UserServices;
-using Application.Contracts.InterfaceServices;
+using Application.Contracts.InterfaceServices.HumanResources;
 using Application.Profiles;
 using Identity.DbContext;
 using Identity.PersistenceServices.Services;
@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
-using Persistence.Services.ImplementationServices;
-using Persistence.Services.Repositories;
+using Persistence.Services.ImplementationServices.HumanResources;
+using Persistence.Services.Repositories.HumanResources;
 using Persistence.Services.Repository;
 using System.Reflection;
 

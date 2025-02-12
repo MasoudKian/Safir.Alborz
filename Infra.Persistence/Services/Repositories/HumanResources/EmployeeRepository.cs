@@ -1,10 +1,10 @@
-﻿using Application.Contracts.Interfaces.Repositories;
+﻿using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using Persistence.Services.Repository;
 
-namespace Persistence.Services.Repositories
+namespace Persistence.Services.Repositories.HumanResources
 {
     public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
     {

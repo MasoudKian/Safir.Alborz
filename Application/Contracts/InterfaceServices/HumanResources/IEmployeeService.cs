@@ -1,6 +1,6 @@
 ﻿using Application.DTOs.HumanResources.Employee;
 
-namespace Application.Contracts.InterfaceServices
+namespace Application.Contracts.InterfaceServices.HumanResources
 {
     public interface IEmployeeService
     {
@@ -11,6 +11,6 @@ namespace Application.Contracts.InterfaceServices
 
 
         Task<AddEmployeeResult> RegisterEmployeeAsync(AddEmployeeDTO employeeDTO
-            ,string currentUser);
+            , string currentUser);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.HumanResources.Department;
 using Domain.Entities.HumanResources.EmployeeManagement;
 
-namespace Application.Contracts.InterfaceServices
+namespace Application.Contracts.InterfaceServices.HumanResources
 {
     public interface IDepartmentService
     {

@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Behaviors\" />
     <Folder Include="CQRS\" />
-    <Folder Include="DTOs\HumanResources\Position\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Validation\" />
   </ItemGroup>

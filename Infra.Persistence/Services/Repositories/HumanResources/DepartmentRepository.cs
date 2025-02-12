@@ -1,13 +1,13 @@
-﻿using Application.Contracts.Interfaces.Repositories;
+﻿using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Application.DTOs.HumanResources.Department;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using Persistence.Services.Repository;
 
-namespace Persistence.Services.Repositories
+namespace Persistence.Services.Repositories.HumanResources
 {
-    public class DepartmentRepository : GenericRepository<Department>,IDepartmentRepository
+    public class DepartmentRepository : GenericRepository<Department>, IDepartmentRepository
     {
         private readonly SafirDbContext _context;
         public DepartmentRepository(SafirDbContext context) : base(context)

@@ -1,4 +1,4 @@
-﻿using Application.Contracts.InterfaceServices;
+﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 

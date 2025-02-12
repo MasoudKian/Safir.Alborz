@@ -1,4 +1,4 @@
-﻿using Application.Contracts.InterfaceServices;
+﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
 using Microsoft.AspNetCore.Authorization;
@@ -13,6 +13,8 @@ namespace API.Controllers
     
     public class HumanResourcesController : ControllerBase
     {
+        #region ctor DI
+
         private readonly IEmployeeService _employeeService;
         private readonly IDepartmentService _departmentService;
 
@@ -22,6 +24,8 @@ namespace API.Controllers
             _employeeService = employeeService;
             _departmentService = departmentService;
         }
+
+        #endregion
 
         #region Employee
 
@@ -70,5 +74,7 @@ namespace API.Controllers
         }
 
         #endregion
+
+
     }
 }

@@ -1,4 +1,4 @@
-﻿using Application.Contracts.InterfaceServices;
+﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -81,15 +81,18 @@ namespace WEB.Areas.Admin.Controllers
         }
 
         #endregion
-        /// <summary>
-        /// مدیریت استخدام
-        /// </summary>
-        /// <returns></returns>
-        /// 
+
+        #region مدیریت استخدام
+
         [HttpGet("Recruitment-Management")]
         public IActionResult RecruitmentManagement()
         {
             return View();
         }
+
+        #endregion
+
+        /// مدیریت استخدام
+
     }
 }

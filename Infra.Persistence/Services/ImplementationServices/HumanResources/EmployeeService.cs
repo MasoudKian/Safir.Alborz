@@ -1,7 +1,7 @@
 ﻿using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories;
+using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Application.Contracts.Interfaces.UserServices;
-using Application.Contracts.InterfaceServices;
+using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources;
 using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Persistence.Services.Repositories;
 using System.Linq;
 
-namespace Persistence.Services.ImplementationServices
+namespace Persistence.Services.ImplementationServices.HumanResources
 {
     public class EmployeeService : IEmployeeService
     {
@@ -26,7 +26,7 @@ namespace Persistence.Services.ImplementationServices
             , IGenericRepository<Employee> employeeGenericRepository
             , IUserService userService
             , IDepartmentService departmentService
-            ,ILogger<EmployeeService> logger)
+            , ILogger<EmployeeService> logger)
         {
             _employeeRepository = employeeRepository;
             _employeeGenericRepository = employeeGenericRepository;

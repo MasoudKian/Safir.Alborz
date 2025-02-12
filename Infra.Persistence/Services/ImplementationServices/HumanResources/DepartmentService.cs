@@ -1,11 +1,11 @@
-﻿using Application.Contracts.Interfaces.Repositories;
-using Application.Contracts.InterfaceServices;
+﻿using Application.Contracts.Interfaces.Repositories.HumanResources;
+using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Department;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.Services.ImplementationServices
+namespace Persistence.Services.ImplementationServices.HumanResources
 {
     public class DepartmentService : IDepartmentService
     {

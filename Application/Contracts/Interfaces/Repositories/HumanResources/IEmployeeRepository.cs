@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.HumanResources.EmployeeManagement;
 
-namespace Application.Contracts.Interfaces.Repositories
+namespace Application.Contracts.Interfaces.Repositories.HumanResources
 {
     public interface IEmployeeRepository
     {
