@@ -2,7 +2,6 @@
 using Application.DTOs.HumanResources.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Persistence.Services.ImplementationServices;
 using System.Security.Claims;
 
 namespace WEB.Areas.Admin.Controllers
@@ -82,6 +81,28 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
+        [HttpGet("/GetDepartments")]
+        public async Task<IActionResult> GetDepartments()
+        {
+            var departments = await _departmentService.GetAllDepartmentsAsync();
+
+            if (departments == null)
+            {
+                return Json(new List<SelectListItem>());
+            }
+
+            var departmentList = departments.Select(d => new SelectListItem
+            {
+                Value = d.DepartmentId.ToString(),
+                Text = d.Name
+            }).ToList();
+
+            return Json(departmentList); // ✅ مقدار صحیح ارسال شد
+        }
+
+
+
+
         #region مدیریت استخدام
 
         [HttpGet("Recruitment-Management")]
@@ -92,7 +113,6 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
-        /// مدیریت استخدام
 
     }
 }

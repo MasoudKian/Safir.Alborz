@@ -74,3 +74,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let modalTriggers = document.querySelectorAll('[data-tw-toggle="modal"]'); // همه دکمه‌های مودال
+
+    modalTriggers.forEach(function (trigger) {
+        trigger.addEventListener("click", function () {
+            fetch("/GetDepartments") // مسیر صحیح
+                .then(response => response.json())
+                .then(data => {
+                    let select = document.getElementById("modal-form-6");
+                    select.innerHTML = ""; // حذف گزینه‌های قبلی
+
+                    // اضافه کردن گزینه‌های جدید
+                    select.appendChild(new Option("انتخاب کنید", "")); // گزینه پیش‌فرض
+                    data.forEach(department => {
+                        let option = new Option(department.text, department.value);
+                        select.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    alert("خطا در دریافت لیست دپارتمان‌ها!");
+                    console.error("Error:", error);
+                });
+        });
+    });
+});
