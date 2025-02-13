@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.HumanResources.Department;
+using Application.DTOs.HumanResources.Employee;
 using Application.DTOs.HumanResources.Position;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
@@ -9,6 +10,39 @@ namespace Application.Profiles
     {
         public MappingProfile()
         {
+            #region Employee
+
+            CreateMap<Employee, EmployeeListDTO>()
+                .ForMember(e => e.EId, el => el.MapFrom(eld => eld.Id))
+                .ForMember(e => e.FirstName, el => el.MapFrom(eld => eld.FirstName))
+                .ForMember(e => e.LastName, el => el.MapFrom(eld => eld.LastName))
+                .ForMember(e => e.IRCode, el => el.MapFrom(eld => eld.IRCode))
+                .ForMember(e => e.BirthDate, el => el.MapFrom(eld => eld.BirthDate))
+                .ForMember(e => e.BirthCertificateNumber, el => el.MapFrom(eld => eld.BirthCertificateNumber))
+                .ForMember(e => e.Mobile, el => el.MapFrom(eld => eld.Mobile))
+                .ForMember(e => e.Email, el => el.MapFrom(eld => eld.Email))
+                .ForMember(e => e.Address, el => el.MapFrom(eld => eld.Address))
+                .ForMember(e => e.RegisteredDate, el => el.MapFrom(eld => eld.RegisteredDate))
+                .ForMember(e => e.EmployeeCode, el => el.MapFrom(eld => eld.EmployeeID))
+                .ForMember(e => e.ProfileImage, el => el.MapFrom(eld => eld.ImageAddress))
+                .ForMember(e => e.Education, el => el.MapFrom(eld => eld.Education))
+                .ForMember(e => e.DateOfEmployment, el => el.MapFrom(eld => eld.DateOfEmployment))
+                .ForMember(e => e.FamiliarPhone, el => el.MapFrom(eld => eld.FamiliarPhone))
+                .ForMember(e => e.IsDelete, el => el.MapFrom(eld => eld.IsDelete))
+
+                .ForMember(e => e.DepartmentId, el => el.MapFrom(eld => eld.DepartmentId))
+
+                .ForMember(e => e.DepartmentName, el => el.MapFrom
+                (eld => eld.Department != null ? eld.Department.Name : ""))
+
+                .ForMember(e => e.PositionId, el => el.MapFrom(eld => eld.PositionId))
+
+                .ForMember(e => e.PositionName, el => el.MapFrom
+                (eld => eld.Position != null ? eld.Position.Title : ""));
+
+
+            #endregion
+
             #region Department
 
             CreateMap<AddDepartmentDTO,Department>().ReverseMap();
@@ -18,7 +52,6 @@ namespace Application.Profiles
             #region Position
 
             CreateMap<CreateOrUpdatePositionDTO, Position>().ReverseMap();
-
             // اصلاح Mapping برای نمایش نام دپارتمان
             CreateMap<Position, PositionListDTO>()
                 .ForMember(dest => dest.PositionId, opt => opt.MapFrom(src => src.Id))

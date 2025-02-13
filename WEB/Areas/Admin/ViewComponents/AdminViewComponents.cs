@@ -18,7 +18,48 @@ namespace WEB.Areas.Admin.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var list = await _departmentService.GetAllDepartmentsAsync();
-            return View("DepartmentList",list);
+            return View("DepartmentList", list);
+        }
+    }
+
+    #endregion
+
+    #region Position List
+
+    public class PositionListViewComponent : ViewComponent
+    {
+        private readonly IPositionService _positionService;
+
+        public PositionListViewComponent(IPositionService positionService)
+        {
+            _positionService = positionService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var list = await _positionService.GetAllPositionAsync();
+            return View("PositionList", list);
+        }
+    }
+
+    #endregion
+
+    #region Employee List
+
+    public class EmployeeListViewComponent : ViewComponent
+    {
+
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeListViewComponent(IEmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var list = await _employeeService.GetEmployeeListsAsync();
+            return View("EmployeeList", list);
         }
     }
 

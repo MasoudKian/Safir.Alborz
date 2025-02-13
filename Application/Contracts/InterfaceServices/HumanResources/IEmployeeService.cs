@@ -12,5 +12,7 @@ namespace Application.Contracts.InterfaceServices.HumanResources
 
         Task<AddEmployeeResult> RegisterEmployeeAsync(AddEmployeeDTO employeeDTO
             , string currentUser);
+
+        Task<List<EmployeeListDTO>> GetEmployeeListsAsync();
     }
 }

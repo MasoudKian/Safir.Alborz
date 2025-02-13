@@ -5,6 +5,7 @@ using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources;
 using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
+using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Microsoft.Extensions.Logging;
 using Persistence.Services.Repositories;
@@ -21,18 +22,20 @@ namespace Persistence.Services.ImplementationServices.HumanResources
         private readonly IUserService _userService;
         private readonly IDepartmentService _departmentService;
         private readonly ILogger _logger;
+        private readonly IMapper _mapper;
 
         public EmployeeService(IEmployeeRepository employeeRepository
             , IGenericRepository<Employee> employeeGenericRepository
             , IUserService userService
             , IDepartmentService departmentService
-            , ILogger<EmployeeService> logger)
+            , ILogger<EmployeeService> logger, IMapper mapper)
         {
             _employeeRepository = employeeRepository;
             _employeeGenericRepository = employeeGenericRepository;
             _userService = userService;
             _departmentService = departmentService;
             _logger = logger;
+            _mapper = mapper;
         }
 
 
@@ -96,10 +99,10 @@ namespace Persistence.Services.ImplementationServices.HumanResources
 
                 string imagePath = string.Empty;
 
-                if (employeeDTO.ProfileImage != null)
+                if (employeeDTO?.ProfileImage is { Length: > 0 }) // بررسی اینکه عکس معتبر است
                 {
-                    var allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
-                    var extension = Path.GetExtension(employeeDTO.ProfileImage.FileName).ToLower();
+                    var allowedExtensions = new HashSet<string> { ".jpg", ".jpeg", ".png" };
+                    var extension = Path.GetExtension(employeeDTO.ProfileImage.FileName).ToLowerInvariant();
 
                     if (!allowedExtensions.Contains(extension))
                     {
@@ -107,18 +110,27 @@ namespace Persistence.Services.ImplementationServices.HumanResources
                     }
 
                     var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Images", "Employees");
-                    Directory.CreateDirectory(uploadsFolder);
 
-                    string uniqueFileName = $"{Guid.NewGuid()}_{employeeDTO.ProfileImage.FileName}";
+                    // اطمینان از وجود پوشه
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    // ساخت نام فایل منحصر‌به‌فرد
+                    string uniqueFileName = $"{Guid.NewGuid()}{extension}";
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    // ذخیره‌ی فایل به صورت امن
+                    await using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         await employeeDTO.ProfileImage.CopyToAsync(fileStream);
                     }
 
+                    // تنظیم مسیر تصویر برای ذخیره در دیتابیس
                     imagePath = $"/Images/Employees/{uniqueFileName}";
                 }
+
 
                 var newEmployee = new Employee()
                 {
@@ -178,5 +190,13 @@ namespace Persistence.Services.ImplementationServices.HumanResources
 
 
         #endregion
+
+
+        public async Task<List<EmployeeListDTO>> GetEmployeeListsAsync()
+        {
+            var employees = await _employeeRepository.GetAllEmployees();
+            var employeeMapper = _mapper.Map<List<EmployeeListDTO>>(employees);
+            return employeeMapper;
+        }
     }
 }

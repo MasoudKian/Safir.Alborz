@@ -23,7 +23,8 @@ namespace Persistence.Services.Repositories.HumanResources
 
         public async Task<List<Position>> GetAllAsync()
         {
-            return await _dbContext.Positions.Where(p=>!p.IsDelete).ToListAsync();
+            return await _dbContext.Positions.Include(p=>p.Department)
+                .Where(p => !p.IsDelete).ToListAsync();
         }
 
         public async Task<Position> GetByIdAsync(int id)

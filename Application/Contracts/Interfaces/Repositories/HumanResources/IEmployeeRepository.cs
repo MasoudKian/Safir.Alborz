@@ -11,5 +11,7 @@ namespace Application.Contracts.Interfaces.Repositories.HumanResources
         Task<Employee> EmployeeExistsByMobileAsync(string mobile);
 
         Task<Employee> EmployeeExistsByEmailAsync(string email);
+
+        Task<List<Employee>> GetAllEmployees();
     }
 }

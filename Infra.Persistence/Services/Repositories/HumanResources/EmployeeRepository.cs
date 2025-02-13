@@ -39,5 +39,14 @@ namespace Persistence.Services.Repositories.HumanResources
             return isEmailExist!;
         }
 
+        public async Task<List<Employee>> GetAllEmployees()
+        {
+            var employees = await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Position)
+                .Where(e => !e.IsDelete).ToListAsync();
+
+            return employees;
+        }
     }
 }
