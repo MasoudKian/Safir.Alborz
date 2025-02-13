@@ -13,5 +13,7 @@ namespace Application.Contracts.Interfaces.Repositories.HumanResources
         Task<Employee> EmployeeExistsByEmailAsync(string email);
 
         Task<List<Employee>> GetAllEmployees();
+
+        Task<int> GetTotalEmployeesCount();
     }
 }

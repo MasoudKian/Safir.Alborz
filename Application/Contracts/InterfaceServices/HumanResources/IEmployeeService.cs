@@ -14,5 +14,7 @@ namespace Application.Contracts.InterfaceServices.HumanResources
             , string currentUser);
 
         Task<List<EmployeeListDTO>> GetEmployeeListsAsync();
+
+        Task<int> GetTotalEmployeesCount();
     }
 }

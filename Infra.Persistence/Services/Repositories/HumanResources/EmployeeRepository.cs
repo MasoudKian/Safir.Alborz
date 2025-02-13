@@ -48,5 +48,10 @@ namespace Persistence.Services.Repositories.HumanResources
 
             return employees;
         }
+
+        public async Task<int> GetTotalEmployeesCount()
+        {
+            return await _context.Employees.CountAsync();
+        }
     }
 }

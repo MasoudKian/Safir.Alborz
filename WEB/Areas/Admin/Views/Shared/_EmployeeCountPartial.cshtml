@@ -1,0 +1,44 @@
+﻿<div class="box box--stacked flex flex-col p-5">
+    <div class="grid grid-cols-4 gap-5">
+        <div class="box col-span-4 rounded-[0.6rem] border border-dashed border-slate-300/80 p-5 shadow-sm md:col-span-2 xl:col-span-1">
+            <div class="text-base text-slate-500">تعداد کل کارمندان</div>
+            @await Component.InvokeAsync("EmployeeCount")
+            <div class="absolute inset-y-0 rtl:left-0 ltr:right-0 rtl:ml-5 ltr:mr-5 flex flex-col justify-center">
+                <div class="flex items-center rounded-full border border-success/10 bg-success/10 py-[2px] rtl:pr-[7px] ltr:pl-[7px] rtl:pl-1 ltr:pr-1 text-xs font-medium text-success">
+                    2%
+                    <i data-tw-merge="" data-lucide="chevron-up" class="rtl:mr-px ltr:ml-px h-4 w-4 stroke-[1.5]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="box col-span-4 rounded-[0.6rem] border border-dashed border-slate-300/80 p-5 shadow-sm md:col-span-2 xl:col-span-1">
+            <div class="text-base text-slate-500">تعداد کارمندان فعال </div>
+            <div class="mt-1.5 text-2xl font-medium">122,721</div>
+            <div class="absolute inset-y-0 rtl:left-0 ltr:right-0 rtl:ml-5 ltr:mr-5 flex flex-col justify-center">
+                <div class="flex items-center rounded-full border border-success/10 bg-success/10 py-[2px] rtl:pr-[7px] ltr:pl-[7px] rtl:pl-1 ltr:pr-1 text-xs font-medium text-success">
+                    2%
+                    <i data-tw-merge="" data-lucide="chevron-up" class="rtl:mr-px ltr:ml-px h-4 w-4 stroke-[1.5]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="box col-span-4 rounded-[0.6rem] border border-dashed border-slate-300/80 p-5 shadow-sm md:col-span-2 xl:col-span-1">
+            <div class="text-base text-slate-500">تعداد کارمندان تازه وارد</div>
+            <div class="font-mediumm mt-1.5 text-2xl">489,223</div>
+            <div class="absolute inset-y-0 rtl:left-0 ltr:right-0 rtl:ml-5 ltr:mr-5 flex flex-col justify-center">
+                <div class="flex items-center rounded-full border border-danger/10 bg-danger/10 py-[2px] rtl:pr-[7px] ltr:pl-[7px] rtl:pl-1 ltr:pr-1 text-xs font-medium text-danger">
+                    3%
+                    <i data-tw-merge="" data-lucide="chevron-down" class="rtl:mr-px ltr:ml-px h-4 w-4 stroke-[1.5]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="box col-span-4 rounded-[0.6rem] border border-dashed border-slate-300/80 p-5 shadow-sm md:col-span-2 xl:col-span-1">
+            <div class="text-base text-slate-500">تعداد کارمندان غیر فعال</div>
+            <div class="font-mediumm mt-1.5 text-2xl">411,259</div>
+            <div class="absolute inset-y-0 rtl:left-0 ltr:right-0 rtl:ml-5 ltr:mr-5 flex flex-col justify-center">
+                <div class="flex items-center rounded-full border border-success/10 bg-success/10 py-[2px] rtl:pr-[7px] ltr:pl-[7px] rtl:pl-1 ltr:pr-1 text-xs font-medium text-success">
+                    8%
+                    <i data-tw-merge="" data-lucide="chevron-up" class="rtl:mr-px ltr:ml-px h-4 w-4 stroke-[1.5]"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

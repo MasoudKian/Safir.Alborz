@@ -63,5 +63,23 @@ namespace WEB.Areas.Admin.ViewComponents
         }
     }
 
+
+    public class EmployeeCountViewComponent : ViewComponent
+    {
+
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeCountViewComponent(IEmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            ViewBag.TotalEmployees = await _employeeService.GetTotalEmployeesCount();
+            return View("EmployeeCount");
+        }
+    }
+
     #endregion
 }

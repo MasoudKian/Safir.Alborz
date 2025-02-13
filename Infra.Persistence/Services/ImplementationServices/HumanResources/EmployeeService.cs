@@ -198,5 +198,10 @@ namespace Persistence.Services.ImplementationServices.HumanResources
             var employeeMapper = _mapper.Map<List<EmployeeListDTO>>(employees);
             return employeeMapper;
         }
+
+        public async Task<int> GetTotalEmployeesCount()
+        {
+            return await _employeeRepository.GetTotalEmployeesCount();
+        }
     }
 }
