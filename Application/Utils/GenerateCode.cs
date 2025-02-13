@@ -19,5 +19,13 @@
             string randomString = randomNumber.ToString("D5"); // 5 رقم
             return randomString; 
         }
+
+
+        public static string GenerateClueCode()
+        {
+            Random random = new();
+            int randomNum = random.Next(1000, 9999); // عدد ۴ رقمی تصادفی
+            return $"CC{randomNum}";
+        }
     }
 }
