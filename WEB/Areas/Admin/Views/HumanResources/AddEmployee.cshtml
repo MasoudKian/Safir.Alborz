@@ -226,11 +226,12 @@
 
                                 </div>
                             </div>
+
                             <div class="mt-5 block flex-col pt-5 first:mt-0 first:pt-0 sm:flex xl:flex-row xl:items-center">
                                 <div class="mb-2 inline-block sm:mb-0 rtl:sm:ml-5 ltr:sm:mr-5 rtl:sm:text-left ltr:sm:text-right rtl:xl:ml-14 ltr:xl:mr-14 xl:w-60">
                                     <div class="rtl:text-right ltr:text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">بخش</div>
+                                            <div class="font-medium">دپارتمان</div>
                                         </div>
                                         <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80 xl:mt-3">
                                             از بین گزینه‌های موجود دپارتمان با بخش خود را برگزینید.
@@ -240,11 +241,29 @@
                                 
                                 <div class="mt-3 w-full flex-1 xl:mt-0">
                                     <select asp-for="DepartmentId" id="departmentDropdown" asp-items="ViewBag.Departments" data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1">
-                                        <option value="">در حال بارگذاری...</option>
+                                        <option value="">یک دپارتمان انتخاب کنید...</option>
                                     </select>
                                 </div>
                             </div>
 
+                            <div class="mt-5 block flex-col pt-5 first:mt-0 first:pt-0 sm:flex xl:flex-row xl:items-center">
+                                <div class="mb-2 inline-block sm:mb-0 rtl:sm:ml-5 ltr:sm:mr-5 rtl:sm:text-left ltr:sm:text-right rtl:xl:ml-14 ltr:xl:mr-14 xl:w-60">
+                                    <div class="rtl:text-right ltr:text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">سمت</div>
+                                        </div>
+                                        <div class="mt-1.5 text-xs leading-relaxed text-slate-500/80 xl:mt-3">
+                                            سمت فرد مورد نظر را انتخاب کنید.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3 w-full flex-1 xl:mt-0">
+                                    <select asp-for="PositionId" id="positionDropdown" asp-items="ViewBag.Positions" data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1">
+                                        <option value="">یک سمت انتخاب کنید...</option>
+                                    </select>
+                                </div>
+                            </div>
                             
 
                             <div class="mt-5 block flex-col pt-5 first:mt-0 first:pt-0 sm:flex xl:flex-row xl:items-center">

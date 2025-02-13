@@ -80,6 +80,7 @@ namespace Application.DTOs.HumanResources.Employee
         public string Password { get; set; } = string.Empty;
 
         public int DepartmentId { get; set; }
+        public int PositionId { get; set; }
     }
 
     public enum AddEmployeeResult

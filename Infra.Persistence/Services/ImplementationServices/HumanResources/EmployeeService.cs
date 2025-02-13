@@ -135,6 +135,7 @@ namespace Persistence.Services.ImplementationServices.HumanResources
                     DateOfEmployment = DateTime.Now,
                     FamiliarPhone = employeeDTO.FamiliarPhone,
                     DepartmentId = employeeDTO.DepartmentId,
+                    PositionId = employeeDTO.PositionId,
                     RegisteredBy = currentUser,
                     RegisteredDate = DateTime.Now,
                     UpdateDate = DateTime.Now,

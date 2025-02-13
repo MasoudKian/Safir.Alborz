@@ -13,12 +13,15 @@ namespace WEB.Areas.Admin.Controllers
 
         private readonly IDepartmentService _departmentService;
         private readonly IEmployeeService _employeeService;
+        private readonly IPositionService _positionService;
 
         public HumanResourcesController(IDepartmentService departmentService
-            , IEmployeeService employeeService)
+            , IEmployeeService employeeService
+            , IPositionService positionService)
         {
             _departmentService = departmentService;
             _employeeService = employeeService;
+            _positionService = positionService;
         }
 
         #endregion
@@ -41,6 +44,10 @@ namespace WEB.Areas.Admin.Controllers
         {
             var departments = await _departmentService.GetAllDepartmentsAsync();
             ViewBag.Departments = new SelectList(departments, "DepartmentId", "Name");
+
+            var positions = await _positionService.GetAllPositionAsync();
+            ViewBag.Positions = new SelectList(positions, "PositionId", "Title");
+
             return View();  
         }
 
@@ -82,6 +89,8 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
+        #region Get Department
+
         [HttpGet("/GetDepartments")]
         public async Task<IActionResult> GetDepartments()
         {
@@ -100,6 +109,8 @@ namespace WEB.Areas.Admin.Controllers
 
             return Json(departmentList); // ✅ مقدار صحیح ارسال شد
         }
+
+        #endregion
 
         #region مدیریت استخدام
 
