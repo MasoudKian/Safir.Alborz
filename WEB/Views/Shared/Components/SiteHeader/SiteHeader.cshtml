@@ -95,14 +95,14 @@
 
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        @if (role == "PowerAdmin")
-                                                        {
+                                                        @* @if (role == "PowerAdmin") *@
+                                                        @* { *@
                                                             <a style="font-weight:bold;" href="@Url.Action("AdminHome", "Home", new { area = "Admin" })">@ViewBag.FullName</a>
-                                                        }
-                                                        else if (role == "User")
-                                                        {
-                                                            <a href="@Url.Action("Index", "Home", new { area = "User" })">@ViewBag.FullName</a>
-                                                        }
+                                                        @* } *@
+                                                        @* else if (role == "User") *@
+                                                        @* { *@
+                                                            @* <a href="@Url.Action("Index", "Home", new { area = "User" })">@ViewBag.FullName</a> *@
+                                                        @* } *@
                                                     </li>
 
                                                 </ul>

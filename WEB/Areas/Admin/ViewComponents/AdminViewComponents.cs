@@ -1,9 +1,37 @@
 ﻿using Application.Contracts.InterfaceServices.HumanResources;
+using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace WEB.Areas.Admin.ViewComponents
 {
+    #region Sidebar
+
+    public class SidbarAdminViewComponent : ViewComponent
+    {
+        private readonly IAuthIdentityService _authIdentityService;
+
+        public SidbarAdminViewComponent(IAuthIdentityService authIdentityService)
+        {
+            _authIdentityService = authIdentityService;
+
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var user = await _authIdentityService.GetCurrentUserAsync();
+            var roles = await _authIdentityService.GetRolesAsync(user) ?? new List<string>(); // مقداردهی پیش‌فرض لیست
+
+            if (roles !=null)
+            {
+                ViewBag.Role = roles;
+            }
+
+            return View("SidbarAdmin", roles);
+        }
+    }
+
+    #endregion
+
     #region  Department List
 
     public class DepartmentListViewComponent : ViewComponent
