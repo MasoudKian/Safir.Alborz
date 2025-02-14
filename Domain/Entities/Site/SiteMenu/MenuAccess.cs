@@ -4,8 +4,9 @@ namespace Domain.Entities.Site.SiteMenu
 {
     public class MenuAccess : BaseEntity
     {
-        public int MenuId { get; set; } 
         public string Role { get; set; } =string.Empty;
+
+        public int MenuId { get; set; } 
 
         [ForeignKey("MenuId")]
         public Menu? Menu { get; set; }

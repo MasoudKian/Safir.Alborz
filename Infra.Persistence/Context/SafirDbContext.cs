@@ -1,5 +1,10 @@
-﻿using Domain.Entities.HumanResources.EmployeeManagement;
+﻿using Domain.Entities.Address;
+using Domain.Entities.HumanResources.EmployeeManagement;
+using Domain.Entities.MSCRM;
+using Domain.Entities.ProductsCategories;
+using Domain.Entities.Site.SiteMenu;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace Persistence.Context
 {
@@ -11,9 +16,45 @@ namespace Persistence.Context
         }
         #region Entities
 
+        #region Human Resources
+
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Position> Positions { get; set; }
+
+        #endregion
+
+        #region MSCRM
+
+        public DbSet<Clue> Clues { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Marketer> Marketers { get; set; }
+
+        #endregion
+
+        #region Address
+
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Region> Regions { get; set; }
+
+        #endregion
+
+        #region Site
+
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<MenuAccess> MenuAccesses { get; set; }
+
+        #endregion
+
+        #region Products
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<CategoryProduct> CategoryProducts { get; set; }
+
+        #endregion
 
         #endregion
 
@@ -22,7 +63,7 @@ namespace Persistence.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            #region Employee , Demartment , Position
+            #region Human Resources
 
             // تنظیم رابطه Department -> Positions
             modelBuilder.Entity<Department>()
@@ -47,6 +88,23 @@ namespace Persistence.Context
 
             #endregion
 
+
+            #region Product
+
+            modelBuilder.Entity<CategoryProduct>()
+                .HasKey(cp => new { cp.CategoryId, cp.ProductId });
+
+            modelBuilder.Entity<CategoryProduct>()
+                .HasOne(cp => cp.Category)
+                .WithMany(c => c.CategoryProducts)
+                .HasForeignKey(cp => cp.CategoryId);
+
+            modelBuilder.Entity<CategoryProduct>()
+                .HasOne(cp => cp.Product)
+                .WithMany(p => p.CategoryProducts)
+                .HasForeignKey(cp => cp.ProductId);
+
+            #endregion
 
         }
     }

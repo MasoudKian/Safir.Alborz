@@ -34,6 +34,11 @@ namespace Domain.Entities.MSCRM
         [MaxLength(50)]
         public string VehicleType { get; set; } = string.Empty;
 
+        [Display(Name = "شماره پلاک خودرو")]
+        [Required(ErrorMessage = "{0} ضروری است.")]
+        [MaxLength(10)]
+        public string LicensePlate { get; set; } = string.Empty;
+
         public int RegionId { get; set; }
         [ForeignKey("RegionId")]
         public Region Region { get; set; }
