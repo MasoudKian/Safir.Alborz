@@ -61,6 +61,12 @@ namespace Persistence.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(s => s.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+            
             base.OnModelCreating(modelBuilder);
 
             #region Human Resources
@@ -89,22 +95,26 @@ namespace Persistence.Context
             #endregion
 
 
-            #region Product
+            modelBuilder.Entity<Product>()
+            .Property(p => p.Price)
+            .HasPrecision(18, 2); // دقت و مقیاس را مشخص کنید
 
-            modelBuilder.Entity<CategoryProduct>()
-                .HasKey(cp => new { cp.CategoryId, cp.ProductId });
+            //#region Product
 
-            modelBuilder.Entity<CategoryProduct>()
-                .HasOne(cp => cp.Category)
-                .WithMany(c => c.CategoryProducts)
-                .HasForeignKey(cp => cp.CategoryId);
+            //modelBuilder.Entity<CategoryProduct>()
+            //    .HasKey(cp => new { cp.CategoryId, cp.ProductId });
 
-            modelBuilder.Entity<CategoryProduct>()
-                .HasOne(cp => cp.Product)
-                .WithMany(p => p.CategoryProducts)
-                .HasForeignKey(cp => cp.ProductId);
+            //modelBuilder.Entity<CategoryProduct>()
+            //    .HasOne(cp => cp.Category)
+            //    .WithMany(c => c.CategoryProducts)
+            //    .HasForeignKey(cp => cp.CategoryId);
 
-            #endregion
+            //modelBuilder.Entity<CategoryProduct>()
+            //    .HasOne(cp => cp.Product)
+            //    .WithMany(p => p.CategoryProducts)
+            //    .HasForeignKey(cp => cp.ProductId);
+
+            //#endregion
 
         }
     }
