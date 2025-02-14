@@ -19,6 +19,43 @@ namespace WEB.Controllers
             return View();
         }
 
+        #region About Us
+
+        [HttpGet("aboutus")]
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region ContactUs
+
+        [HttpGet("contactus")]
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+        #endregion
+
+        #region Blog
+
+        [HttpGet("blog")]
+        public IActionResult Blog()
+        {
+            return View();
+        }
+
+        [HttpGet("blog-detail")]
+        public IActionResult BlogDetail()
+        {
+            return View();
+        }
+
+        #endregion
+
+        [HttpGet("privacy-policy")]
         public IActionResult Privacy()
         {
             return View();

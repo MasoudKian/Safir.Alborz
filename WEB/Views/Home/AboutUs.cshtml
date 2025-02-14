@@ -1,0 +1,163 @@
+﻿@{
+    ViewData["Title"] = "درباره ما";
+}
+
+<!-- main-area -->
+<main class="fix">
+    <!-- breadcrumb-area -->
+    <section class="breadcrumb__area breadcrumb__bg" data-background="assets/img/bg/breadcrumb_bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="breadcrumb__content">
+                        <h2 class="title">
+                            @ViewData["Title"]
+                        </h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href='/'>خانه</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">درباره ما</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="breadcrumb__shape">
+            <img src="assets/img/images/breadcrumb_shape01.png" alt="">
+            <img src="assets/img/images/breadcrumb_shape02.png" alt="" class="rightToLeft">
+            <img src="assets/img/images/breadcrumb_shape03.png" alt="">
+            <img src="assets/img/images/breadcrumb_shape04.png" alt="">
+            <img src="assets/img/images/breadcrumb_shape05.png" alt="" class="alltuchtopdown">
+        </div>
+    </section>
+    <!-- breadcrumb-area-end -->
+    <!-- about-area -->
+    <section class="about__area-six">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="about__img-wrap-six">
+                        <img src="assets/img/images/h4_about_img01.jpg" alt="">
+                        <img src="assets/img/images/h4_about_img02.jpg" alt="" data-parallax='{"x" : 40}'>
+                        <div class="experience__box-four">
+                            <h2 class="title">25</h2>
+                            <p>سال <br> تجربه موفق</p>
+                        </div>
+                        <div class="shape">
+                            <img src="assets/img/images/h4_about_img_shape.png" alt="" class="alltuchtopdown">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__content-six">
+                        <div class="section-title mb-25">
+                            <span class="sub-title">درباره ما</span>
+                            <h2 class="title">ما خانواده ای از بهترین متخصصان هستیم</h2>
+                        </div>
+                        <p>چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                        <div class="about__content-inner-four">
+                            <div class="about__list-box">
+                                <ul class="list-wrap">
+                                    <li><i class="flaticon-arrow-button"></i>مدیریت و تحلیل رقبا</li>
+                                    <li><i class="flaticon-arrow-button"></i>تجزیه و تحلیل و تحقیق</li>
+                                    <li><i class="flaticon-arrow-button"></i>100 ٪ سرمایه خود را پس انداز کنید</li>
+                                </ul>
+                            </div>
+                            <div class="about__list-img-three">
+                                <img src="assets/img/images/about_list_img03.png" alt="">
+                                <a href="https://www.youtube.com/watch?v=6mkoGSqTqFI" class="play-btn popup-video"><i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                        <a class='btn btn-two' a asp-controller="Home" asp-action="ContactUs">تماس با ما</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about__shape-wrap-four">
+            <img src="assets/img/images/h4_about_shape01.png" alt="">
+            <img src="assets/img/images/h4_about_shape02.png" alt="" data-parallax='{"x" : -80 , "y" : -80 }'>
+        </div>
+    </section>
+    <!-- about-area-end -->
+    <!-- call-back-area -->
+    <section class="call-back-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="call-back-content">
+                        <div class="section-title white-title mb-10">
+                            <h2 class="title">داستان زندگی سفیر</h2>
+                        </div>
+                        <p>کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری.</p>
+                        <div class="shape">
+                            <img src="assets/img/images/call_back_shape.png" alt="" data-aos="fade-right" data-aos-delay="400">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- call-back-area-end -->
+
+    <!-- counter-area -->
+    <section class="counter-area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="counter-item">
+                        <div class="icon">
+                            <i class="flaticon-trophy"></i>
+                        </div>
+                        <div class="content">
+                            <h2 class="count"><span></span>بالای 50</h2>
+                            <p>نوع محصول <br> تولید شده</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="counter-item">
+                        <div class="icon">
+                            <i class="flaticon-happy"></i>
+                        </div>
+                        <div class="content">
+                            <h2 class="count"><span></span>با افتخار</h2>
+                            <p>20 هزار<br> مشتری راضی</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="counter-item">
+                        <div class="icon">
+                            <i class="flaticon-china"></i>
+                        </div>
+                        <div class="content">
+                            <h2 class="count"><span></span>در 31</h2>
+                            <p>استان ایران<br> فعالیت داریم</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-sm-6">
+                    <div class="counter-item">
+                        <div class="icon">
+                            <i class="flaticon-time"></i>
+                        </div>
+                        <div class="content">
+                            <h2 class="count"><span></span>15 سال</h2>
+                            <p> خدمت <br>شرافتمندانه به مردم ایران</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="counter-shape-wrap">
+            <img src="assets/img/images/counter_shape01.png" alt="" data-aos="fade-right" data-aos-delay="400">
+            <img src="assets/img/images/counter_shape02.png" alt="" data-parallax='{"x" : 100 , "y" : -100 }'>
+            <img src="assets/img/images/counter_shape03.png" alt="" data-aos="fade-left" data-aos-delay="400">
+        </div>
+    </section>
+    <!-- counter-area-end -->
+
+</main>
+<!-- main-area-end -->
