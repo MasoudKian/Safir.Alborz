@@ -22,6 +22,8 @@ namespace WEB.Areas.Admin.Controllers
         #endregion
 
 
+
+
         #region Role Management
 
         [HttpGet("role-list")]
@@ -35,6 +37,17 @@ namespace WEB.Areas.Admin.Controllers
         {
             return View();
         }
+        #endregion
+
+
+        #region AssignRole
+
+        [HttpGet("assign-role")]
+        public IActionResult AssignRoleToUser()
+        {
+            return View();
+        }
+
         #endregion
     }
 }
