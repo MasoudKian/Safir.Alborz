@@ -4,7 +4,39 @@
     var roles = ViewBag.Role;
 }
 
+
 <ul class="scrollable">
+
+    <!-------------------------مدیریت اصلی سایت------------------------->
+
+    <li class="side-menu__divider">
+        مدیریت سایت
+    </li>
+    <li>
+        <a asp-area="Admin" asp-controller="CMS" asp-action="SiteUserList" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="album" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">لیست کاربران سایت</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <li>
+        <a href="exort-dynamic.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="activity-square" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">لیست نقش  ها</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <li>
+        <a href="exort-interactive.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="keyboard" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">تعاملی</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <!-------------------------مدیریت اصلی سایت------------------------->
 
     <!--  مدیریت منابع انسانی -->
     @if (Model != null && Model.Contains("MSCRManagement"))
@@ -139,36 +171,7 @@
         <!-- BEGIN: ثانیه Child -->
         <!-- END: ثانیه Child -->
     </li>
-    <!-------------------------مدیریت اصلی سایت------------------------->
 
-    <li class="side-menu__divider">
-        مدیریت اصلی سایت
-    </li>
-    <li>
-        <a asp-area="Admin" asp-controller="MainSiteManagement" asp-action="SiteUserList" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="album" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">لیست کاربران سایت</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-dynamic.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="activity-square" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">لیست نقش  ها</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-interactive.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="keyboard" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">تعاملی</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <!-------------------------مدیریت اصلی سایت------------------------->
 
 
     <li class="side-menu__divider">
