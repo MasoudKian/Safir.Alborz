@@ -1,4 +1,5 @@
-﻿using Application.DTOs.IdentityAccount.Role;
+﻿using Application.DTOs.IdentityAccount.AssignRole;
+using Application.DTOs.IdentityAccount.Role;
 using Identity.Model;
 using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -20,7 +21,23 @@ namespace Identity.PersistenceServices.Services.Implementation
             _userManager = userManager;
         }
 
+        public async Task<bool> AssignRoleToUser(AssignRoleToUserDTO model)
+        {
+            var user = await _userManager.FindByIdAsync(model.UserId);
+            if (user == null)
+                return false;
+
+            var role = await _roleManager.FindByIdAsync(model.RoleId);
+            if (role == null)
+                return false;
+
+            var result = await _userManager.AddToRoleAsync(user, role.Name);
+            return result.Succeeded;
+        }
+
         #endregion
+
+        #region Add Role Roles List
 
         public async Task<bool> CreateRole(CreateRoleDTO model)
         {
@@ -74,5 +91,28 @@ namespace Identity.PersistenceServices.Services.Implementation
             };
         }
 
+        #endregion
+
+        public async Task<List<RoleDTO>> GetRolesAsync()
+        {
+            var roles = await Task.FromResult(_roleManager.Roles.ToList());
+
+            return roles.Select(r => new RoleDTO
+            {
+                Id = r.Id,
+                Name = r.Name
+            }).ToList();
+        }
+
+        public async Task<List<UserDTO>> GetUsersAsync()
+        {
+            var users = await Task.FromResult(_userManager.Users.ToList());
+
+            return users.Select(u => new UserDTO
+            {
+                Id = u.Id,
+                FullName = $"{u.FirstName} {u.LastName}"
+            }).ToList();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Application.DTOs.IdentityAccount.Role;
+﻿using Application.DTOs.IdentityAccount.AssignRole;
+using Application.DTOs.IdentityAccount.Role;
 
 namespace Identity.PersistenceServices.Services.Interfaces
 {
@@ -6,5 +7,11 @@ namespace Identity.PersistenceServices.Services.Interfaces
     {
         Task<RolesResponseDTO> GetAllRoles();
         Task<bool> CreateRole(CreateRoleDTO role);
+
+        Task<List<UserDTO>> GetUsersAsync();
+        Task<List<RoleDTO>> GetRolesAsync();
+
+
+        Task<bool> AssignRoleToUser(AssignRoleToUserDTO model);
     }
 }
