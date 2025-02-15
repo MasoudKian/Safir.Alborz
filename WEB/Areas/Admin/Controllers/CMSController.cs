@@ -13,6 +13,12 @@ namespace WEB.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet("add-user")]
+        public IActionResult AddUser() 
+        {
+            return View();
+        }
+
         #endregion
 
 
@@ -24,6 +30,11 @@ namespace WEB.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet("add-role")]
+        public IActionResult AddRole()
+        {
+            return View();
+        }
         #endregion
     }
 }

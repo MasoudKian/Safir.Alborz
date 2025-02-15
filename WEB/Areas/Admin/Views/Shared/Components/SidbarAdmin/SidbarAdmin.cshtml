@@ -13,21 +13,77 @@
         مدیریت سایت
     </li>
     <li>
-        <a asp-area="Admin" asp-controller="CMS" asp-action="SiteUserList" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="album" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">لیست کاربران سایت</div>
+        <a href="javascript:;" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="table2" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">مدیریت کاربران</div>
+            <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
         </a>
         <!-- BEGIN: ثانیه Child -->
+        <ul class="hidden">
+            <li>
+                <a asp-area="Admin" asp-controller="CMS" asp-action="SiteUserList" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="album" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">لیست کاربران سایت</div>
+                </a>
+                <!-- BEGIN: ثانیه Child -->
+                <!-- END: ثانیه Child -->
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="CMS" asp-action="AddRole" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        افزودن کاربر جدید
+                    </div>
+                </a>
+                <!-- BEGIN: Third Child -->
+                <!-- END: Third Child -->
+            </li>
+            <li>
+                <a href="exort-product-grid.html" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        افزودن نقش به کاربر
+                    </div>
+                </a>
+                <!-- BEGIN: Third Child -->
+                <!-- END: Third Child -->
+            </li>
+
+        </ul>
         <!-- END: ثانیه Child -->
     </li>
+
     <li>
-        <a href="exort-dynamic.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="activity-square" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">لیست نقش  ها</div>
+        <a href="javascript:;" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="table2" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">مدیریت نقش ها</div>
+            <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
         </a>
         <!-- BEGIN: ثانیه Child -->
+        <ul class="hidden">
+            <li>
+                <a asp-area="Admin" asp-controller="CMS" asp-action="SiteRoleList" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="album" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">لیست نقش های سایت</div>
+                </a>
+                <!-- BEGIN: ثانیه Child -->
+                <!-- END: ثانیه Child -->
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="CMS" asp-action="AddRole" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        افزودن نقش جدید
+                    </div>
+                </a>
+                <!-- BEGIN: Third Child -->
+                <!-- END: Third Child -->
+            </li>
+
+        </ul>
         <!-- END: ثانیه Child -->
     </li>
+
     <li>
         <a href="exort-interactive.html" class="side-menu__link ">
             <i data-tw-merge="" data-lucide="keyboard" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
