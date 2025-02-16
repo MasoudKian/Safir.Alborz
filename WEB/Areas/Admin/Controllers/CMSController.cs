@@ -1,4 +1,5 @@
-﻿using Application.DTOs.IdentityAccount.AssignRole;
+﻿using Application.Contracts.Interfaces.UserServices;
+using Application.DTOs.IdentityAccount.AssignRole;
 using Application.DTOs.IdentityAccount.Role;
 using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace WEB.Areas.Admin.Controllers
         #region ctor DI
 
         private readonly IRoleService _roleService;
+        private readonly IUserService _userService;
 
-        public CMSController(IRoleService roleService)
+        public CMSController(IRoleService roleService, IUserService userService)
         {
             _roleService = roleService;
+            _userService = userService;
         }
 
         #endregion
