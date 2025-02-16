@@ -27,12 +27,7 @@ namespace Identity.PersistenceServices.Services.Implementation
 
         #endregion
 
-        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
-        {
-            var user = await _userManager.FindByEmailAsync(email);
-            return user!; // برگرداندن یوزر یا null
-
-        }
+        #region Authentication 
 
         public async Task<(SignInResult Result, ApplicationUser User, IList<string> Roles)> LoginAsync(AuthLoginRequest request)
         {
@@ -65,8 +60,6 @@ namespace Identity.PersistenceServices.Services.Implementation
             return (result, user, roles);
         }
 
-
-
         public async Task<IdentityResult> RegisterAsync(RegisterRequest register)
         {
             var existUser = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == register.Email
@@ -88,12 +81,20 @@ namespace Identity.PersistenceServices.Services.Implementation
             return result;
         }
 
-
         public async Task LogoutAsync()
         {
             await _signInManager.SignOutAsync();
         }
 
+        #endregion
+
+
+        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            return user!; // برگرداندن یوزر یا null
+
+        }
 
         public async Task<ApplicationUser> GetCurrentUserAsync()
         {
@@ -116,6 +117,23 @@ namespace Identity.PersistenceServices.Services.Implementation
             }
 
             return await _userManager.IsInRoleAsync(user, roleName);
+        }
+
+
+        // 
+
+        // دریافت لیست کاربران با نقش‌هایشان
+        public async Task<List<object>> GetUsersWithRolesAsync()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            var userList = new List<object>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                userList.Add(new { user.Id, user.UserName, user.Email, Roles = roles });
+            }
+            return userList;
         }
     }
 }

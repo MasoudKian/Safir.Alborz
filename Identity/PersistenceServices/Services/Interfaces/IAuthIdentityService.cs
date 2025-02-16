@@ -16,5 +16,10 @@ namespace Identity.PersistenceServices.Services.Interfaces
 
         Task<IList<string>> GetRolesAsync(ApplicationUser user);
         Task<bool> IsInRoleAsync(string roleName);
+
+
+        // 
+
+        Task<List<object>> GetUsersWithRolesAsync();
     }
 }

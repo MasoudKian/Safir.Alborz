@@ -9,9 +9,10 @@ namespace Identity.Model
         public string? FirstName { get; set; }
 
         [MaxLength(200)]
-        public string? LastName { get; set; } 
-        
+        public string? LastName { get; set; }
 
+
+        public bool IsDelete { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
         public DateTime? LastUpdateDate { get; set; } = DateTime.Now;
     }
