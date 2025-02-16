@@ -10,11 +10,14 @@ namespace Application.Contracts.Interfaces.UserServices
         Task DeleteApplicationUserAsync(string userName);
 
         Task<List<UserListDTO>> GetUsersWithRolesAsync();
-        Task<UsersCountDTO> GetUserStatisticsAsync();
+        Task<UsersCountDTO> GetUsersCountAsync();
 
         Task<int> GetTotalUsersAsync();
         Task<int> GetActiveUsersAsync();
         Task<int> GetNewUsersAsync();
         Task<int> GetInactiveUsersAsync();
+
+        Task<bool> DeactivateUserAsync(string userId);
+        Task<bool> ActivateUserAsync(string userId);
     }
 }

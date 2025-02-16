@@ -29,7 +29,8 @@ namespace Identity.PersistenceServices.Services.Implementation
 
         #region Authentication 
 
-        public async Task<(SignInResult Result, ApplicationUser User, IList<string> Roles)> LoginAsync(AuthLoginRequest request)
+        public async Task<(SignInResult Result, ApplicationUser User, IList<string> Roles)> 
+            LoginAsync(AuthLoginRequest request)
         {
             ApplicationUser user;
 

@@ -62,19 +62,25 @@ namespace Identity.PersistenceServices.Services
             foreach (var user in users)
             {
                 var roles = await _userManager.GetRolesAsync(user);
+                bool isLockedOut = await _userManager.IsLockedOutAsync(user); // چک کردن قفل بودن کاربر
+
                 userList.Add(new UserListDTO
                 {
-                    
-                    UserName = user.UserName,
-                    Email = user.Email,
+                    Id = user.Id,
+                    FullName = $"{user.FirstName} {user.LastName}",
+                    UserName = user.UserName!,
+                    Email = user.Email!,
                     Roles = roles.ToList(),
-                    IsActive = !user.IsDelete
+                    IsActive = !user.IsDelete,
+                    CreateDate = (DateTime)user.CreatedDate!,
+                    AccessFailedCount = user.AccessFailedCount, // مقداردهی تعداد ورودهای ناموفق
+                    IsLockedOut = isLockedOut // مقداردهی قفل بودن حساب
                 });
             }
             return userList;
         }
 
-        public async Task<UsersCountDTO> GetUserStatisticsAsync()
+        public async Task<UsersCountDTO> GetUsersCountAsync()
         {
             return new UsersCountDTO
             {
@@ -112,5 +118,31 @@ namespace Identity.PersistenceServices.Services
 
         #endregion
 
+
+        public async Task<bool> DeactivateUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new Exception("کاربر مورد نظر یافت نشد.");
+
+            user.IsDelete = true; // غیرفعال کردن کاربر
+            user.LastUpdateDate = DateTime.Now; // به‌روزرسانی تاریخ آخرین تغییر
+
+            var result = await _userManager.UpdateAsync(user);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> ActivateUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                throw new Exception("کاربر مورد نظر یافت نشد.");
+
+            user.IsDelete = false; // غیرفعال کردن کاربر
+            user.LastUpdateDate = DateTime.Now; // به‌روزرسانی تاریخ آخرین تغییر
+
+            var result = await _userManager.UpdateAsync(user);
+            return result.Succeeded;
+        }
     }
 }

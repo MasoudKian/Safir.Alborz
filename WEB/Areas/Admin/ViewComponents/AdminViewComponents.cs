@@ -1,4 +1,5 @@
-﻿using Application.Contracts.InterfaceServices.HumanResources;
+﻿using Application.Contracts.Interfaces.UserServices;
+using Application.Contracts.InterfaceServices.HumanResources;
 using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -106,6 +107,27 @@ namespace WEB.Areas.Admin.ViewComponents
         {
             ViewBag.TotalEmployees = await _employeeService.GetTotalEmployeesCount();
             return View("EmployeeCount");
+        }
+    }
+
+    #endregion
+
+    #region User Counts in User Manager 
+
+    public class UsersCountViewComponent : ViewComponent
+    {
+
+        private readonly IUserService _userService;
+
+        public UsersCountViewComponent(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var list = await _userService.GetUsersCountAsync();
+            return View("UsersCount", list);
         }
     }
 

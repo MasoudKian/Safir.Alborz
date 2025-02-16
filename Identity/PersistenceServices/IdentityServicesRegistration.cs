@@ -103,7 +103,7 @@ namespace Identity.PersistenceServices
             services.Configure<IdentityOptions>(options =>
             {
                 // تنظیمات قفل حساب کاربری
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2); // مدت زمان قفل شدن (۵ دقیقه)
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(60); // مدت زمان قفل شدن (60 دقیقه)
                 options.Lockout.MaxFailedAccessAttempts = 3; // تعداد تلاش‌های ناموفق قبل از قفل شدن
                 options.Lockout.AllowedForNewUsers = true; // فعال بودن قفل شدن برای کاربران جدید
             });

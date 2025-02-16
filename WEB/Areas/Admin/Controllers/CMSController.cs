@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Interfaces.UserServices;
 using Application.DTOs.IdentityAccount.AssignRole;
 using Application.DTOs.IdentityAccount.Role;
+using Identity.PersistenceServices.Services.Implementation;
 using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,9 +26,10 @@ namespace WEB.Areas.Admin.Controllers
         #region User Management
 
         [HttpGet("user-list")]
-        public IActionResult SiteUserList()
+        public async Task<IActionResult> SiteUserList()
         {
-            return View();
+            var list = await _userService.GetUsersWithRolesAsync();
+            return View(list);
         }
 
         [HttpGet("add-user")]
@@ -107,5 +109,50 @@ namespace WEB.Areas.Admin.Controllers
 
 
         #endregion
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeactivateUser(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                TempData["BadRequest"] = ("شناسه کاربر ارسال نشده است.");
+            }
+
+            var result = await _userService.DeactivateUserAsync(userId);
+
+            if (result)
+            {
+                TempData["SuccessMessage"] = "کاربر با موفقیت غیرفعال شد.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "مشکلی در غیرفعال‌سازی کاربر رخ داد.";
+            }
+
+            return RedirectToAction("SiteUserList"); // تغییر مسیر به لیست کاربران
+        }
+
+
+        public async Task<IActionResult> ActivateUser(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                TempData["BadRequest"] = ("شناسه کاربر ارسال نشده است.");
+            }
+
+            var result = await _userService.ActivateUserAsync(userId);
+
+            if (result)
+            {
+                TempData["SuccessMessage"] = "کاربر با موفقیت فعال شد.";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "مشکلی در فعال‌سازی کاربر رخ داد.";
+            }
+
+            return RedirectToAction("SiteUserList"); // تغییر مسیر به لیست کاربران
+        }
     }
 }
