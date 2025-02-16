@@ -99,6 +99,15 @@ namespace Identity.PersistenceServices
 
             #endregion
 
+            // تنظیمات قفل شدن حساب کاربری
+            services.Configure<IdentityOptions>(options =>
+            {
+                // تنظیمات قفل حساب کاربری
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2); // مدت زمان قفل شدن (۵ دقیقه)
+                options.Lockout.MaxFailedAccessAttempts = 3; // تعداد تلاش‌های ناموفق قبل از قفل شدن
+                options.Lockout.AllowedForNewUsers = true; // فعال بودن قفل شدن برای کاربران جدید
+            });
+
             // ثبت سرویس‌های مربوط به احراز هویت
             //services.AddTransient<IAuthService, AuthService>();
             services.AddScoped<IAuthIdentityService, AuthIdentityService>();

@@ -8,7 +8,7 @@ namespace Identity.PersistenceServices.Services.Interfaces
     public interface IAuthIdentityService
     {
         Task<IdentityResult> RegisterAsync(RegisterRequest request);
-        Task<SignInResult> LoginAsync(AuthLoginRequest request);
+        Task<(SignInResult Result, ApplicationUser User, IList<string> Roles)> LoginAsync(AuthLoginRequest request);
         Task LogoutAsync();
 
         Task<ApplicationUser> GetUserByEmailAsync(string email);

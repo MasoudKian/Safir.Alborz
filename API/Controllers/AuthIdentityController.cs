@@ -35,22 +35,22 @@ namespace API.Controllers
         }
 
         // ورود
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] AuthLoginRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login([FromBody] AuthLoginRequest request)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var result = await _authIdentityService.LoginAsync(request);
-            if (result == null)
-            {
-                return Unauthorized("نام کاربری یا رمز عبور نادرست است.");
-            }
+        //    var result = await _authIdentityService.LoginAsync(request);
+        //    if (result == null)
+        //    {
+        //        return Unauthorized("نام کاربری یا رمز عبور نادرست است.");
+        //    }
 
-            return Ok(result);
-        }
+        //    return Ok(result);
+        //}
 
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()

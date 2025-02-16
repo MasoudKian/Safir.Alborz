@@ -101,7 +101,7 @@ namespace WEB.Controllers
 
         //#endregion
 
-        #region For Identity API
+        #region For Identity 
 
         #region Register
 
@@ -130,9 +130,6 @@ namespace WEB.Controllers
         }
         #endregion
 
-
-
-
         #region Login
 
         [HttpGet("login")]
@@ -144,60 +141,50 @@ namespace WEB.Controllers
 
 
         [HttpPost("login")]
-        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(AuthLoginRequest model, string returnUrl = null)
         {
-            // بررسی کاربر
-            var existingUser = await _authIdentityService.GetUserByEmailAsync(model.Email);
-            if (existingUser == null)
+            if (!ModelState.IsValid) return View(model);
+
+            try
             {
-                ModelState.AddModelError(string.Empty, "کاربری با این نام وجود ندارد.");
-                return View(model);
-            }
+                var (result, user, roles) = await _authIdentityService.LoginAsync(model);
 
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-
-            var result = await _authIdentityService.LoginAsync(model);
-            if (result.Succeeded)
-            {
-                // دریافت نام و نقش کاربر
-                var userRoles = await _authIdentityService.GetRolesAsync(existingUser);
-                ViewBag.FullName = existingUser.UserName; // نام کاربر
-                ViewBag.Role = userRoles.FirstOrDefault(); // نقش کاربر (اگر بیش از یک نقش دارد، می‌توانید منطق خاصی اضافه کنید)
-
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                if (result.Succeeded)
                 {
-                    return Redirect(returnUrl);
+                    var role = roles.FirstOrDefault();
+
+                    if (role == "AdminPanel")
+                    {
+                        return RedirectToAction("AdminHome", "Home", new { area = "Admin" });
+                    }
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                if (result.IsLockedOut)
+                {
+                    ModelState.AddModelError(string.Empty, "حساب شما قفل شده است. لطفاً بعداً تلاش کنید.");
+                }
+                else if (result.IsNotAllowed)
+                {
+                    ModelState.AddModelError(string.Empty, "دسترسی شما غیرمجاز است.");
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است.");
                 }
             }
-
-            if (result.IsLockedOut)
+            catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "حساب شما به دلیل تلاش‌های ناموفق قفل شده است. لطفاً بعداً دوباره تلاش کنید.");
-            }
-            else if (result.IsNotAllowed)
-            {
-                ModelState.AddModelError(string.Empty, "دسترسی به سیستم برای شما فعال نیست.");
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "نام کاربری یا رمز عبور اشتباه است.");
+                ModelState.AddModelError(string.Empty, ex.Message);
             }
 
             return View(model);
         }
 
+
+
         #endregion
-
-
 
         [HttpGet]
         public IActionResult AccessDenied()
@@ -205,6 +192,7 @@ namespace WEB.Controllers
             return View();
         }
 
+        [HttpGet("Logout")]
         public async Task<IActionResult> Logout()
         {
             await _authIdentityService.LogoutAsync();

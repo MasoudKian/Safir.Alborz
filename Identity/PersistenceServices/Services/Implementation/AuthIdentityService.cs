@@ -34,7 +34,7 @@ namespace Identity.PersistenceServices.Services.Implementation
 
         }
 
-        public async Task<SignInResult> LoginAsync(AuthLoginRequest request)
+        public async Task<(SignInResult Result, ApplicationUser User, IList<string> Roles)> LoginAsync(AuthLoginRequest request)
         {
             ApplicationUser user;
 
@@ -49,15 +49,22 @@ namespace Identity.PersistenceServices.Services.Implementation
                     ?? throw new Exception($"کاربری با نام کاربری {request.Email} پیدا نشد.");
             }
 
+            if (await _userManager.IsLockedOutAsync(user))
+            {
+                return (SignInResult.LockedOut, user, new List<string>());
+            }
+
             var result = await _signInManager.PasswordSignInAsync(user, request.Password, request.RememberMe, lockoutOnFailure: true);
 
             if (!result.Succeeded)
             {
-                throw new Exception($"اطلاعات کاربری برای {request.Email} معتبر نیست.");
+                return (result, user, new List<string>());
             }
 
-            return result; // ورود موفق
+            var roles = await _userManager.GetRolesAsync(user);
+            return (result, user, roles);
         }
+
 
 
         public async Task<IdentityResult> RegisterAsync(RegisterRequest register)

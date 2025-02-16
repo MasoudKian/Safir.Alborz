@@ -95,25 +95,28 @@
 
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        @* @if (role == "PowerAdmin") *@
-                                                        @* { *@
+                                                        @if (role == "AdminPanel")
+                                                        {
                                                             <a style="font-weight:bold;" href="@Url.Action("AdminHome", "Home", new { area = "Admin" })">@ViewBag.FullName</a>
-                                                        @* } *@
-                                                        @* else if (role == "User") *@
-                                                        @* { *@
-                                                            @* <a href="@Url.Action("Index", "Home", new { area = "User" })">@ViewBag.FullName</a> *@
-                                                        @* } *@
+                                                        }
+                                                        else if (role == "User")
+                                                        {
+                                                            <a href="@Url.Action("Index", "Home", new { area = "User" })">@ViewBag.FullName</a>
+                                                        }
                                                     </li>
 
                                                 </ul>
 
                                             }
                                         </li>
-                                        <form method="post" asp-controller="Account" asp-action="Logout">
-                                            <button type="submit" style="border : none; background-color:white;" title="خروج">
+                                        <li>
+
+                                            <a href="Logout" style="border : none; background-color:white;" title="خروج">
                                                 <i style="color:red;" class="fas fa-door-open"></i>
-                                            </button>
-                                        </form>
+                                            </a>
+                                        </li>
+                                        
+                                        
                                     }
                                     else
                                     {
