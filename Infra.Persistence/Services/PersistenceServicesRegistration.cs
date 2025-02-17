@@ -1,7 +1,9 @@
 ﻿using Application.Contracts.Interfaces.APIs;
 using Application.Contracts.Interfaces.IGeneric;
+using Application.Contracts.Interfaces.Repositories;
 using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Application.Contracts.Interfaces.UserServices;
+using Application.Contracts.InterfaceServices.Address;
 using Application.Contracts.InterfaceServices.HumanResources;
 using Application.Profiles;
 using Identity.DbContext;
@@ -11,7 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
+using Persistence.Services.ImplementationServices.Address;
 using Persistence.Services.ImplementationServices.HumanResources;
+using Persistence.Services.Repositories;
 using Persistence.Services.Repositories.HumanResources;
 using Persistence.Services.Repository;
 using System.Reflection;
@@ -43,6 +47,10 @@ namespace Persistence.Services
 
             services.AddScoped<IPositionRepository, PositionRepository>();
             services.AddScoped<IPositionService, PositionService>();
+
+
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAddressService, AddressService>();
 
 
 

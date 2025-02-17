@@ -1,7 +1,10 @@
-﻿using Application.DTOs.HumanResources.Department;
+﻿using Application.DTOs.Address.CRUD;
+using Application.DTOs.Address;
+using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
 using Application.DTOs.HumanResources.Position;
 using AutoMapper;
+using Domain.Entities.Address;
 using Domain.Entities.HumanResources.EmployeeManagement;
 
 namespace Application.Profiles
@@ -60,6 +63,24 @@ namespace Application.Profiles
                 .ForMember(dest => dest.DepartmentId, opt => opt.MapFrom(src => src.DepartmentId))
                 .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom
                 (src => src.Department != null ? src.Department.Name : ""));
+
+            #endregion
+
+            #region Address
+
+            // Province Mapping
+            CreateMap<Province, ProvinceDto>().ReverseMap();
+            CreateMap<Province, CreateProvinceDto>().ReverseMap();
+
+            // City Mapping
+            CreateMap<City, CityDto>().ReverseMap();
+            CreateMap<City, CreateCityDto>().ReverseMap();
+
+            // Region Mapping
+            CreateMap<Region, RegionDto>().ReverseMap();
+            CreateMap<Region, CreateRegionDto>().ReverseMap();
+
+
 
             #endregion
         }

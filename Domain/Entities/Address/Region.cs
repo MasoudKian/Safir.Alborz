@@ -7,10 +7,7 @@ namespace Domain.Entities.Address
     public class Region : BaseEntity
     {
 
-        public Region()
-        {
-            Code = GenerateRegionCode();
-        }
+
 
         [Display(Name = "نام منطقه")]
         [Required(ErrorMessage = "{0} ضروری است.")]
