@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SafirDbContext))]
-    partial class SafirDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250217210827_setOrderModel")]
+    partial class setOrderModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,9 +128,6 @@ namespace Persistence.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ProvinceId")
-                        .HasColumnType("int");
-
                     b.Property<string>("RegisteredBy")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -141,11 +141,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CityId");
-
-                    b.HasIndex("Code")
-                        .IsUnique();
-
-                    b.HasIndex("ProvinceId");
 
                     b.ToTable("Regions");
                 });
@@ -285,9 +280,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
-
-                    b.HasIndex("EmployeeID")
-                        .IsUnique();
 
                     b.HasIndex("PositionId");
 
@@ -863,15 +855,7 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.Address.Province", "Province")
-                        .WithMany()
-                        .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("City");
-
-                    b.Navigation("Province");
                 });
 
             modelBuilder.Entity("Domain.Entities.HumanResources.EmployeeManagement.Employee", b =>

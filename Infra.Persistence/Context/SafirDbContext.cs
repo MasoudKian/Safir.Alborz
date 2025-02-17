@@ -1,6 +1,7 @@
 ﻿using Domain.Entities.Address;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Entities.MSCRM;
+using Domain.Entities.oredersANDinvoices;
 using Domain.Entities.ProductsCategories;
 using Domain.Entities.Site.SiteMenu;
 using Microsoft.EntityFrameworkCore;
@@ -56,6 +57,12 @@ namespace Persistence.Context
 
         #endregion
 
+        #region Order and Invoice
+
+        public DbSet<Order> Orders { get; set; }
+
+        #endregion
+
         #endregion
 
 
@@ -68,6 +75,14 @@ namespace Persistence.Context
 
             
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Region>()
+            .HasIndex(r => r.Code)
+            .IsUnique();
+
+            modelBuilder.Entity<Employee>()
+            .HasIndex(e => e.EmployeeID)
+            .IsUnique();  // جلوگیری از مقادیر تکراری
 
             #region Human Resources
 

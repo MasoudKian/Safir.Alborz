@@ -12,8 +12,8 @@ namespace Domain.Entities.Address
 
         public int ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]
-        public Province Province { get; set; }
+        public virtual Province Province { get; set; }
 
-        public ICollection<Region> Regions { get; set; } = new List<Region>();
+        public virtual ICollection<Region> Regions { get; set; } = new HashSet<Region>();
     }
 }

@@ -16,12 +16,16 @@ namespace Domain.Entities.Address
         [MaxLength(6)]
         public string Code { get; set; } = string.Empty;
 
+        public int ProvinceId { get; set; }
+        [ForeignKey("ProvinceId")]
+        public virtual Province Province { get; set; }
+
         public int CityId { get; set; }
         [ForeignKey("CityId")]
-        public City City { get; set; }
+        public virtual City City { get; set; }
 
-        public ICollection<Marketer> Marketers { get; set; } = new List<Marketer>();
-        public ICollection<Customer> Customers { get; set; } = new List<Customer>();
-        public ICollection<Driver> Drivers { get; set; } = new List<Driver>();
+        public virtual ICollection<Marketer> Marketers { get; set; } = new HashSet<Marketer>();
+        public virtual ICollection<Customer> Customers { get; set; } = new HashSet<Customer>();
+        public virtual ICollection<Driver> Drivers { get; set; } = new HashSet<Driver>();
     }
 }
