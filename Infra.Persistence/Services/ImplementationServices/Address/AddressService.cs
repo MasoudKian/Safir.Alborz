@@ -29,12 +29,16 @@ namespace Persistence.Services.ImplementationServices.Address
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<ProvinceDto> CreateProvinceAsync(CreateProvinceDto dto)
+        public async Task<ProvinceDto> CreateProvinceAsync(CreateProvinceDto dto, string currentUser)
         {
             var province = _mapper.Map<Province>(dto);
+            province.RegisteredBy = currentUser; // مقداردهی بعد از Map کردن
+            province.IsDelete = false;
+
             province = await _addressRepository.CreateProvinceAsync(province);
             return _mapper.Map<ProvinceDto>(province);
         }
+
 
         /// <summary>
         /// لیست تمامی استان ها

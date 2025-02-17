@@ -24,8 +24,8 @@ namespace Persistence.Services.Repository
 
         public async Task<T> CreateAsync(T entity)
         {
-            entity.RegisteredDate = DateTime.Now;
-            entity.UpdateDate = DateTime.Now;
+            entity.RegisteredDate = DateTime.UtcNow;
+            entity.UpdateDate = DateTime.UtcNow;
             await _dbSet.AddAsync(entity);
             await SaveChangesAsync();
             return entity;
@@ -33,32 +33,35 @@ namespace Persistence.Services.Repository
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            entity.IsDelete = true;
+            entity.UpdateDate = DateTime.UtcNow;
+            _dbSet.Update(entity);
         }
 
         public IQueryable<T> GetAllEntitiesAsync()
         {
-            throw new NotImplementedException();
+            return _dbSet.Where(e => !e.IsDelete);
         }
 
-        public Task<IReadOnlyList<T>> GetAllEntitiesAsyncJustForRead()
+        public async Task<IReadOnlyList<T>> GetAllEntitiesAsyncJustForRead()
         {
-            throw new NotImplementedException();
+            return await _dbSet.Where(e => !e.IsDelete).AsNoTracking().ToListAsync();
         }
 
-        public async Task<T> GetEntityById(int id)
+        public async Task<T?> GetEntityById(int id)
         {
-            return await _dbSet.SingleOrDefaultAsync(s => s.Id == id);
+            return await _dbSet.SingleOrDefaultAsync(e => e.Id == id && !e.IsDelete);
         }
 
-        public Task<bool> IsEntityExist(int id)
+        public async Task<bool> IsEntityExist(int id)
         {
-            throw new NotImplementedException();
+            return await _dbSet.AnyAsync(e => e.Id == id && !e.IsDelete);
         }
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            entity.UpdateDate = DateTime.UtcNow;
+            _dbSet.Update(entity);
         }
 
         public async Task SaveChangesAsync()

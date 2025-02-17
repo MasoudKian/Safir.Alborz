@@ -9,7 +9,7 @@ namespace Application.Contracts.InterfaceServices.Address
 
         Task<List<ProvinceDto>> GetAllProvincesAsync();
         Task<ProvinceDto?> GetProvinceByIdAsync(int id);
-        Task<ProvinceDto> CreateProvinceAsync(CreateProvinceDto dto);
+        Task<ProvinceDto> CreateProvinceAsync(CreateProvinceDto dto, string currentUser);
         Task<bool> UpdateProvinceAsync(ProvinceDto dto);
 
 

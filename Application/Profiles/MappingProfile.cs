@@ -70,7 +70,10 @@ namespace Application.Profiles
 
             // Province Mapping
             CreateMap<Province, ProvinceDto>().ReverseMap();
-            CreateMap<Province, CreateProvinceDto>().ReverseMap();
+            CreateMap<CreateProvinceDto, Province>()
+            .ForMember(dest => dest.RegisteredBy, opt => opt.Ignore()) // مقدار را در سرویس مقداردهی می‌کنیم
+            .ForMember(dest => dest.RegisteredDate, opt => opt.MapFrom(_ => DateTime.UtcNow))
+            .ForMember(dest => dest.UpdateDate, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             // City Mapping
             CreateMap<City, CityDto>().ReverseMap();
