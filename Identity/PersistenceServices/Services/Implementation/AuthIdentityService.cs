@@ -22,7 +22,7 @@ namespace Identity.PersistenceServices.Services.Implementation
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _httpContextAccessor = httpContextAccessor; // تزریق IHttpContextAccessor
+            _httpContextAccessor = httpContextAccessor; 
         }
 
         #endregion
