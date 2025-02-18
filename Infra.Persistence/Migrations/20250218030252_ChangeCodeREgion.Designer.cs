@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Context;
 
@@ -11,9 +12,11 @@ using Persistence.Context;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SafirDbContext))]
-    partial class SafirDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250218030252_ChangeCodeREgion")]
+    partial class ChangeCodeREgion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,16 +79,6 @@ namespace Persistence.Migrations
                         {
                             Id = 2,
                             IsDelete = false,
-                            Name = "مرند",
-                            ProvinceId = 1,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 3,
-                            IsDelete = false,
                             Name = "ارومیه",
                             ProvinceId = 2,
                             RegisteredBy = "Masou With Seed Data",
@@ -94,17 +87,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 4,
-                            IsDelete = false,
-                            Name = "خوی",
-                            ProvinceId = 2,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 5,
+                            Id = 3,
                             IsDelete = false,
                             Name = "اردبیل",
                             ProvinceId = 3,
@@ -114,17 +97,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 6,
-                            IsDelete = false,
-                            Name = "مشگین‌شهر",
-                            ProvinceId = 3,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 7,
+                            Id = 4,
                             IsDelete = false,
                             Name = "اصفهان",
                             ProvinceId = 4,
@@ -134,17 +107,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 8,
-                            IsDelete = false,
-                            Name = "نجف‌آباد",
-                            ProvinceId = 4,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 9,
+                            Id = 5,
                             IsDelete = false,
                             Name = "کرج",
                             ProvinceId = 5,
@@ -154,17 +117,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 10,
-                            IsDelete = false,
-                            Name = "نظرآباد",
-                            ProvinceId = 5,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 11,
+                            Id = 6,
                             IsDelete = false,
                             Name = "ایلام",
                             ProvinceId = 6,
@@ -174,17 +127,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 12,
-                            IsDelete = false,
-                            Name = "دهلران",
-                            ProvinceId = 6,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 13,
+                            Id = 7,
                             IsDelete = false,
                             Name = "بوشهر",
                             ProvinceId = 7,
@@ -194,17 +137,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 14,
-                            IsDelete = false,
-                            Name = "دشتی",
-                            ProvinceId = 7,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 15,
+                            Id = 8,
                             IsDelete = false,
                             Name = "تهران",
                             ProvinceId = 8,
@@ -214,17 +147,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 16,
-                            IsDelete = false,
-                            Name = "ری",
-                            ProvinceId = 8,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 17,
+                            Id = 9,
                             IsDelete = false,
                             Name = "شهرکرد",
                             ProvinceId = 9,
@@ -234,17 +157,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 18,
-                            IsDelete = false,
-                            Name = "بروجن",
-                            ProvinceId = 9,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 19,
+                            Id = 10,
                             IsDelete = false,
                             Name = "بیرجند",
                             ProvinceId = 10,
@@ -254,17 +167,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 20,
-                            IsDelete = false,
-                            Name = "قائن",
-                            ProvinceId = 10,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 21,
+                            Id = 11,
                             IsDelete = false,
                             Name = "مشهد",
                             ProvinceId = 11,
@@ -274,17 +177,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 22,
-                            IsDelete = false,
-                            Name = "تربت حیدریه",
-                            ProvinceId = 11,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 23,
+                            Id = 12,
                             IsDelete = false,
                             Name = "بجنورد",
                             ProvinceId = 12,
@@ -294,17 +187,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 24,
-                            IsDelete = false,
-                            Name = "آشخانه",
-                            ProvinceId = 12,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 25,
+                            Id = 13,
                             IsDelete = false,
                             Name = "اهواز",
                             ProvinceId = 13,
@@ -314,17 +197,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 26,
-                            IsDelete = false,
-                            Name = "دزفول",
-                            ProvinceId = 13,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 27,
+                            Id = 14,
                             IsDelete = false,
                             Name = "زنجان",
                             ProvinceId = 14,
@@ -334,17 +207,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 28,
-                            IsDelete = false,
-                            Name = "خرمدره",
-                            ProvinceId = 14,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 29,
+                            Id = 15,
                             IsDelete = false,
                             Name = "سمنان",
                             ProvinceId = 15,
@@ -354,17 +217,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 30,
-                            IsDelete = false,
-                            Name = "شاهرود",
-                            ProvinceId = 15,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 31,
+                            Id = 16,
                             IsDelete = false,
                             Name = "زاهدان",
                             ProvinceId = 16,
@@ -374,17 +227,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 32,
-                            IsDelete = false,
-                            Name = "خاش",
-                            ProvinceId = 16,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 33,
+                            Id = 17,
                             IsDelete = false,
                             Name = "شیراز",
                             ProvinceId = 17,
@@ -394,17 +237,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 34,
-                            IsDelete = false,
-                            Name = "مرودشت",
-                            ProvinceId = 17,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 35,
+                            Id = 18,
                             IsDelete = false,
                             Name = "قزوین",
                             ProvinceId = 18,
@@ -414,17 +247,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 36,
-                            IsDelete = false,
-                            Name = "آبیک",
-                            ProvinceId = 18,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 37,
+                            Id = 19,
                             IsDelete = false,
                             Name = "قم",
                             ProvinceId = 19,
@@ -434,17 +257,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 38,
-                            IsDelete = false,
-                            Name = "کاشان",
-                            ProvinceId = 19,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 39,
+                            Id = 20,
                             IsDelete = false,
                             Name = "سنندج",
                             ProvinceId = 20,
@@ -454,17 +267,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 40,
-                            IsDelete = false,
-                            Name = "کامیاران",
-                            ProvinceId = 20,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 41,
+                            Id = 21,
                             IsDelete = false,
                             Name = "کرمان",
                             ProvinceId = 21,
@@ -474,17 +277,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 42,
-                            IsDelete = false,
-                            Name = "راور",
-                            ProvinceId = 21,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 43,
+                            Id = 22,
                             IsDelete = false,
                             Name = "کرمانشاه",
                             ProvinceId = 22,
@@ -494,17 +287,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 44,
-                            IsDelete = false,
-                            Name = "پاوه",
-                            ProvinceId = 22,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 45,
+                            Id = 23,
                             IsDelete = false,
                             Name = "یاسوج",
                             ProvinceId = 23,
@@ -514,17 +297,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 46,
-                            IsDelete = false,
-                            Name = "دنا",
-                            ProvinceId = 23,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 47,
+                            Id = 24,
                             IsDelete = false,
                             Name = "گرگان",
                             ProvinceId = 24,
@@ -534,17 +307,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 48,
-                            IsDelete = false,
-                            Name = "آق‌قلا",
-                            ProvinceId = 24,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 49,
+                            Id = 25,
                             IsDelete = false,
                             Name = "رشت",
                             ProvinceId = 25,
@@ -554,17 +317,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 50,
-                            IsDelete = false,
-                            Name = "آستارا",
-                            ProvinceId = 25,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 51,
+                            Id = 26,
                             IsDelete = false,
                             Name = "خرم‌آباد",
                             ProvinceId = 26,
@@ -574,17 +327,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 52,
-                            IsDelete = false,
-                            Name = "الیگودرز",
-                            ProvinceId = 26,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 53,
+                            Id = 27,
                             IsDelete = false,
                             Name = "ساری",
                             ProvinceId = 27,
@@ -594,17 +337,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 54,
-                            IsDelete = false,
-                            Name = "آمل",
-                            ProvinceId = 27,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 55,
+                            Id = 28,
                             IsDelete = false,
                             Name = "اراک",
                             ProvinceId = 28,
@@ -614,17 +347,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 56,
-                            IsDelete = false,
-                            Name = "خمین",
-                            ProvinceId = 28,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 57,
+                            Id = 29,
                             IsDelete = false,
                             Name = "بندرعباس",
                             ProvinceId = 29,
@@ -634,17 +357,7 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 58,
-                            IsDelete = false,
-                            Name = "قشم",
-                            ProvinceId = 29,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 59,
+                            Id = 30,
                             IsDelete = false,
                             Name = "همدان",
                             ProvinceId = 30,
@@ -654,29 +367,9 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = 60,
-                            IsDelete = false,
-                            Name = "ملایر",
-                            ProvinceId = 30,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 61,
+                            Id = 31,
                             IsDelete = false,
                             Name = "یزد",
-                            ProvinceId = 31,
-                            RegisteredBy = "Masou With Seed Data",
-                            RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 62,
-                            IsDelete = false,
-                            Name = "اردکان",
                             ProvinceId = 31,
                             RegisteredBy = "Masou With Seed Data",
                             RegisteredDate = new DateTime(2025, 2, 18, 0, 0, 0, 0, DateTimeKind.Utc),

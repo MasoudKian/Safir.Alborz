@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Address;
 using Application.DTOs.Address.CRUD;
+using System.Xml.Linq;
 
 namespace Application.Contracts.InterfaceServices.Address
 {
@@ -21,12 +22,14 @@ namespace Application.Contracts.InterfaceServices.Address
         Task<CityDto?> GetCityByIdAsync(int id);
         Task<CityDto> CreateCityAsync(CreateCityDto dto);
         Task<bool> UpdateCityAsync(CityDto dto);
+
+        Task<List<CityDto>> GetCitiesByProvinceIdAsync(int provinceId);
         #endregion
 
         #region Regions
         Task<List<RegionDto>> GetAllRegionsAsync();
         Task<RegionDto?> GetRegionByIdAsync(int id);
-        Task<RegionDto> CreateRegionAsync(CreateRegionDto dto);
+        Task CreateRegionAsync(CreateRegionDto dto);
         Task<bool> UpdateRegionAsync(RegionDto dto);
         #endregion
     }

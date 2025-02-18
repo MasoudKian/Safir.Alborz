@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.Interfaces.IGeneric;
 using Application.Contracts.Interfaces.Repositories;
 using Domain.Entities.Address;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -55,6 +56,18 @@ namespace Persistence.Services.Repositories
         #endregion
 
         #region City Methods
+
+        public async Task<List<City>> GetCitiesByProvinceIdAsync(int provinceId)
+        {
+            return await _cityRepository.GetAllEntitiesAsync()
+                .Include(c => c.Province) // 👈 جلوگیری از `null` شدن `Province`
+                .Where(c => c.ProvinceId == provinceId)
+                .ToListAsync();
+        }
+
+
+
+
         public async Task<List<City>> GetAllCitiesAsync()
         {
             return (await _cityRepository.GetAllEntitiesAsyncJustForRead()).ToList();

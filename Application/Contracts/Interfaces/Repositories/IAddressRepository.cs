@@ -1,7 +1,4 @@
-﻿using Application.DTOs.Address;
-using Application.DTOs.Address.CRUD;
-using Domain.Entities.Address;
-using System.Threading.Tasks;
+﻿using Domain.Entities.Address;
 
 namespace Application.Contracts.Interfaces.Repositories
 {
@@ -17,6 +14,7 @@ namespace Application.Contracts.Interfaces.Repositories
         #endregion
 
         #region City
+        Task<List<City>> GetCitiesByProvinceIdAsync(int provinceId);
         Task<List<City>> GetAllCitiesAsync();
         Task<City?> GetCityByIdAsync(int id);
         Task<City> CreateCityAsync(City city);

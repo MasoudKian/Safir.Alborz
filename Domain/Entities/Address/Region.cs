@@ -15,9 +15,8 @@ namespace Domain.Entities.Address
         public string Name { get; set; } = string.Empty;
 
         [Display(Name = "کد منطقه")]
-        [Required(ErrorMessage = "{0} ضروری است.")]
-        [MaxLength(6)]
-        public string Code { get; set; } = string.Empty;
+        [MaxLength(10)]
+        public string? Code { get; set; }
 
         public int ProvinceId { get; set; }
         [ForeignKey("ProvinceId")]

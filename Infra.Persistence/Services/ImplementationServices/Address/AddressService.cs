@@ -4,6 +4,7 @@ using Application.DTOs.Address;
 using Application.DTOs.Address.CRUD;
 using AutoMapper;
 using Domain.Entities.Address;
+using Application.Utils;
 
 namespace Persistence.Services.ImplementationServices.Address
 {
@@ -80,6 +81,14 @@ namespace Persistence.Services.ImplementationServices.Address
 
         #region City Methods
 
+        public async Task<List<CityDto>> GetCitiesByProvinceIdAsync(int provinceId)
+        {
+            var cities = await _addressRepository.GetCitiesByProvinceIdAsync(provinceId);
+            return _mapper.Map<List<CityDto>>(cities);
+        }
+
+
+
         /// <summary>
         /// ثبت شهر
         /// </summary>
@@ -136,12 +145,23 @@ namespace Persistence.Services.ImplementationServices.Address
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async Task<RegionDto> CreateRegionAsync(CreateRegionDto dto)
+        //public async Task<RegionDto> CreateRegionAsync(CreateRegionDto dto)
+        //{
+        //    var region = _mapper.Map<Region>(dto);
+        //    region = await _addressRepository.CreateRegionAsync(region);
+        //    return _mapper.Map<RegionDto>(region);
+        //}
+
+        public async Task CreateRegionAsync(CreateRegionDto dto)
         {
             var region = _mapper.Map<Region>(dto);
-            region = await _addressRepository.CreateRegionAsync(region);
-            return _mapper.Map<RegionDto>(region);
+
+            // مقداردهی فیلد Code بر اساس نام منطقه
+            region.Code = CodeGeneratorRegion.GenerateRegionCode(region.Name);
+
+            await _addressRepository.CreateRegionAsync(region);
         }
+
 
         /// <summary>
         /// لیست تمام بخش ها

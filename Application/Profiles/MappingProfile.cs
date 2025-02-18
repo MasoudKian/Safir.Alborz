@@ -76,12 +76,22 @@ namespace Application.Profiles
             .ForMember(dest => dest.UpdateDate, opt => opt.MapFrom(_ => DateTime.UtcNow));
 
             // City Mapping
-            CreateMap<City, CityDto>().ReverseMap();
-            CreateMap<City, CreateCityDto>().ReverseMap();
+            CreateMap<City, CityDto>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id)) // 👈 اطمینان از مقدار `Id`
+                .ForMember(dest => dest.ProvinceName, opt => opt.MapFrom(src => src.Province != null ? src.Province.Name : ""))
+                .ReverseMap();
+
+
+            // CreateMap<City, CreateCityDto>().ReverseMap();
 
             // Region Mapping
             CreateMap<Region, RegionDto>().ReverseMap();
-            CreateMap<Region, CreateRegionDto>().ReverseMap();
+            CreateMap<Region, CreateRegionDto>()
+                .ForMember(dest => dest.Code, opt => opt.Ignore()) // مقدار Code را هنگام Map کردن از DTO به Entity نادیده بگیر
+                .ReverseMap();
+            CreateMap<CreateRegionDto, Region>()
+            .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId)) // اضافه کردن این خط ضروری است
+            .ReverseMap();
 
 
 
