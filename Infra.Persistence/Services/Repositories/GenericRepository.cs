@@ -58,6 +58,11 @@ namespace Persistence.Services.Repository
             return await _dbSet.AnyAsync(e => e.Id == id && !e.IsDelete);
         }
 
+        public async Task<bool> IsExistEntityName(string entityName)
+        {
+            return await _dbSet.OfType<T>()
+                .AnyAsync(e => EF.Property<string>(e, "Name") == entityName);
+        }
         public void Update(T entity)
         {
             entity.UpdateDate = DateTime.UtcNow;

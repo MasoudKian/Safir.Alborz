@@ -125,6 +125,16 @@ namespace Persistence.Services.Repositories
             await _regionRepository.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> CheckDuplicateRegionByName(string name)
+        {
+            var existRegion = await _regionRepository.IsExistEntityName(name);
+            if (existRegion)
+                return true;
+
+            return false;
+
+        }
         #endregion
     }
 }

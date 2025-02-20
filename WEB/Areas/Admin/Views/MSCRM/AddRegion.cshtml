@@ -54,7 +54,7 @@
                                 <br /><br />
                                 <div class="flex items-center border border-gray-500 bg-slate-100 text-slate-600 dark:border-darkmode-800 dark:bg-darkmode-700 dark:text-slate-400 focus-within:border-gray-700 rounded-md overflow-hidden">
                                     <div class="z-30 flex w-10 items-center justify-center bg-slate-100 text-slate-600 dark:bg-darkmode-700 dark:text-slate-400 border-l border-gray-500">
-                                        @@
+                                        <img src="/admin/src/images/MSCRM/Province.png" style="padding:3px;" />
                                     </div>
                                     <select id="province" name="ProvinceId" class="form-select tom-select w-full bg-slate-100 text-slate-600 dark:bg-darkmode-700 dark:text-slate-400 focus:bg-gray-200 focus:outline-none border-none rounded-md">
                                         <option value="">انتخاب استان</option>
@@ -74,7 +74,7 @@
                                 <br /><br />
                                 <div class="flex items-center border border-gray-500 bg-slate-100 text-slate-600 dark:border-darkmode-800 dark:bg-darkmode-700 dark:text-slate-400 focus-within:border-gray-700 rounded-md overflow-hidden">
                                     <div class="z-30 flex w-10 items-center justify-center bg-slate-100 text-slate-600 dark:bg-darkmode-700 dark:text-slate-400 border-l border-gray-500">
-                                        @@
+                                        <img src="/admin/src/images/MSCRM/city.png" style="padding:3px;" />
                                     </div>
                                     @* <input type="hidden" id="hiddenCityId" name="CityId"> *@
                                     <select id="city" name="CityId" class="form-select tom-select w-full bg-slate-100 text-slate-600 dark:bg-darkmode-700 dark:text-slate-400 focus:bg-gray-200 focus:outline-none border-none rounded-md">
@@ -90,7 +90,7 @@
                                 <div class="input-form [&.has-error_.form-control]:border-danger">
                                     <label data-tw-merge for="validation-form-1" class="inline-block mb-2 group-[.form-inline]:mb-2 group-[.form-inline]:sm:mb-0 ltr:group-[.form-inline]:sm:mr-5 rtl:group-[.form-inline]:sm:ml-5 ltr:group-[.form-inline]:sm:text-right rtl:group-[.form-inline]:sm:text-left flex w-full flex-col sm:flex-row">
                                         نام منطقه
-                                        <span class="mt-1 text-xs text-slate-500 rtl:sm:mr-auto ltr:sm:ml-auto sm:mt-0">
+                                        <span  class="mt-1 text-xs text-slate-500 rtl:sm:mr-auto ltr:sm:ml-auto sm:mt-0">
                                             ضروری، نام منطقه را وارد کنید.
                                         </span>
                                     </label>
@@ -103,16 +103,50 @@
                         </div>
                         @if (TempData["SuccessMessage"] != null)
                         {
-                            <div id="successMessage" class="text-success">
-                                @TempData["SuccessMessage"]
-                            </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'عملیات موفق!',
+                                        text: '@Html.Raw(TempData["SuccessMessage"])',
+                                        confirmButtonText: 'باشه'
+                                    });
+                                });
+                            </script>
+                        }
+                        @if (TempData["SuccessMessage"] !=null  || TempData["DuplicateMessage"] != null)
+                        {
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    // نمایش پیام موفقیت
+                                    var successMessage = '@Html.Raw(@TempData["SuccessMessage"])';
+                                    if (successMessage) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'عملیات موفق',
+                                            text: successMessage,
+                                            confirmButtonText: 'باشه'
+                                        });
+                                    }
 
+                                    // نمایش پیام خطا
+                                    var errorMessage = '@TempData["ErrorMessage"]';
+                                    if (errorMessage) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'خطا',
+                                            text: errorMessage,
+                                            confirmButtonText: 'متوجه شدم'
+                                        });
+                                    }
+                                });
+                            </script>
                         }
                         <div class="flex border-t border-slate-200/80 px-7 py-5 md:justify-end">
 
 
 
-                            <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 w-full border-primary/50 px-10 md:w-auto">
+                            <button id="submitBtn" data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed text-primary dark:border-primary [&:hover:not(:disabled)]:bg-primary/10 w-full border-primary/50 px-10 md:w-auto">
                                 <i data-tw-merge="" data-lucide="pocket" class="rtl:-mr-2 ltr:-ml-2 rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
                                 ثبت منطقه
                             </button>
@@ -125,43 +159,5 @@
     </div>
 </div>
 
-<script>
 
-    // تابعی برای حذف پیام بعد از 5 ثانیه
-    setTimeout(function() {
-        var messageDiv = document.getElementById("successMessage");
-        if (messageDiv) {
-        messageDiv.style.display = 'none'; // مخفی کردن پیام
-        }
-    }, 5000); // 5000 میلی‌ثانیه = 5 ثانیه
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var provinceDropdown = document.getElementById("province");
-        var cityDropdown = document.getElementById("city");
-
-        provinceDropdown.addEventListener("change", function () {
-            var provinceId = provinceDropdown.value;
-
-            if (provinceId) {
-                fetch(`/get-cities/${provinceId}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        cityDropdown.innerHTML = '<option value="">انتخاب شهر</option>';
-
-                        data.forEach(city => {
-                            console.log("شهر دریافت شده:", city); // ✅ بررسی مقدار `Id`
-
-                            var option = document.createElement("option");
-                            option.value = city.id;  // ✅ مقدار `id` را بررسی کن
-                            option.textContent = city.name;
-                            cityDropdown.appendChild(option);
-                        });
-                    })
-                    .catch(error => console.error('خطا در دریافت اطلاعات:', error));
-            } else {
-                cityDropdown.innerHTML = '<option value="">انتخاب شهر</option>';
-            }
-        });
-    });
-</script>
 

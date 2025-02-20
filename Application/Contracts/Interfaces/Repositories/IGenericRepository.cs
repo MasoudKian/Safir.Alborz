@@ -7,6 +7,7 @@ namespace Application.Contracts.Interfaces.IGeneric
     {
         Task<T> GetEntityById(int id);
         Task<bool> IsEntityExist(int id);
+        Task<bool> IsExistEntityName(string entityName);
         Task<T> CreateAsync(T entity);
         void Update(T entity);
         void Delete(T entity);

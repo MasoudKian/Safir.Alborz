@@ -151,7 +151,6 @@ namespace Persistence.Services.ImplementationServices.Address
         //    region = await _addressRepository.CreateRegionAsync(region);
         //    return _mapper.Map<RegionDto>(region);
         //}
-
         public async Task CreateRegionAsync(CreateRegionDto dto)
         {
             var region = _mapper.Map<Region>(dto);
@@ -197,6 +196,21 @@ namespace Persistence.Services.ImplementationServices.Address
 
             _mapper.Map(dto, existingRegion);
             return await _addressRepository.UpdateRegionAsync(existingRegion);
+        }
+
+        /// <summary>
+        /// بررسی تکراری بودن منطقه
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateRegionName(CheckRegion dto)
+        {
+            var region = _mapper.Map<CheckRegion>(dto);
+
+            var existRegion = await _addressRepository.CheckDuplicateRegionByName(region.Name);
+            if (existRegion == null) return false;
+
+            return true;
         }
         #endregion
     }

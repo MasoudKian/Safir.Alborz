@@ -93,6 +93,7 @@ namespace Application.Profiles
             .ForMember(dest => dest.CityId, opt => opt.MapFrom(src => src.CityId)) // اضافه کردن این خط ضروری است
             .ReverseMap();
 
+            CreateMap<CheckRegion, Region>().ReverseMap();
 
 
             #endregion

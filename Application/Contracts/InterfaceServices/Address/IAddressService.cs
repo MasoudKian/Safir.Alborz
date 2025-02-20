@@ -31,6 +31,7 @@ namespace Application.Contracts.InterfaceServices.Address
         Task<RegionDto?> GetRegionByIdAsync(int id);
         Task CreateRegionAsync(CreateRegionDto dto);
         Task<bool> UpdateRegionAsync(RegionDto dto);
+        Task<bool> CheckDuplicateRegionName(CheckRegion dto);
         #endregion
     }
 }
