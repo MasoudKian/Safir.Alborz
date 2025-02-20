@@ -7,6 +7,7 @@ using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
+using Domain.Enums;
 using Microsoft.Extensions.Logging;
 using Persistence.Services.Repositories;
 using System.Linq;

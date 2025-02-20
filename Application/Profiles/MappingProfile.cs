@@ -6,6 +6,7 @@ using Application.DTOs.HumanResources.Position;
 using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Entities.HumanResources.EmployeeManagement;
+using Application.DTOs.MSCRMdto;
 
 namespace Application.Profiles
 {
@@ -42,6 +43,9 @@ namespace Application.Profiles
 
                 .ForMember(e => e.PositionName, el => el.MapFrom
                 (eld => eld.Position != null ? eld.Position.Title : ""));
+
+            CreateMap<Employee, GetListEmployeesForMarketer>().ReverseMap();
+
 
 
             #endregion

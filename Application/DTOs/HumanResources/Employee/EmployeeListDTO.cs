@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.HumanResources.EmployeeManagement;
+using Domain.Enums;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 

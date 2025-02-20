@@ -38,6 +38,10 @@ namespace Persistence.Services.Repository
             _dbSet.Update(entity);
         }
 
+        /// <summary>
+        /// IQueryable Get All
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<T> GetAllEntitiesAsync()
         {
             return _dbSet.Where(e => !e.IsDelete);

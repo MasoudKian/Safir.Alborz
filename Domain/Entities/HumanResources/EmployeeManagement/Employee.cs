@@ -76,18 +76,4 @@ namespace Domain.Entities.HumanResources.EmployeeManagement
     }
 
 
-    public enum Education
-    {
-        [Display(Name = "دیپلم")]
-        Diploma,
-
-        [Display(Name = "فوق دیپلم")]
-        PostgraduateDiploma,
-
-        [Display(Name = "لیسانس")]
-        Master,
-
-        [Display(Name = "دکترا")]
-        PHD
-    }
 }
