@@ -7,6 +7,8 @@
 
 <ul class="scrollable">
 
+
+
     <!-------------------------مدیریت اصلی سایت------------------------->
 
     <li class="side-menu__divider">
@@ -28,7 +30,7 @@
                 <!-- BEGIN: ثانیه Child -->
                 <!-- END: ثانیه Child -->
             </li>
-@*             <li>
+            @*             <li>
                 <a  class="side-menu__link ">
                     <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
                     <div class="side-menu__link__title">
@@ -95,9 +97,107 @@
     </li>
 
     <!-------------------------مدیریت اصلی سایت------------------------->
+    <!-------------------------مدیریت بازاریابی و فروش------------------------->
+    <li class="side-menu__divider">
+        مدیریت فروش و بازاریابی + مدیریت مشتریان
+    </li>
+
+    <!-- مدیریت بازاریابان -->
+    <li>
+        <a href="javascript:;" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="table2" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">مدیریت بازاریاب ها</div>
+            <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
+        </a>
+        <ul class="hidden">
+            <li>
+                <a href="exort-product-list.html" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-top" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        ثبت بازاریاب
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="MSCRM" asp-action="AddRegion" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="panel-right-inactive" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">مدیریت منطقه</div>
+                </a>
+            </li>
+        </ul>
+    </li>
+    <!-- مدیریت بازاریابان -->
+    <!-- مدیریت مشتری -->
+    <li>
+        <a href="javascript:;" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="table2" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">مدیریت مشتریان</div>
+            <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <ul class="hidden">
+            <li>
+                <a href="exort-product-list.html" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-top" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        ثبت مشتری
+                    </div>
+                </a>
+                <!-- BEGIN: Third Child -->
+                <!-- END: Third Child -->
+            </li>
+            <li>
+                <a href="exort-product-grid.html" class="side-menu__link ">
+                    <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+                    <div class="side-menu__link__title">
+                        لیست مشتریان
+                    </div>
+                </a>
+                <!-- BEGIN: Third Child -->
+                <!-- END: Third Child -->
+            </li>
+        </ul>
+        <!-- END: ثانیه Child -->
+    </li>
+    <!-- مدیریت مشتری -->
+
+    <li>
+        <a href="exort-file-manager-grid.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="panel-top-close" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">مدیریت فایل - شبکه</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <li>
+        <a href="exort-point-of-sale.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="panel-top-inactive" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">نقطه فروش</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <li>
+        <a href="exort-chat.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="mail-open" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">چت</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+    <li>
+        <a href="exort-calendar.html" class="side-menu__link ">
+            <i data-tw-merge="" data-lucide="calendar-range" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
+            <div class="side-menu__link__title">تقویم</div>
+        </a>
+        <!-- BEGIN: ثانیه Child -->
+        <!-- END: ثانیه Child -->
+    </li>
+
+    <!-------------------------مدیریت بازاریابی و فروش------------------------->
+
 
     <!--  مدیریت منابع انسانی -->
-
     @if (Model != null && Model.Contains("MSCRManagement"))
     {
         <li class="side-menu__divider">
@@ -152,86 +252,6 @@
             <!-- END: ثانیه Child -->
         </li>
     }
-
-    
-
-    <!-------------------------مدیریت بازاریابی و فروش------------------------->
-    <li class="side-menu__divider">
-        مدیریت فروش و بازاریابی + مدیریت مشتریان
-    </li>
-    <li>
-        <a href="javascript:;" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="table2" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">مدیریت مشتریان</div>
-            <i data-tw-merge="" data-lucide="chevron-down" class="stroke-[1] w-5 h-5 side-menu__link__chevron"></i>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <ul class="hidden">
-            <li>
-                <a href="exort-product-list.html" class="side-menu__link ">
-                    <i data-tw-merge="" data-lucide="layout-panel-top" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-                    <div class="side-menu__link__title">
-                        ثبت مشتری
-                    </div>
-                </a>
-                <!-- BEGIN: Third Child -->
-                <!-- END: Third Child -->
-            </li>
-            <li>
-                <a href="exort-product-grid.html" class="side-menu__link ">
-                    <i data-tw-merge="" data-lucide="layout-panel-left" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-                    <div class="side-menu__link__title">
-                        لیست مشتریان
-                    </div>
-                </a>
-                <!-- BEGIN: Third Child -->
-                <!-- END: Third Child -->
-            </li>
-        </ul>
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a asp-area="Admin" asp-controller="MSCRM" asp-action="AddRegion" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="panel-right-inactive" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">مدیریت منطقه</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-file-manager-grid.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="panel-top-close" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">مدیریت فایل - شبکه</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-point-of-sale.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="panel-top-inactive" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">نقطه فروش</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-chat.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="mail-open" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">چت</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-    <li>
-        <a href="exort-calendar.html" class="side-menu__link ">
-            <i data-tw-merge="" data-lucide="calendar-range" class="stroke-[1] w-5 h-5 side-menu__link__icon"></i>
-            <div class="side-menu__link__title">تقویم</div>
-        </a>
-        <!-- BEGIN: ثانیه Child -->
-        <!-- END: ثانیه Child -->
-    </li>
-
-
 
     <li class="side-menu__divider">
         داشبورد شخصی

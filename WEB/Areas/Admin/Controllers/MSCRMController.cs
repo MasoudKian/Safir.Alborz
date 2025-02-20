@@ -18,6 +18,15 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
+        #region Marketer
+
+
+
+        #endregion
+
+
+        #region Region
+
         [HttpGet("add-region")]
         public async Task<IActionResult> AddRegion()
         {
@@ -48,7 +57,6 @@ namespace WEB.Areas.Admin.Controllers
             return RedirectToAction("AddRegion");
         }
 
-
         [HttpGet("get-cities/{provinceId}")]
         public async Task<IActionResult> GetCities(int provinceId)
         {
@@ -58,6 +66,8 @@ namespace WEB.Areas.Admin.Controllers
 
             return Json(cities);
         }
+
+        #endregion
 
     }
 }
