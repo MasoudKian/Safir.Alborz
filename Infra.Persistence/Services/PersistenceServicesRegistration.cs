@@ -5,6 +5,7 @@ using Application.Contracts.Interfaces.Repositories.HumanResources;
 using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices.Address;
 using Application.Contracts.InterfaceServices.HumanResources;
+using Application.Contracts.InterfaceServices.MSCRM;
 using Application.Profiles;
 using Identity.DbContext;
 using Identity.PersistenceServices.Services;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Persistence.Context;
 using Persistence.Services.ImplementationServices.Address;
 using Persistence.Services.ImplementationServices.HumanResources;
+using Persistence.Services.ImplementationServices.MSCRM;
 using Persistence.Services.Repositories;
 using Persistence.Services.Repositories.HumanResources;
 using Persistence.Services.Repository;
@@ -52,6 +54,8 @@ namespace Persistence.Services
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IAddressService, AddressService>();
 
+            services.AddScoped<IMSCRMRepository, MSCRMRepository>();
+            services.AddScoped<IMSCRMService, MSCRMService>();
 
 
             services.AddAutoMapper(typeof(MappingProfile));

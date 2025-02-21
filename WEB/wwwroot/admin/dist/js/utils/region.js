@@ -94,6 +94,37 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// For Get Regions
+document.addEventListener("DOMContentLoaded", function () {
+    const provinceDropdown = document.getElementById("province");
+    const cityDropdown = document.getElementById("city");
+    const regionDropdown = document.getElementById("region");
+
+    function loadRegions() {
+        const provinceId = provinceDropdown.value;
+        const cityId = cityDropdown.value;
+
+        if (provinceId && cityId) {
+            fetch(`/get-regions/${provinceId}/${cityId}`)
+                .then(response => response.json())
+                .then(data => {
+                    regionDropdown.innerHTML = '<option value="">انتخاب منطقه</option>';
+                    data.forEach(region => {
+                        const option = document.createElement("option");
+                        option.value = region.id;
+                        option.textContent = region.name;
+                        regionDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => console.error("Error fetching regions:", error));
+        }
+    }
+
+    provinceDropdown.addEventListener("change", loadRegions);
+    cityDropdown.addEventListener("change", loadRegions);
+});
+
+
 
 
 

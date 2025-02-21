@@ -140,6 +140,12 @@ namespace Persistence.Services.ImplementationServices.Address
 
         #region Region Methods
 
+        public async Task<List<RegionDto>> GetListRegionsByProvincesAndCity(int provinceId, int cityId)
+        {
+            var regions = await _addressRepository.GetRegionByProvinceIdAndCityIdAsync(provinceId, cityId);
+            return _mapper.Map<List<RegionDto>>(regions);
+        }
+
         /// <summary>
         /// ثبت یک منطقه 
         /// </summary>

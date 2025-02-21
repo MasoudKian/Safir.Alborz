@@ -98,6 +98,17 @@ namespace Persistence.Services.Repositories
         #endregion
 
         #region Region Methods
+
+        public async Task<List<Region>> GetRegionByProvinceIdAndCityIdAsync(int provinceId, int cityId)
+        {
+            var regoins = await _regionRepository.GetAllEntitiesAsync()
+                .Include(r => r.Province)
+                .Where(p => p.ProvinceId == provinceId)
+                .Include(r => r.City)
+                .Where(c => c.CityId == cityId).ToListAsync();
+            return regoins;
+        }
+
         public async Task<List<Region>> GetAllRegionsAsync()
         {
             return (await _regionRepository.GetAllEntitiesAsyncJustForRead()).ToList();

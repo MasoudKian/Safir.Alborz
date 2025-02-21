@@ -1,4 +1,5 @@
 ﻿using Application.Contracts.InterfaceServices.Address;
+using Application.Contracts.InterfaceServices.MSCRM;
 using Application.DTOs.Address.CRUD;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,15 +11,30 @@ namespace WEB.Areas.Admin.Controllers
         #region ctor DI
 
         private readonly IAddressService _addressService;
+        private readonly IMSCRMService _mscrmService;
 
-        public MSCRMController(IAddressService addressService)
+        public MSCRMController(IAddressService addressService, IMSCRMService mSCRMService)
         {
             _addressService = addressService;
+            _mscrmService = mSCRMService;
         }
 
         #endregion
 
         #region Marketer
+
+        [HttpGet("add-marketer")]
+        public async Task<IActionResult> AddMarketer()
+        {
+            var list = await _mscrmService.GetListEmployeesCRM();
+            ViewBag.Employees = list; // ارسال لیست به ویو
+
+            var provinces = await _addressService.GetAllProvincesAsync();
+            ViewBag.Provinces = new SelectList(provinces, "Id", "Name");
+
+            return View();
+        }
+
 
 
 
@@ -26,6 +42,16 @@ namespace WEB.Areas.Admin.Controllers
 
 
         #region Region
+
+        [HttpGet("get-regions/{provinceId}/{cityId}")]
+        public async Task<IActionResult> GetRegions(int provinceId, int cityId)
+        {
+            var regions = await _addressService.GetListRegionsByProvincesAndCity(provinceId, cityId);
+
+            return Json(regions);
+        }
+
+
 
         [HttpGet("add-region")]
         public async Task<IActionResult> AddRegion()

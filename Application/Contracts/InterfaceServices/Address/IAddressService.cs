@@ -27,6 +27,7 @@ namespace Application.Contracts.InterfaceServices.Address
         #endregion
 
         #region Regions
+        Task<List<RegionDto>> GetListRegionsByProvincesAndCity(int provinceId, int cityId);
         Task<List<RegionDto>> GetAllRegionsAsync();
         Task<RegionDto?> GetRegionByIdAsync(int id);
         Task CreateRegionAsync(CreateRegionDto dto);

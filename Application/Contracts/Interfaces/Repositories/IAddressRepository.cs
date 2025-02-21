@@ -22,6 +22,8 @@ namespace Application.Contracts.Interfaces.Repositories
         #endregion
 
         #region Region
+
+        Task<List<Region>> GetRegionByProvinceIdAndCityIdAsync(int provinceId,int cityId);
         Task<List<Region>> GetAllRegionsAsync();
         Task<Region?> GetRegionByIdAsync(int id);
         Task<Region> CreateRegionAsync(Region region);

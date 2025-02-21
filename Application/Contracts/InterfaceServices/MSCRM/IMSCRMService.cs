@@ -6,5 +6,6 @@ namespace Application.Contracts.InterfaceServices.MSCRM
     public interface IMSCRMService 
     {
         Task<List<GetListEmployeesForMarketer>> GetListEmployeesCRM();
+
     }
 }
