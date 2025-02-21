@@ -1,6 +1,8 @@
 ﻿using Application.Contracts.Interfaces.IGeneric;
 using Application.Contracts.Interfaces.Repositories;
+using Application.DTOs.MSCRMdto;
 using Domain.Entities.HumanResources.EmployeeManagement;
+using Domain.Entities.MSCRM;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Services.Repositories
@@ -10,10 +12,18 @@ namespace Persistence.Services.Repositories
         #region ctor DI
 
         private readonly IGenericRepository<Employee> _employeeRepository;
+        private readonly IGenericRepository<Marketer> _marketerRepository;
 
-        public MSCRMRepository(IGenericRepository<Employee> employeeRepository)
+        public MSCRMRepository(IGenericRepository<Employee> employeeRepository
+            , IGenericRepository<Marketer> marketerRepository)
         {
             _employeeRepository = employeeRepository;
+            _marketerRepository = marketerRepository;
+        }
+
+        public async Task<Marketer> CreateMarketer(Marketer marketer)
+        {
+            return await _marketerRepository.CreateAsync(marketer);
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using Application.Contracts.InterfaceServices.Address;
 using Application.Contracts.InterfaceServices.MSCRM;
 using Application.DTOs.Address.CRUD;
+using Application.DTOs.MSCRMdto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -35,6 +36,25 @@ namespace WEB.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost("add-marketer")]
+        public async Task<IActionResult> AddMarketer([FromBody] AddMarketerDTO addMarketer)
+        {
+            if (addMarketer == null || addMarketer.EmployeeId == 0 || addMarketer.ProvinceId == 0 ||
+                addMarketer.CityId == 0 || addMarketer.RegionId == 0)
+            {
+                return Json(new { success = false, message = "تمام فیلدها را پر کنید!" });
+            }
+
+            try
+            {
+                await _mscrmService.AddMarketer(addMarketer) ;
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "خطا در ذخیره‌سازی اطلاعات!" });
+            }
+        }
 
 
 

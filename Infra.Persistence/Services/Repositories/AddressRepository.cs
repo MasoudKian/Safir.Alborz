@@ -26,7 +26,31 @@ namespace Persistence.Services.Repositories
         }
         #endregion
 
+        public async Task<string> GetNameById<T>(int id) 
+        {
+            if (typeof(T) == typeof(Province))
+            {
+                var province = await _provinceRepository.GetEntityById(id) as Province;
+                return province?.Name ?? "نامشخص";
+            }
+            if (typeof(T) == typeof(City))
+            {
+                var city = await _cityRepository.GetEntityById(id) as City;
+                return city?.Name ?? "نامشخص";
+            }
+            if (typeof(T) == typeof(Region))
+            {
+                var region = await _regionRepository.GetEntityById(id) as Region;
+                return region?.Name ?? "نامشخص";
+            }
+
+            return "نامشخص";
+        }
+
         #region Province Methods
+
+
+
         public async Task<List<Province>> GetAllProvincesAsync()
         {
             return (await _provinceRepository.GetAllEntitiesAsyncJustForRead()).ToList();
@@ -57,6 +81,8 @@ namespace Persistence.Services.Repositories
 
         #region City Methods
 
+
+
         public async Task<List<City>> GetCitiesByProvinceIdAsync(int provinceId)
         {
             return await _cityRepository.GetAllEntitiesAsync()
@@ -64,9 +90,6 @@ namespace Persistence.Services.Repositories
                 .Where(c => c.ProvinceId == provinceId)
                 .ToListAsync();
         }
-
-
-
 
         public async Task<List<City>> GetAllCitiesAsync()
         {
@@ -98,6 +121,8 @@ namespace Persistence.Services.Repositories
         #endregion
 
         #region Region Methods
+
+
 
         public async Task<List<Region>> GetRegionByProvinceIdAndCityIdAsync(int provinceId, int cityId)
         {

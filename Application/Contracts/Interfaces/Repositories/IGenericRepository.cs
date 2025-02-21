@@ -1,11 +1,13 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore.Storage;
+using System.Linq.Expressions;
 
 namespace Application.Contracts.Interfaces.IGeneric
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
         Task<T> GetEntityById(int id);
+        Task<T?> FindNameAsync(Expression<Func<T, bool>> predicate);
         Task<bool> IsEntityExist(int id);
         Task<bool> IsExistEntityName(string entityName);
         Task<T> CreateAsync(T entity);

@@ -7,6 +7,7 @@ using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Application.DTOs.MSCRMdto;
+using Domain.Entities.MSCRM;
 
 namespace Application.Profiles
 {
@@ -99,6 +100,12 @@ namespace Application.Profiles
 
             CreateMap<CheckRegion, Region>().ReverseMap();
 
+
+            #endregion
+
+            #region Marketer
+
+            CreateMap<Marketer,AddMarketerDTO>().ReverseMap();
 
             #endregion
         }

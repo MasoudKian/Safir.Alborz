@@ -3,6 +3,7 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Persistence.Context;
+using System.Linq.Expressions;
 
 namespace Persistence.Services.Repository
 {
@@ -54,7 +55,11 @@ namespace Persistence.Services.Repository
 
         public async Task<T?> GetEntityById(int id)
         {
-            return await _dbSet.SingleOrDefaultAsync(e => e.Id == id && !e.IsDelete);
+            return await _dbSet.FindAsync(id);
+        }
+        public async Task<T?> FindNameAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.FirstOrDefaultAsync(predicate);
         }
 
         public async Task<bool> IsEntityExist(int id)

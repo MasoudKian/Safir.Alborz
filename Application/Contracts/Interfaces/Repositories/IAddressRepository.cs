@@ -4,12 +4,15 @@ namespace Application.Contracts.Interfaces.Repositories
 {
     public interface IAddressRepository
     {
+        Task<string> GetNameById<T>(int id);
+
         #region Province
         // متدهای مربوط به استان
         Task<List<Province>> GetAllProvincesAsync();
         Task<Province?> GetProvinceByIdAsync(int id);
         Task<Province> CreateProvinceAsync(Province province);
         Task<bool> UpdateProvinceAsync(Province province);
+
 
         #endregion
 
