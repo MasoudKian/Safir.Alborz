@@ -1,13 +1,11 @@
-﻿using Application.Contracts.Interfaces.APIs;
-using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories;
-using Application.Contracts.Interfaces.Repositories.HumanResources;
-using Application.Contracts.Interfaces.UserServices;
+﻿using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices.Address;
 using Application.Contracts.InterfaceServices.HumanResources;
 using Application.Contracts.InterfaceServices.MSCRM;
 using Application.Profiles;
-using Identity.DbContext;
+using Domain.Interfaces;
+using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Repositories.HumanResources;
 using Identity.PersistenceServices.Services;
 using Identity.PersistenceServices.Services.Implementation;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +18,6 @@ using Persistence.Services.ImplementationServices.MSCRM;
 using Persistence.Services.Repositories;
 using Persistence.Services.Repositories.HumanResources;
 using Persistence.Services.Repository;
-using System.Reflection;
 
 namespace Persistence.Services
 {

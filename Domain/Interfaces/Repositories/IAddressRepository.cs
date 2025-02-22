@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.Address;
 
-namespace Application.Contracts.Interfaces.Repositories
+namespace Domain.Interfaces.Repositories
 {
     public interface IAddressRepository
     {

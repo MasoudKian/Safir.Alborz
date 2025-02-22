@@ -1,11 +1,10 @@
-﻿using Application.Contracts.Interfaces.Repositories;
-using Application.Contracts.Interfaces.Repositories.HumanResources;
-using Application.Contracts.InterfaceServices.MSCRM;
+﻿using Application.Contracts.InterfaceServices.MSCRM;
 using Application.DTOs.MSCRMdto;
 using Application.Utils;
 using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Entities.MSCRM;
+using Domain.Interfaces.Repositories;
 
 namespace Persistence.Services.ImplementationServices.MSCRM
 {

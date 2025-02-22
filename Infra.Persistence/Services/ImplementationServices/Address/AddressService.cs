@@ -1,10 +1,10 @@
 ﻿using Application.Contracts.InterfaceServices.Address;
-using Application.Contracts.Interfaces.Repositories;
 using Application.DTOs.Address;
 using Application.DTOs.Address.CRUD;
+using Application.Utils;
 using AutoMapper;
 using Domain.Entities.Address;
-using Application.Utils;
+using Domain.Interfaces.Repositories;
 
 namespace Persistence.Services.ImplementationServices.Address
 {

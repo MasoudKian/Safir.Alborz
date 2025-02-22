@@ -1,6 +1,5 @@
 ﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Employee;
-using Application.DTOs.HumanResources.Position;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;

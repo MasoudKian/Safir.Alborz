@@ -1,5 +1,6 @@
-﻿using Application.Contracts.Interfaces.IGeneric;
+﻿
 using Domain.Entities;
+using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Persistence.Context;

@@ -1,9 +1,8 @@
-﻿using Application.Contracts.Interfaces.Repositories.HumanResources;
-using Application.Contracts.InterfaceServices.HumanResources;
+﻿using Application.Contracts.InterfaceServices.HumanResources;
 using Application.DTOs.HumanResources.Position;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
-using Microsoft.AspNetCore.Authentication;
+using Domain.Interfaces.Repositories.HumanResources;
 
 namespace Persistence.Services.ImplementationServices.HumanResources
 {

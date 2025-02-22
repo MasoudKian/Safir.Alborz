@@ -7,7 +7,8 @@ namespace Application.Utils
         public static string ToShamsi(this DateTime dateTime, bool includeTime = false)
         {
             PersianCalendar persianCalendar = new PersianCalendar();
-            string[] persianDayOfWeek = { "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه" };
+            string[] persianDayOfWeek = 
+                { "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه" };
             string[] persianMonths =
             {
             "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",

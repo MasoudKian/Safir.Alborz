@@ -1,8 +1,6 @@
-﻿using Application.DTOs.HumanResources.Department;
-using Application.DTOs.HumanResources.Position;
-using Domain.Entities.HumanResources.EmployeeManagement;
+﻿using Domain.Entities.HumanResources.EmployeeManagement;
 
-namespace Application.Contracts.Interfaces.Repositories.HumanResources
+namespace Domain.Interfaces.Repositories.HumanResources
 {
     public interface IPositionRepository
     {

@@ -1,8 +1,7 @@
-﻿using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories;
-using Application.DTOs.MSCRMdto;
-using Domain.Entities.HumanResources.EmployeeManagement;
+﻿using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Entities.MSCRM;
+using Domain.Interfaces;
+using Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Services.Repositories

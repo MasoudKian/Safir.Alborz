@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Linq.Expressions;
 
-namespace Application.Contracts.Interfaces.IGeneric
+namespace Domain.Interfaces
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {

@@ -1,10 +1,7 @@
-﻿using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories;
-using Domain.Entities.Address;
+﻿using Domain.Entities.Address;
+using Domain.Interfaces;
+using Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Persistence.Services.Repositories
 {

@@ -1,5 +1,5 @@
-﻿using Application.Contracts.Interfaces.Repositories.HumanResources;
-using Domain.Entities.HumanResources.EmployeeManagement;
+﻿using Domain.Entities.HumanResources.EmployeeManagement;
+using Domain.Interfaces.Repositories.HumanResources;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using Persistence.Services.Repository;

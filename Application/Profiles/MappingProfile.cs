@@ -54,6 +54,7 @@ namespace Application.Profiles
             #region Department
 
             CreateMap<AddDepartmentDTO,Department>().ReverseMap();
+            CreateMap<Department, DepartmentListDTO>().ReverseMap();
 
             #endregion
 

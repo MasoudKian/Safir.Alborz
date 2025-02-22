@@ -1,16 +1,13 @@
-﻿using Application.Contracts.Interfaces.IGeneric;
-using Application.Contracts.Interfaces.Repositories.HumanResources;
-using Application.Contracts.Interfaces.UserServices;
+﻿using Application.Contracts.Interfaces.UserServices;
 using Application.Contracts.InterfaceServices.HumanResources;
-using Application.DTOs.HumanResources;
 using Application.DTOs.HumanResources.Employee;
 using Application.Utils;
 using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Enums;
+using Domain.Interfaces;
+using Domain.Interfaces.Repositories.HumanResources;
 using Microsoft.Extensions.Logging;
-using Persistence.Services.Repositories;
-using System.Linq;
 
 namespace Persistence.Services.ImplementationServices.HumanResources
 {
