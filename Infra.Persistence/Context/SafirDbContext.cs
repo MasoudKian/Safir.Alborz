@@ -1,11 +1,10 @@
 ﻿using Domain.Entities.Address;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Entities.MSCRM;
-using Domain.Entities.oredersANDinvoices;
+using Domain.Entities.OredersANDinvoices;
 using Domain.Entities.ProductsCategories;
 using Domain.Entities.Site.SiteMenu;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
 
 namespace Persistence.Context
 {

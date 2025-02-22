@@ -4,7 +4,7 @@ using Domain.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.oredersANDinvoices
+namespace Domain.Entities.OredersANDinvoices
 {
     public class Order : BaseEntity
     {
