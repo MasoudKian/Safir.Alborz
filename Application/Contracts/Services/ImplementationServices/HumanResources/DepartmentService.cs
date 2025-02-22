@@ -6,7 +6,7 @@ using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Interfaces.Repositories.HumanResources;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.Services.ImplementationServices.HumanResources
+namespace Application.Contracts.Services.ImplementationServices.HumanResources
 {
     public class DepartmentService : IDepartmentService
     {

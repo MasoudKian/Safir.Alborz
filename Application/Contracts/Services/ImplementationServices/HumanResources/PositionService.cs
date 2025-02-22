@@ -4,7 +4,7 @@ using AutoMapper;
 using Domain.Entities.HumanResources.EmployeeManagement;
 using Domain.Interfaces.Repositories.HumanResources;
 
-namespace Persistence.Services.ImplementationServices.HumanResources
+namespace Application.Contracts.Services.ImplementationServices.HumanResources
 {
     public class PositionService : IPositionService
     {

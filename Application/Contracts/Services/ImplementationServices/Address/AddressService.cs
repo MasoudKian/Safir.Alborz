@@ -6,7 +6,7 @@ using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Interfaces.Repositories;
 
-namespace Persistence.Services.ImplementationServices.Address
+namespace Application.Contracts.Services.ImplementationServices.Address
 {
     public class AddressService : IAddressService
     {

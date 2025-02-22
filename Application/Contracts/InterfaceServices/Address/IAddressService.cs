@@ -1,6 +1,5 @@
 ﻿using Application.DTOs.Address;
 using Application.DTOs.Address.CRUD;
-using System.Xml.Linq;
 
 namespace Application.Contracts.InterfaceServices.Address
 {

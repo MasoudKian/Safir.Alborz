@@ -6,7 +6,7 @@ using Domain.Entities.Address;
 using Domain.Entities.MSCRM;
 using Domain.Interfaces.Repositories;
 
-namespace Persistence.Services.ImplementationServices.MSCRM
+namespace Application.Contracts.Services.ImplementationServices.MSCRM
 {
     public class MSCRMService : IMSCRMService
     {

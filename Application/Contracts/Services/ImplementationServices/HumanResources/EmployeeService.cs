@@ -9,7 +9,7 @@ using Domain.Interfaces;
 using Domain.Interfaces.Repositories.HumanResources;
 using Microsoft.Extensions.Logging;
 
-namespace Persistence.Services.ImplementationServices.HumanResources
+namespace Application.Contracts.Services.ImplementationServices.HumanResources
 {
     public class EmployeeService : IEmployeeService
     {
