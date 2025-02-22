@@ -45,15 +45,15 @@ namespace WEB.Areas.Admin.Controllers
                 return Json(new { success = false, message = "تمام فیلدها را پر کنید!" });
             }
 
-            try
-            {
+           // try
+            //{
                 await _mscrmService.AddMarketer(addMarketer) ;
                 return Json(new { success = true });
-            }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, message = "خطا در ذخیره‌سازی اطلاعات!" });
-            }
+            //}
+            //catch (Exception ex)
+            //{
+                //return Json(new { success = false, message = "خطا در ذخیره‌سازی اطلاعات!" });
+            //}
         }
 
 

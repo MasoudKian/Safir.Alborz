@@ -13,6 +13,5 @@ namespace Application.DTOs.MSCRMdto
         public int CityId { get; set; }
 
         public int RegionId { get; set; }
-        public string RegionName { get; set; }
     }
 }
