@@ -64,10 +64,10 @@ namespace WEB.Areas.Admin.Controllers
             var result = await _roleService.CreateRole(model);
             if (result)
             {
-                TempData["SuccessMessage"] = "نقش جدید با موفقیت اضافه شد.";
+                TempData[SuccessMessage] = "نقش جدید با موفقیت اضافه شد.";
                 return RedirectToAction("SiteRoleList"); // هدایت به لیست نقش‌ها
             }
-            TempData["ErrorMessage"] = "این نقش قبلاً ثبت شده است.";
+            TempData[ErrorMessage] = "این نقش قبلاً ثبت شده است.";
             return View(model);
         }
         #endregion
@@ -98,11 +98,11 @@ namespace WEB.Areas.Admin.Controllers
             var result = await _roleService.AssignRoleToUser(model);
             if (result)
             {
-                TempData["SuccessMessage"] = "نقش با موفقیت اختصاص داده شد.";
+                TempData[SuccessMessage] = "نقش با موفقیت اختصاص داده شد.";
                 return RedirectToAction("AssignRoleToUser");
             }
 
-            TempData["ErrorMessage"] = "خطا در اختصاص نقش به کاربر.";
+            TempData[ErrorMessage] = "خطا در اختصاص نقش به کاربر.";
             return RedirectToAction("AssignRoleToUser");
         }
 
@@ -116,18 +116,18 @@ namespace WEB.Areas.Admin.Controllers
         {
             if (string.IsNullOrEmpty(userId))
             {
-                TempData["BadRequest"] = ("شناسه کاربر ارسال نشده است.");
+                TempData[WarningMessage] = ("مشکلی به وجود آمد لطفا مجدد تلاش کنید.");
             }
 
             var result = await _userService.DeactivateUserAsync(userId);
 
             if (result)
             {
-                TempData["SuccessMessage"] = "کاربر با موفقیت غیرفعال شد.";
+                TempData[SuccessMessage] = "کاربر با موفقیت غیرفعال شد.";
             }
             else
             {
-                TempData["ErrorMessage"] = "مشکلی در غیرفعال‌سازی کاربر رخ داد.";
+                TempData[ErrorMessage] = "مشکلی در غیرفعال‌سازی کاربر رخ داد.";
             }
 
             return RedirectToAction("SiteUserList"); // تغییر مسیر به لیست کاربران
@@ -138,18 +138,18 @@ namespace WEB.Areas.Admin.Controllers
         {
             if (string.IsNullOrEmpty(userId))
             {
-                TempData["BadRequest"] = ("شناسه کاربر ارسال نشده است.");
+                TempData[WarningMessage] = ("مشکلی به وجود آمد لطفا مجدد تلاش کنید.");
             }
 
             var result = await _userService.ActivateUserAsync(userId);
 
             if (result)
             {
-                TempData["SuccessMessage"] = "کاربر با موفقیت فعال شد.";
+                TempData[SuccessMessage] = "کاربر با موفقیت فعال شد.";
             }
             else
             {
-                TempData["ErrorMessage"] = "مشکلی در فعال‌سازی کاربر رخ داد.";
+                TempData[ErrorMessage] = "مشکلی در فعال‌سازی کاربر رخ داد.";
             }
 
             return RedirectToAction("SiteUserList"); // تغییر مسیر به لیست کاربران

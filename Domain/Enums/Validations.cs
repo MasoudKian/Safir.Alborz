@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums
 {
-    public enum Validations
+    public enum ValidationsResult
     {
         Success,
         Warning,
