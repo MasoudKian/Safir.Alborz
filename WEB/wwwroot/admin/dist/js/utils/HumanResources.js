@@ -25,11 +25,21 @@ document.addEventListener("click", async function (event) {
         event.preventDefault();
 
         // دریافت مقدارهای ورودی
-        const positionTitle = document.getElementById("position-name")?.value.trim();
-        const departmentId = document.getElementById("position-department")?.value.trim();
+        const positionTitle = document.getElementById("position-name").value.trim();
+        const departmentId = document.getElementById("position-department").value.trim();
+        const alertModal = document.getElementById("alert-modal");
+        const alertMessage = document.getElementById("alert-message");
+        alert(departmentId)
 
         if (!positionTitle || !departmentId) {
-            showAlertModal("لطفاً نام سمت و دپارتمان را وارد کنید.");
+            alertMessage.textContent = "لطفاً نام سمت و دپارتمان را وارد کنید!";
+            alertMessage.classList.remove("text-success");
+            alertMessage.classList.add("text-danger");
+            alertModal.classList.add("show");
+
+            setTimeout(() => {
+                alertModal.classList.remove("show");
+            }, 3000);
             return;
         }
 
@@ -48,18 +58,36 @@ document.addEventListener("click", async function (event) {
             });
 
             const result = await response.json();
+
             if (response.ok) {
-                alert(result.message);
-                location.reload(); // صفحه را مجدداً بارگذاری می‌کنیم
+                alertMessage.textContent = "ثبت سمت با موفقیت انجام شد.";
+                alertMessage.classList.remove("text-danger");
+                alertMessage.classList.add("text-success");
             } else {
-                showAlertModal(result.message || "خطایی رخ داده است.");
+                alertMessage.textContent = "سمتی با این نام قبلاً ثبت شده است.";
+                alertMessage.classList.remove("text-success");
+                alertMessage.classList.add("text-danger");
             }
+
+            alertModal.classList.add("show");
+
+            setTimeout(() => {
+                alertModal.classList.remove("show");
+            }, 3000);
         } catch (error) {
             console.error("خطا در ارسال درخواست:", error);
-            showAlertModal("خطایی در ارسال اطلاعات به سرور رخ داده است.");
+            alertMessage.textContent = "مشکلی در ارتباط با سرور رخ داده است.";
+            alertMessage.classList.remove("text-success");
+            alertMessage.classList.add("text-red-500");
+            alertModal.classList.add("show");
+
+            setTimeout(() => {
+                alertModal.classList.remove("show");
+            }, 3000);
         }
     }
 });
+
 
 // تابع برای نمایش مودال هشدار
 function showAlertModal(message) {
@@ -70,9 +98,9 @@ function showAlertModal(message) {
 }
 
 // مدیریت دکمه بستن مودال
-document.getElementById("close-alert").addEventListener("click", function () {
-    document.getElementById("alert-modal").classList.add("hidden");
-});
+//document.getElementById("close-alert").addEventListener("click", function () {
+//    document.getElementById("alert-modal").classList.add("hidden");
+//});
 
 
 // ✅ HumanResources - مدیریت ارسال دپارتمان

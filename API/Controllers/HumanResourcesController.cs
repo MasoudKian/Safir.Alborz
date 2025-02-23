@@ -3,6 +3,7 @@ using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
 using Application.DTOs.HumanResources.Position;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace API.Controllers
 {
@@ -82,6 +83,7 @@ namespace API.Controllers
         [HttpPost("Create-Position")]
         public async Task<IActionResult> CreatePosition([FromBody] CreateOrUpdatePositionDTO positionDTO)
         {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (await _positionService.PositionExistAsync(positionDTO.Title))
             {
                 return BadRequest(new { message = "سمت با این نام قبلاً ثبت شده است." });

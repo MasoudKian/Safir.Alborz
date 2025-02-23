@@ -102,7 +102,7 @@ namespace WEB.Areas.Admin.Controllers
 
             var departmentList = departments.Select(d => new SelectListItem
             {
-                Value = d.DepartmentId.ToString(),
+                Value = d.Id.ToString(),
                 Text = d.Name
             }).ToList();
 

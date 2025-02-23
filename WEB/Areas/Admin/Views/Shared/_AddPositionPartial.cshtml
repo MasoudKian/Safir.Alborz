@@ -13,11 +13,11 @@
          class="w-[90%] mx-auto bg-white relative rounded-md shadow-md transition-[margin-top,transform] duration-[0.4s,0.3s] -mt-16 group-[.show]:mt-16 group-[.modal-static]:scale-[1.05] dark:bg-darkmode-600 sm:w-[460px] px-5 py-10">
         <div class="text-center">
             <div class="mb-5">
-                <label for="position-name" class="block mb-2">نام سمت</label>
-                <input id="position-name" type="text" placeholder="مدیر منابع انسانی" required class="w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3">
+                <label class="block mb-2">نام سمت</label>
+                <input data-tw-merge id="position-name" name="name" type="text" placeholder="مدیر منابع انسانی" minlength="2" required="required" class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10 form-control form-control">
             </div>
             <div class="mb-5">
-                <label for="position-department" class="block mb-2">دپارتمان</label>
+                <label  class="block mb-2">دپارتمان</label>
                 <select id="position-department" class="w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3">
                     <!-- گزینه‌ها از سرور بارگذاری خواهند شد -->
                 </select>
@@ -25,14 +25,20 @@
             <a id="submit-position" data-tw-merge href="#" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer bg-primary border-primary text-white">ثبت</a>
         </div>
         <!-- BEGIN: مودال هشدار -->
-        <div id="alert-modal" class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center">
-            <div class="bg-white rounded-md shadow-md p-5 w-96 text-center">
-                <h2 style="color:darkred;" class="text-lg font-semibold text-red-600 mb-4">خطا</h2>
-                <p id="alert-message" class="text-sm text-gray-700">لطفاً تمام فیلدها را پر کنید.</p>
-                <button style="color:whitesmoke; background-color:darkblue" id="close-alert" class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md">متوجه شدم</button>
+        <div data-tw-backdrop=""
+             aria-hidden="true"
+             tabindex="-1"
+             id="alert-modal"
+             class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed rtl:right-0 ltr:left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
+            <div data-tw-merge
+                 class="w-[90%] mx-auto bg-white relative rounded-md shadow-md transition-[margin-top,transform] duration-[0.4s,0.3s] -mt-16 group-[.show]:mt-16 group-[.modal-static]:scale-[1.05] dark:bg-darkmode-600 sm:w-[460px] p-5 text-center">
+                <p id="alert-message" class="text-danger">
+                    لطفاً نام سمت و دپارتمان را وارد کنید!
+                </p>
             </div>
         </div>
         <!-- END: مودال هشدار -->
+
 
     </div>
 </div>
