@@ -2,10 +2,7 @@
 using Application.DTOs.HumanResources.Department;
 using Application.DTOs.HumanResources.Employee;
 using Application.DTOs.HumanResources.Position;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Services.ImplementationServices;
-using System.Security.Claims;
 
 namespace API.Controllers
 {
