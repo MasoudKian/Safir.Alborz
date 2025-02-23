@@ -9,44 +9,46 @@ document.addEventListener("DOMContentLoaded", function () {
             let province = document.getElementById("province")?.value;
             let city = document.getElementById("city")?.value;
             let name = document.getElementById("validation-form-1")?.value;
-            
 
-            // اعتبارسنجی مقدار استان
-            if (!province || province.trim() === "" || province === "0") {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'خطا!',
-                    text: 'لطفاً یک استان را انتخاب کنید.',
-                    confirmButtonText: 'باشه'
-                });
-                return;
-            }
+            //
+            //// اعتبارسنجی مقدار استان
+            //if (!province || province.trim() === "" || province === "0") {
+            //    Swal.fire({
+            //        icon: 'error',
+            //        title: 'خطا!',
+            //        text: 'لطفاً یک استان را انتخاب کنید.',
+            //        confirmButtonText: 'باشه'
+            //    });
+            //    return;
+            //}
 
-            // اعتبارسنجی مقدار شهر
-            if (!city || city.trim() === "" || city === "0") {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'خطا!',
-                    text: 'لطفاً یک شهر را انتخاب کنید.',
-                    confirmButtonText: 'متوجه شدم'
-                });
-                return;
-            }
+            //// اعتبارسنجی مقدار شهر
+            //if (!city || city.trim() === "" || city === "0") {
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        title: 'خطا!',
+            //        text: 'لطفاً یک شهر را انتخاب کنید.',
+            //        confirmButtonText: 'متوجه شدم'
+            //    });
+            //    return;
+            //}
 
-            // اعتبارسنجی مقدار نام منطقه
-            if (!name || name.trim() === "") {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'خطا!',
-                    text: 'لطفاً نام منطقه را وارد کنید.',
-                    confirmButtonText: 'متوجه شدم'
-                });
-                return;
-            }
+            //// اعتبارسنجی مقدار نام منطقه
+            //if (!name || name.trim() === "") {
+            //    Swal.fire({
+            //        icon: 'warning',
+            //        title: 'خطا!',
+            //        text: 'لطفاً نام منطقه را وارد کنید.',
+            //        confirmButtonText: 'متوجه شدم'
+            //    });
+            //    return;
+            //}
 
-           
+
 
             // اگر همه فیلدها پر باشند، فرم ارسال شود
+
+            console.log("دکمه ارسال کلیک شد.");
             document.getElementById("regionForm").submit();
         });
     } else {
@@ -57,13 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// تابعی برای حذف پیام بعد از 5 ثانیه
-setTimeout(function () {
-    var messageDiv = document.getElementById("successMessage");
-    if (messageDiv) {
-        messageDiv.style.display = 'none'; // مخفی کردن پیام
-    }
-}, 3000); // 5000 میلی‌ثانیه = 5 ثانیه
+
 
 // get cities
 document.addEventListener("DOMContentLoaded", function () {
@@ -141,17 +137,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let employee = document.getElementById("employee")?.value;
             let province = document.getElementById("province")?.value;
             let city = document.getElementById("city")?.value;
-            debugger;
             let region = document.getElementById("region").value;
 
-       
-
-            console.log("Region ID at submit:", region);
-
-
-        
-
-            
              //ارسال اطلاعات به سرور
             let formData = {
                 EmployeeId: employee,
@@ -190,12 +177,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .catch(error => {
                     console.error("Error:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'خطا!',
-                        text: 'مشکلی در ارتباط با سرور پیش آمد!',
-                        confirmButtonText: 'باشه'
-                    });
                 });
         });
     } else {

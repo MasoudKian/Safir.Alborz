@@ -68,19 +68,19 @@ namespace WEB.Areas.Admin.Controllers
             switch (result)
             {
                 case AddEmployeeResult.Success:
-                    TempData[SuccessMessage] = "بازاریاب با موفقیت ثبت شد";
+                    TempData[SuccessMessage] = "کارمند جدید با موفقیت ثبت شد";
                     break;
                 case AddEmployeeResult.ThereIs:
-                    TempData[InfoMessage] = "بازاریاب قبلا در سیستم ثبت شده است.";
+                    TempData[WarningMessage] = $"کارمند با کد ملی : {addEmployee.IRCode} قبلا در س";
                     break;
                 case AddEmployeeResult.Warning:
-                    TempData[ErrorMessage] = "ثبت بازاریاب با مشکلی مواجه شد";
+                    TempData[ErrorMessage] = "ثبت کارمند با مشکلی مواجه شد";
                     break;
                 case AddEmployeeResult.DepartmentNotFound:
                     TempData[ErrorMessage] = "دپارتمان یافت نشد!";
                     break;
                 case AddEmployeeResult.Error:
-                    TempData[ErrorMessage] = "ثبت بازاریاب با مشکلی مواجه شد ، لطفا با پشتیبانی تماس بگیرید.";
+                    TempData[ErrorMessage] = "ثبت کارمند با مشکلی مواجه شد ، لطفا با پشتیبانی تماس بگیرید.";
                     break;
             }
             return RedirectToAction("EmployeeManagement");
