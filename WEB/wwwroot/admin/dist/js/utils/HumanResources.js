@@ -1,4 +1,4 @@
-﻿// Sidebar
+﻿// ✅ Sidebar - هایلایت کردن لینک فعال در سایدبار
 document.addEventListener("DOMContentLoaded", function () {
     const menuLinks = document.querySelectorAll(".side-menu__link");
     const currentPath = window.location.pathname; // آدرس صفحه‌ی فعلی
@@ -18,27 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-// Sidebar
 
-// HumanResources
+// ✅ مدیریت ارسال موقعیت شغلی (سمت)
+document.addEventListener("click", async function (event) {
+    if (event.target && event.target.id === "submit-position") {
+        event.preventDefault();
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("submit-position").addEventListener("click", async function () {
         // دریافت مقدارهای ورودی
-        const positionTitle = document.getElementById("modal-form-1").value;
-        const departmentId = document.getElementById("modal-form-6").value;
+        const positionTitle = document.getElementById("position-name")?.value.trim();
+        const departmentId = document.getElementById("position-department")?.value.trim();
 
         if (!positionTitle || !departmentId) {
-            alert("لطفاً نام سمت و دپارتمان را انتخاب کنید.");
+            showAlertModal("لطفاً نام سمت و دپارتمان را وارد کنید.");
             return;
         }
 
-        // ایجاد آبجکت اطلاعات برای ارسال به API
         const data = {
             title: positionTitle,
             departmentId: parseInt(departmentId) // مقدار را به عدد تبدیل می‌کنیم
         };
-        debugger;
+
         try {
             const response = await fetch("https://localhost:7156/api/v1/HumanResources/Create-Position", {
                 method: "POST",
@@ -53,21 +52,35 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert(result.message);
                 location.reload(); // صفحه را مجدداً بارگذاری می‌کنیم
             } else {
-                alert(result.message || "خطایی رخ داده است.");
+                showAlertModal(result.message || "خطایی رخ داده است.");
             }
         } catch (error) {
             console.error("خطا در ارسال درخواست:", error);
-            alert("خطایی در ارسال اطلاعات به سرور رخ داده است.");
+            showAlertModal("خطایی در ارسال اطلاعات به سرور رخ داده است.");
         }
-    });
+    }
 });
 
-debugger;
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("submit-department").addEventListener("click", async function (e) {
-        e.preventDefault();
+// تابع برای نمایش مودال هشدار
+function showAlertModal(message) {
+    const alertModal = document.getElementById("alert-modal");
+    const alertMessage = document.getElementById("alert-message");
+    alertMessage.textContent = message;
+    alertModal.classList.remove("hidden");
+}
 
-        let departmentName = document.getElementById("validation-form-1").value;
+// مدیریت دکمه بستن مودال
+document.getElementById("close-alert").addEventListener("click", function () {
+    document.getElementById("alert-modal").classList.add("hidden");
+});
+
+
+// ✅ HumanResources - مدیریت ارسال دپارتمان
+document.addEventListener("click", async function (event) {
+    if (event.target && event.target.id === "submit-department") {
+        event.preventDefault();
+
+        let departmentName = document.getElementById("validation-form-1")?.value;
         let modal = document.getElementById("next-overlapping-modal-preview");
         let modalMessage = document.getElementById("modal-message");
 
@@ -116,34 +129,40 @@ document.addEventListener("DOMContentLoaded", function () {
                 modal.classList.remove("show");
             }, 3000);
         }
-    });
+    }
 });
 
+// ✅ دریافت لیست دپارتمان‌ها هنگام باز شدن مودال
+document.addEventListener("click", function (event) {
+    if (event.target.matches('[data-tw-toggle="modal"]')) {
+        console.log("مودال کلیک شد!"); // بررسی کلیک روی مودال
 
-document.addEventListener("DOMContentLoaded", function () {
-    let modalTriggers = document.querySelectorAll('[data-tw-toggle="modal"]'); // همه دکمه‌های مودال
+        fetch("/GetDepartments")
+            .then(response => {
+                console.log("Response received:", response); // لاگ کردن پاسخ
+                if (!response.ok) throw new Error("خطای دریافت داده!");
+                return response.json();
+            })
+            .then(data => {
+                console.log("داده‌های دریافتی:", data); // نمایش داده‌های دریافتی
+                let select = document.getElementById("position-department");
+                if (!select) {
+                    console.error("عنصر select پیدا نشد!");
+                    return;
+                }
 
-    modalTriggers.forEach(function (trigger) {
-        trigger.addEventListener("click", function () {
-            fetch("/GetDepartments") // مسیر صحیح
-                .then(response => response.json())
-                .then(data => {
-                    let select = document.getElementById("modal-form-6");
-                    select.innerHTML = ""; // حذف گزینه‌های قبلی
+                select.innerHTML = ""; // حذف گزینه‌های قبلی
+                select.appendChild(new Option("انتخاب کنید", "")); // گزینه پیش‌فرض
 
-                    // اضافه کردن گزینه‌های جدید
-                    select.appendChild(new Option("انتخاب کنید", "")); // گزینه پیش‌فرض
-                    data.forEach(department => {
-                        let option = new Option(department.text, department.value);
-                        select.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    alert("خطا در دریافت لیست دپارتمان‌ها!");
-                    console.error("Error:", error);
+                data.forEach(department => {
+                    let option = new Option(department.text, department.value);
+                    select.appendChild(option);
                 });
-        });
-    });
+            })
+            .catch(error => {
+                alert("خطا در دریافت لیست دپارتمان‌ها!");
+                console.error("Error:", error);
+            });
+    }
 });
 
-// HumanResources
