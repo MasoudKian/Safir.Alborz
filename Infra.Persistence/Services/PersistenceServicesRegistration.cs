@@ -18,6 +18,8 @@ using Persistence.Context;
 using Persistence.Services.Repositories;
 using Persistence.Services.Repositories.HumanResources;
 using Persistence.Services.Repository;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace Persistence.Services
 {
@@ -39,8 +41,8 @@ namespace Persistence.Services
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
-            
-            
+
+
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IDepartmentService, DepartmentService>();
 
@@ -59,7 +61,14 @@ namespace Persistence.Services
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());
             //services.AddMediatR(Assembly.GetExecutingAssembly());
 
+            #region html encoder
 
+            services.AddSingleton<HtmlEncoder>
+                (HtmlEncoder.Create(allowedRanges: new[]
+                { UnicodeRanges.BasicLatin, UnicodeRanges.Arabic
+                }));
+
+            #endregion
 
             services.AddHttpClient<AuthIdentityService>(client =>
             {
