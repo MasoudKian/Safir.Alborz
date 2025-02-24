@@ -35,7 +35,8 @@ namespace Application.Contracts.Services.ImplementationServices.MSCRM
         }
 
 
-        public async Task<ValidationsResult> AddMarketer(AddMarketerDTO addMarketerDTO)
+        public async Task<ValidationsResult> AddMarketer(AddMarketerDTO addMarketerDTO
+            , string currentUser)
         {
             var marketer = _mapper.Map<Marketer>(addMarketerDTO);
 
@@ -46,6 +47,7 @@ namespace Application.Contracts.Services.ImplementationServices.MSCRM
 
             // تولید MarketerCode
             marketer.MarketerCode = CodeGeneratorMarketer.GenerateMarketerCode(provinceName, cityName, regionName);
+            marketer.RegisteredBy = currentUser;
 
             // ذخیره در دیتابیس
             await _mscrmRepository.CreateMarketer(marketer);

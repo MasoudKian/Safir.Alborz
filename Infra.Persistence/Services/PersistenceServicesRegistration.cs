@@ -11,6 +11,7 @@ using Domain.Interfaces.Repositories;
 using Domain.Interfaces.Repositories.HumanResources;
 using Identity.PersistenceServices.Services;
 using Identity.PersistenceServices.Services.Implementation;
+using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -56,6 +57,7 @@ namespace Persistence.Services
             services.AddScoped<IMSCRMRepository, MSCRMRepository>();
             services.AddScoped<IMSCRMService, MSCRMService>();
 
+            services.AddScoped<IAuthIdentityService, AuthIdentityService>();
 
             services.AddAutoMapper(typeof(MappingProfile));
             //services.AddAutoMapper(Assembly.GetExecutingAssembly());

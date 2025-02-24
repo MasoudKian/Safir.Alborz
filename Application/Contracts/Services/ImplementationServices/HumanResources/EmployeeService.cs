@@ -39,6 +39,25 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
 
         #endregion
 
+        #region Get Employee By Id
+
+        public async Task<GetEmployeeByCode> GetEmployeeByCode(string code)
+        {
+            var employee =await _employeeRepository.GetEmployeeByCode(code);
+
+            return new GetEmployeeByCode()
+            {
+                EmployeeID = employee.EmployeeID,
+                FullName = $"{employee.FirstName} {employee.LastName}",
+                Image = employee.ImageAddress,
+                DepartmentName = employee.Department.Name,
+                PositionName = employee.Position.Title,
+                Phone = employee.Mobile,
+            };
+        }
+
+        #endregion
+
         #region Check Exist User
 
         public async Task<bool> EmployeeExistsByIrCodeAsync(string irCode)
@@ -189,7 +208,7 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
 
         #endregion
 
-
+        #region List Employee & Count 
         public async Task<List<EmployeeListDTO>> GetEmployeeListsAsync()
         {
             var employees = await _employeeRepository.GetAllEmployees();
@@ -201,5 +220,7 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
         {
             return await _employeeRepository.GetTotalEmployeesCount();
         }
+        #endregion
+
     }
 }

@@ -9,6 +9,7 @@ namespace Application.Contracts.InterfaceServices.HumanResources
         Task<bool> EmployeeExistsByMobileAsync(string mobile);
         Task<bool> EmployeeExistsByEmailAsync(string email);
 
+        Task<GetEmployeeByCode> GetEmployeeByCode(string code);
 
         Task<AddEmployeeResult> RegisterEmployeeAsync(AddEmployeeDTO employeeDTO
             , string currentUser);

@@ -4,6 +4,8 @@ namespace Domain.Interfaces.Repositories.HumanResources
 {
     public interface IEmployeeRepository
     {
+        Task<Employee> GetEmployeeByCode(string code);
+
         Task<Employee> GetEmployeeByIrCodeAsync(string irCode);
 
         Task<Employee> EmployeeExistsByBirthCertificateNumberAsync(string birthCertificateNumber);

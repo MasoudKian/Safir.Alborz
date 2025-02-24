@@ -14,6 +14,16 @@ namespace Persistence.Services.Repositories.HumanResources
             _context = context;
         }
 
+
+        public async Task<Employee> GetEmployeeByCode(string code)
+        {
+            var result = await _context.Employees.Where(e=>e.EmployeeID == code)
+                .Include(p=>p.Position)
+                .Include(d=>d.Department)
+                .SingleOrDefaultAsync();
+            return result!;
+        }
+
         public async Task<Employee> GetEmployeeByIrCodeAsync(string irCode)
         {
             var isExistIrCode = await _context.Employees

@@ -152,22 +152,14 @@ namespace Application.Contracts.Services.ImplementationServices.Address
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        //public async Task<RegionDto> CreateRegionAsync(CreateRegionDto dto)
-        //{
-        //    var region = _mapper.Map<Region>(dto);
-        //    region = await _addressRepository.CreateRegionAsync(region);
-        //    return _mapper.Map<RegionDto>(region);
-        //}
-        public async Task<CreateResult> CreateRegionAsync(CreateRegionDto dto)
+        public async Task<CreateResult> CreateRegionAsync(CreateRegionDto dto 
+            , string currentUser)
         {
             var region = _mapper.Map<Region>(dto);
 
-
-
             // مقداردهی فیلد Code بر اساس نام منطقه
             region.Code = CodeGeneratorRegion.GenerateRegionCode(region.Name);
-
-            
+            region.RegisteredBy = currentUser;
 
             await _addressRepository.CreateRegionAsync(region);
 

@@ -1,9 +1,12 @@
 ﻿using Application.Contracts.InterfaceServices.Address;
+using Application.Contracts.InterfaceServices.HumanResources;
 using Application.Contracts.InterfaceServices.MSCRM;
 using Application.DTOs.Address.CRUD;
 using Application.DTOs.MSCRMdto;
+using Identity.PersistenceServices.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace WEB.Areas.Admin.Controllers
 {
@@ -13,12 +16,20 @@ namespace WEB.Areas.Admin.Controllers
 
         private readonly IAddressService _addressService;
         private readonly IMSCRMService _mscrmService;
+        private readonly IAuthIdentityService _authIdentityService;
+        private readonly IEmployeeService _employeeService;
 
-        public MSCRMController(IAddressService addressService, IMSCRMService mSCRMService)
+        public MSCRMController(IAddressService addressService
+            , IMSCRMService mscrmervice
+            , IEmployeeService employeeService
+            , IAuthIdentityService? authIdentityService = null)
         {
             _addressService = addressService;
-            _mscrmService = mSCRMService;
+            _mscrmService = mscrmervice;
+            _authIdentityService = authIdentityService;
+            _employeeService = employeeService;
         }
+
 
         #endregion
 
@@ -27,18 +38,28 @@ namespace WEB.Areas.Admin.Controllers
         [HttpGet("add-marketer")]
         public async Task<IActionResult> AddMarketer()
         {
+            var currentUser = await _authIdentityService.GetCurrentUserAsync();
+            
+            var employee = await _employeeService.GetEmployeeByCode(currentUser.UserName);
+
+            
+
             var list = await _mscrmService.GetListEmployeesCRM();
             ViewBag.Employees = list; // ارسال لیست به ویو
 
             var provinces = await _addressService.GetAllProvincesAsync();
             ViewBag.Provinces = new SelectList(provinces, "Id", "Name");
 
-            return View();
+            return View(employee);
         }
 
         [HttpPost("add-marketer")]
-        public async Task<IActionResult> AddMarketer([FromBody] AddMarketerDTO addMarketer)
+        public async Task<IActionResult> AddMarketer
+            ([FromBody] AddMarketerDTO addMarketer)
         {
+            var currentUser = await _authIdentityService.GetCurrentUserAsync();
+
+
             if (addMarketer == null || addMarketer.EmployeeId == 0 || addMarketer.ProvinceId == 0 ||
                 addMarketer.CityId == 0 || addMarketer.RegionId == 0)
             {
@@ -51,12 +72,12 @@ namespace WEB.Areas.Admin.Controllers
             if (exists)
             {
                 TempData[ErrorMessage] = "این بازاریاب قبلاً ثبت شده است!";
-                return Json(new { success = false});
+                return Json(new { success = false });
             }
 
             try
             {
-                await _mscrmService.AddMarketer(addMarketer);
+                await _mscrmService.AddMarketer(addMarketer, currentUser.Id);
                 TempData[SuccessMessage] = "بازاریاب با موفقیت ثبت شد!";
                 return Json(new { success = true });
             }
@@ -83,15 +104,22 @@ namespace WEB.Areas.Admin.Controllers
         [HttpGet("add-region")]
         public async Task<IActionResult> AddRegion()
         {
+            var currentUser = await _authIdentityService.GetCurrentUserAsync();
+
+            var employee = await _employeeService.GetEmployeeByCode(currentUser.UserName);
+
+
             var provinces = await _addressService.GetAllProvincesAsync();
             ViewBag.Provinces = new SelectList(provinces, "Id", "Name");
-            return View();
+            return View(employee);
         }
 
         [HttpPost("add-region")]
         public async Task<IActionResult> AddRegion(CreateRegionDto dto)
         {
-            if (string.IsNullOrEmpty(dto.Name) || 
+            var currentUser = await _authIdentityService.GetCurrentUserAsync();
+
+            if (string.IsNullOrEmpty(dto.Name) ||
                 string.IsNullOrEmpty(dto.ProvinceId.ToString())
                 || string.IsNullOrEmpty(dto.CityId.ToString()))
             {
@@ -108,7 +136,7 @@ namespace WEB.Areas.Admin.Controllers
 
             try
             {
-                await _addressService.CreateRegionAsync(dto);
+                await _addressService.CreateRegionAsync(dto, currentUser.Id);
                 TempData[SuccessMessage] = "منطقه با موفقیت ثبت شد.";
                 return Json(new { success = true });
             }

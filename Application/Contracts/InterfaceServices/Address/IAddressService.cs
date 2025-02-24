@@ -30,7 +30,7 @@ namespace Application.Contracts.InterfaceServices.Address
         Task<List<RegionDto>> GetListRegionsByProvincesAndCity(int provinceId, int cityId);
         Task<List<RegionDto>> GetAllRegionsAsync();
         Task<RegionDto?> GetRegionByIdAsync(int id);
-        Task<CreateResult> CreateRegionAsync(CreateRegionDto dto);
+        Task<CreateResult> CreateRegionAsync(CreateRegionDto dto, string currentUser);
         Task<bool> UpdateRegionAsync(RegionDto dto);
         Task<bool> CheckDuplicateRegionName(CreateRegionDto check);
         #endregion

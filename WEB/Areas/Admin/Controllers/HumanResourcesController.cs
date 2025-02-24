@@ -53,7 +53,6 @@ namespace WEB.Areas.Admin.Controllers
         [HttpPost("Add-Employee")]
         public async Task<IActionResult> AddEmployee(AddEmployeeDTO addEmployee)
         {
-            Console.WriteLine($"DepartmentId received: {addEmployee.DepartmentId}");
             var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (!ModelState.IsValid)
             {

@@ -101,7 +101,7 @@ namespace Identity.PersistenceServices.Services.Implementation
         {
             // دسترسی به HttpContext برای دریافت کاربر جاری
             var user = await _userManager.GetUserAsync(_httpContextAccessor.HttpContext.User);
-            return user;
+            return user!;
         }
 
         public async Task<IList<string>> GetRolesAsync(ApplicationUser user)
