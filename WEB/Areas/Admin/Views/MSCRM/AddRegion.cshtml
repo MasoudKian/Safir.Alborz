@@ -56,15 +56,12 @@
                         </li>
                         <li id="example-3-tab" data-tw-merge="" role="presentation" class="focus-visible:outline-none flex-1 bg-slate-50 rtl:first:rounded-r-[0.6rem] ltr:first:rounded-l-[0.6rem] rtl:last:rounded-l-[0.6rem] ltr:last:rounded-r-[0.6rem] [&[aria-selected='true']_button]:text-current">
                             <button data-tw-merge="" data-tw-target="#example-3" role="tab" class="cursor-pointer appearance-none px-3 border border-transparent transition-colors dark:text-slate-400 [&.active]:text-slate-700 dark:border-transparent [&.active]:border [&.active]:shadow-sm [&.active]:font-medium [&.active]:border-slate-200 [&.active]:bg-white [&.active]:dark:text-slate-300 [&.active]:dark:bg-darkmode-400 [&.active]:dark:border-darkmode-400 flex w-full items-center justify-center whitespace-nowrap rounded-[0.6rem] py-2.5 text-[0.94rem] text-slate-500 xl:w-40">
-                                لیست شهرها
-                                <span class="rtl:mr-2 ltr:ml-2 flex h-5 items-center justify-center rounded-full border border-theme-1/10 bg-theme-1/10 px-1.5 text-xs font-medium text-theme-1/70">
-                                    5
-                                </span>
+                                ثبت شهر
                             </button>
                         </li>
                         <li id="example-4-tab" data-tw-merge="" role="presentation" class="focus-visible:outline-none flex-1 bg-slate-50 rtl:first:rounded-r-[0.6rem] ltr:first:rounded-l-[0.6rem] rtl:last:rounded-l-[0.6rem] ltr:last:rounded-r-[0.6rem] [&[aria-selected='true']_button]:text-current">
                             <button data-tw-merge="" data-tw-target="#example-4" role="tab" class="cursor-pointer appearance-none px-3 border border-transparent transition-colors dark:text-slate-400 [&.active]:text-slate-700 dark:border-transparent [&.active]:border [&.active]:shadow-sm [&.active]:font-medium [&.active]:border-slate-200 [&.active]:bg-white [&.active]:dark:text-slate-300 [&.active]:dark:bg-darkmode-400 [&.active]:dark:border-darkmode-400 flex w-full items-center justify-center whitespace-nowrap rounded-[0.6rem] py-2.5 text-[0.94rem] text-slate-500 xl:w-40">
-                                لیست استان ها
+                                لیست شهرها
                                 <span class="rtl:mr-2 ltr:ml-2 flex h-5 items-center justify-center rounded-full border border-theme-1/10 bg-theme-1/10 px-1.5 text-xs font-medium text-theme-1/70">
                                     5
                                 </span>
@@ -147,762 +144,257 @@
                     <!--لیست منطقه-->
                     <div data-transition="" data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-2" role="tabpanel" aria-labelledby="example-2-tab" class="tab-pane">
                         <div class="mt-3.5 grid grid-cols-12 gap-x-6 gap-y-10">
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    راه‌اندازی محصول
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    رویداد راه‌اندازی برای آخرین محصول ما
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
+
+                            <div class="col-span-12">
+                                <div>
+                                    <div class="flex flex-col gap-y-3 md:h-10 md:flex-row md:items-center">
+                                        <div class="text-base font-medium group-[.mode--light]:text-white">
+                                            مناطق فعال
                                         </div>
+                                        <!--Reports-->
+@*                                         <ul data-tw-merge="" role="tablist" class="p-0.5 border dark:border-darkmode-400 flex box w-auto rounded-[0.6rem] border-slate-200 bg-white group-[.mode--light]:!border-transparent group-[.mode--light]:!bg-white/[0.12] rtl:md:mr-auto ltr:md:ml-auto">
+                                            <li id="example-1-tab" data-tw-merge="" role="presentation" class="focus-visible:outline-none flex-1 bg-slate-50 rtl:first:rounded-r-[0.6rem] ltr:first:rounded-l-[0.6rem] rtl:last:rounded-l-[0.6rem] ltr:last:rounded-r-[0.6rem] group-[.mode--light]:bg-transparent [&_button.active]:text-current group-[.mode--light]:[&_button.active]:border-transparent group-[.mode--light]:[&_button.active]:bg-white/[0.12]">
+                                                <button data-tw-merge="" data-tw-target="#example-1" role="tab" class="cursor-pointer block appearance-none px-3 border border-transparent transition-colors dark:text-slate-400 [&.active]:text-slate-700 py-1.5 dark:border-transparent [&.active]:border [&.active]:shadow-sm [&.active]:font-medium [&.active]:border-slate-200 [&.active]:bg-white [&.active]:dark:text-slate-300 [&.active]:dark:bg-darkmode-400 [&.active]:dark:border-darkmode-400 active w-24 whitespace-nowrap rounded-[0.6rem] text-slate-500 group-[.mode--light]:text-slate-200">
+                                                    گزارش روزانه
+                                                </button>
+                                            </li>
+                                            <li id="example-2-tab" data-tw-merge="" role="presentation" class="focus-visible:outline-none flex-1 bg-slate-50 rtl:first:rounded-r-[0.6rem] ltr:first:rounded-l-[0.6rem] rtl:last:rounded-l-[0.6rem] ltr:last:rounded-r-[0.6rem] group-[.mode--light]:bg-transparent [&_button.active]:text-current group-[.mode--light]:[&_button.active]:border-transparent group-[.mode--light]:[&_button.active]:bg-white/[0.12]">
+                                                <button data-tw-merge="" data-tw-target="#example-2" role="tab" class="cursor-pointer block appearance-none px-3 border border-transparent transition-colors dark:text-slate-400 [&.active]:text-slate-700 py-1.5 dark:border-transparent [&.active]:border [&.active]:shadow-sm [&.active]:font-medium [&.active]:border-slate-200 [&.active]:bg-white [&.active]:dark:text-slate-300 [&.active]:dark:bg-darkmode-400 [&.active]:dark:border-darkmode-400 w-24 whitespace-nowrap rounded-[0.6rem] text-slate-500 group-[.mode--light]:text-slate-200">
+                                                    گزارش ماهانه
+                                                </button>
+                                            </li>
+                                            <li id="example-3-tab" data-tw-merge="" role="presentation" class="focus-visible:outline-none flex-1 bg-slate-50 rtl:first:rounded-r-[0.6rem] ltr:first:rounded-l-[0.6rem] rtl:last:rounded-l-[0.6rem] ltr:last:rounded-r-[0.6rem] group-[.mode--light]:bg-transparent [&_button.active]:text-current group-[.mode--light]:[&_button.active]:border-transparent group-[.mode--light]:[&_button.active]:bg-white/[0.12]">
+                                                <button data-tw-merge="" data-tw-target="#example-3" role="tab" class="cursor-pointer block appearance-none px-3 border border-transparent transition-colors dark:text-slate-400 [&.active]:text-slate-700 py-1.5 dark:border-transparent [&.active]:border [&.active]:shadow-sm [&.active]:font-medium [&.active]:border-slate-200 [&.active]:bg-white [&.active]:dark:text-slate-300 [&.active]:dark:bg-darkmode-400 [&.active]:dark:border-darkmode-400 w-24 whitespace-nowrap rounded-[0.6rem] text-slate-500 group-[.mode--light]:text-slate-200">
+                                                    گزارش سالیانه
+                                                </button>
+                                            </li>
+                                        </ul> *@
+                                        <!--Reports-->
                                     </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">left4code</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۲:۳۰ بعد از ظهر
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
+                                    <div class="tab-content box box--stacked mt-3.5 flex flex-col">
+                                        <div data-transition="" data-selector=".active" data-enter="transition-[visibility,opacity] ease-linear duration-150" data-enter-from="!p-0 !h-0 overflow-hidden invisible opacity-0" data-enter-to="visible opacity-100" data-leave="transition-[visibility,opacity] ease-linear duration-150" data-leave-from="visible opacity-100" data-leave-to="!p-0 !h-0 overflow-hidden invisible opacity-0" id="example-1" role="tabpanel" aria-labelledby="example-1-tab" class="tab-pane active">
+                                            <!--Saerch Section-->
+                                            <div class="flex flex-col gap-y-2 p-5 sm:flex-row sm:items-center">
+                                                <div>
+                                                    <div class="relative">
+                                                        <i data-tw-merge="" data-lucide="search" class="absolute inset-y-0 rtl:right-0 ltr:left-0 z-10 my-auto rtl:mr-3 ltr:ml-3 h-4 w-4 stroke-[1.3] text-slate-500"></i>
+                                                        <input data-tw-merge="" type="text" placeholder="جستجوی دپارتمان..." class="disabled:bg-slate-100 disabled:cursor-not-allowed dark:disabled:bg-darkmode-800/50 dark:disabled:border-transparent [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 [&[readonly]]:dark:border-transparent transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm placeholder:text-slate-400/90 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 dark:placeholder:text-slate-500/80 [&[type='file']]:border rtl:file:ml-4 ltr:file:mr-4 file:py-2 file:px-4 rtl:file:rounded-r-md ltr:file:rounded-l-md file:border-0 rtl:file:border-l-[1px] ltr:file:border-r-[1px] file:border-slate-100/10 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-500/70 hover:file:bg-200 group-[.form-inline]:flex-1 group-[.input-group]:rounded-none rtl:group-[.input-group]:[&:not(:first-child)]:border-r-transparent ltr:group-[.input-group]:[&:not(:first-child)]:border-l-transparent rtl:group-[.input-group]:first:rounded-r ltr:group-[.input-group]:first:rounded-l rtl:group-[.input-group]:last:rounded-l ltr:group-[.input-group]:last:rounded-r group-[.input-group]:z-10 rounded-[0.5rem] rtl:pr-9 ltr:pl-9 sm:w-64">
+                                                    </div>
                                                 </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درکیت بلانچت" src="dist/images/users/user8-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درمریل استریپ" src="dist/images/users/user2-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درلئوناردو دی‌کاپریو" src="dist/images/users/user3-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (83+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/product-launch
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    تفریح شرکت
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    بازی تیمی در یک مکان زیبا
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">left4code</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            تمام روز
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درلئوناردو دی‌کاپریو" src="dist/images/users/user3-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درکیت بلانچت" src="dist/images/users/user8-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجانی دپ" src="dist/images/users/user7-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (53+)
+                                                <div class="flex flex-col gap-x-3 gap-y-2 rtl:sm:mr-auto ltr:sm:ml-auto sm:flex-row">
+                                                    <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative">
+                                                        <button data-tw-merge="" data-tw-toggle="dropdown" aria-expanded="false" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 w-full sm:w-auto">
+                                                            <i data-tw-merge="" data-lucide="download" class="rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                                                            صادر کردن
+                                                            <i data-tw-merge="" data-lucide="chevron-down" class="rtl:mr-2 ltr:ml-2 h-4 w-4 stroke-[1.3]"></i>
+                                                        </button>
+                                                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
+                                                            <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
+                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                                                    <i data-tw-merge="" data-lucide="file-bar-chart" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                    پی‌دی‌اف
+                                                                </a>
+                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                                                    <i data-tw-merge="" data-lucide="file-bar-chart" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                    سی‌اس‌وی
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative inline-block">
+                                                        <button data-tw-merge="" data-tw-toggle="dropdown" aria-expanded="false" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed border-secondary text-slate-500 dark:border-darkmode-100/40 dark:text-slate-300 [&:hover:not(:disabled)]:bg-secondary/20 [&:hover:not(:disabled)]:dark:bg-darkmode-100/10 w-full sm:w-auto">
+                                                            <i data-tw-merge="" data-lucide="arrow-down-wide-narrow" class="rtl:ml-2 ltr:mr-2 h-4 w-4 stroke-[1.3]"></i>
+                                                            فیلتر
+                                                            <span class="rtl:mr-2 ltr:ml-2 flex h-5 items-center justify-center rounded-full border bg-slate-100 px-1.5 text-xs font-medium">
+                                                                3
+                                                            </span>
+                                                        </button>
+                                                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
+                                                            <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600">
+                                                                <div class="p-2">
+                                                                    <div>
+                                                                        <div class="rtl:text-right ltr:text-left text-slate-500">
+                                                                            موقعیت
+                                                                        </div>
+                                                                        <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 mt-2 flex-1">
+                                                                            <option value="resources/images/flags/gw.svg">
+                                                                                گینه-Bissau
+                                                                            </option>
+                                                                            <option value="resources/images/flags/kr.svg">
+                                                                                کره جنوبی
+                                                                            </option>
+                                                                            <option value="resources/images/flags/vc.svg">
+                                                                                سنت وینسنت و گرنادین‌ها
+                                                                            </option>
+                                                                            <option value="resources/images/flags/ec.svg">
+                                                                                اکوادور
+                                                                            </option>
+                                                                            <option value="resources/images/flags/cl.svg">
+                                                                                شیلی
+                                                                            </option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="mt-3">
+                                                                        <div class="rtl:text-right ltr:text-left text-slate-500">
+                                                                            کارمندان
+                                                                        </div>
+                                                                        <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm rounded-md py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 mt-2 flex-1">
+                                                                            <option value="1 - 50">1 - 50</option>
+                                                                            <option value="51 - 100">50 - 100</option>
+                                                                            <option value="&gt; 100">&gt; 100</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="mt-4 flex items-center">
+                                                                        <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-secondary/70 border-secondary/70 text-slate-500 dark:border-darkmode-400 dark:bg-darkmode-400 dark:text-slate-300 [&:hover:not(:disabled)]:bg-slate-100 [&:hover:not(:disabled)]:border-slate-100 [&:hover:not(:disabled)]:dark:border-darkmode-300/80 [&:hover:not(:disabled)]:dark:bg-darkmode-300/80 rtl:mr-auto ltr:ml-auto w-32">بستن</button>
+                                                                        <button data-tw-merge="" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary rtl:mr-2 ltr:ml-2 w-32">اعمال</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/company-retreat
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    مهمانی تعطیلات
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    جشن و تعطیلات سالیانه
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">left4code</span>
+                                            <!--Saerch Section-->
+
+                                            <div class="overflow-auto xl:overflow-visible">
+                                                <table data-tw-merge="" class="w-full rtl:text-right ltr:text-left border-b border-slate-200/60">
+                                                    <thead data-tw-merge="" class="">
+                                                        <tr data-tw-merge="" class="">
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-5 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                                                                <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50">
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                                                                استان \ شهر
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                                                                رتبه \ منطقه
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                                                                بازاریاب ها
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
+                                                                حجم فروش
+                                                            </td>
+                                                         
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-20 border-t border-slate-200/60 bg-slate-50 py-4 text-center font-medium text-slate-500">
+                                                                عملیات
+                                                            </td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr data-tw-merge="" class="[&_td]:last:border-b-0">
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                                                                <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50">
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                                                                <a class="whitespace-nowrap font-medium" href="">
+                                                                    تحقیق و توسعه
+                                                                </a>
+                                                                <div class="mt-0.5 whitespace-nowrap text-xs text-slate-500">
+                                                                    متیو تیلور
+                                                                </div>
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                                                                <div class="whitespace-nowrap">
+                                                                    <div class="flex items-center gap-2.5">
+                                                                        <div class="image-fit zoom-in box h-[22px] w-[22px] overflow-hidden rounded-full border-2 border-slate-200/70">
+                                                                            <div class="whitespace-nowrap">
+                                                                                47
+                                                                            </div>
+                                                                        </div>
+                                                                        <a href="">سعادت آباد</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                                                                <div class="whitespace-nowrap">
+                                                                    47
+                                                                </div>
+                                                            </td>
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
+                                                                <div class="whitespace-nowrap">
+                                                                    <div class="flex items-center">
+                                                                        <div>3,800,000 تومان</div>
+                                                                        <div class="flex items-center text-xs rtl:mr-2 ltr:ml-2 text-success">
+                                                                            <span class="-mt-px">
+                                                                                1%
+                                                                            </span>
+                                                                            <i data-tw-merge="" data-lucide="chevron-up" class="stroke-[1] rtl:-ml-1 ltr:-mr-1 rtl:mr-px ltr:ml-px h-4 w-4"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+
+                                                            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 relative border-dashed py-4 dark:bg-darkmode-600">
+                                                                <div class="flex items-center justify-center">
+                                                                    <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown relative h-5">
+                                                                        <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
+                                                                            <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
+                                                                        </button>
+                                                                        <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
+                                                                            <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
+                                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
+                                                                                    <i data-tw-merge="" data-lucide="check-square" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                                    ویرایش
+                                                                                </a>
+                                                                                <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item text-danger">
+                                                                                    <i data-tw-merge="" data-lucide="trash2" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
+                                                                                    حذف
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
+                                            <div class="flex-reverse flex flex-col-reverse flex-wrap items-center gap-y-2 p-5 sm:flex-row">
+                                                <nav class="rtl:ml-auto ltr:mr-auto w-full flex-1 sm:w-auto">
+                                                    <ul class="flex w-full rtl:ml-0 ltr:mr-0 rtl:sm:ml-auto ltr:sm:mr-auto sm:w-auto">
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-left" class="stroke-[1] h-4 w-4 rtl:rotate-180"></i></a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-left" class="stroke-[1] h-4 w-4 rtl:rotate-180"></i></a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3">1</a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3 !box dark:bg-darkmode-400">2</a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3">3</a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3">...</a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevron-right" class="stroke-[1] h-4 w-4 rtl:rotate-180"></i></a>
+                                                        </li>
+                                                        <li class="flex-1 sm:flex-initial">
+                                                            <a data-tw-merge="" class="transition duration-200 border items-center justify-center py-2 rounded-md cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed min-w-0 sm:min-w-[40px] shadow-none font-normal flex border-transparent text-slate-800 rtl:sm:ml-2 ltr:sm:mr-2 dark:text-slate-300 px-1 sm:px-3"><i data-tw-merge="" data-lucide="chevrons-right" class="stroke-[1] h-4 w-4 rtl:rotate-180"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                                <select data-tw-merge="" class="disabled:bg-slate-100 disabled:cursor-not-allowed disabled:dark:bg-darkmode-800/50 [&[readonly]]:bg-slate-100 [&[readonly]]:cursor-not-allowed [&[readonly]]:dark:bg-darkmode-800/50 transition duration-200 ease-in-out w-full text-sm border-slate-200 shadow-sm py-2 px-3 rtl:pl-8 ltr:pr-8 focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus:border-primary focus:border-opacity-40 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 group-[.form-inline]:flex-1 rounded-[0.5rem] sm:w-20">
+                                                    <option>10</option>
+                                                    <option>25</option>
+                                                    <option>35</option>
+                                                    <option>50</option>
+                                                </select>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۸:۰۰ بعد از ظهر
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درلئوناردو دی‌کاپریو" src="dist/images/users/user3-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دردنزل واشنگتن" src="dist/images/users/user9-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجانی دپ" src="dist/images/users/user7-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درتام هنکس" src="dist/images/users/user1-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (88+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/holiday-party
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    مخلوط کننده شبکه‌سازی
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    رویداد شبکه‌سازی برای حرفه‌ایان
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">شبکه‌سازی حرفه‌ای</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۰۷:۳۰ بعدازظهر
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درلئوناردو دی‌کاپریو" src="dist/images/users/user3-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درتام هنکس" src="dist/images/users/user1-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (36+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/networking-mixer
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    تمیزکاری اجتماعی
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    رویداد داوطلبانه برای پاکسازی محله
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">انجمن اجتماعی محلی</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۰۹:۰۰ صبح
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درتام هنکس" src="dist/images/users/user1-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درآنجلینا جولی" src="dist/images/users/user4-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (94+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/community-cleanup
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    کارگاه مشتری
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    کارگاه عملی برای مشتریان ما
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">left4code</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            10:30 صبح
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دردنزل واشنگتن" src="dist/images/users/user9-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درآنجلینا جولی" src="dist/images/users/user4-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (92+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/customer-workshop
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    کارگاه بازاریابی
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    کارگاه درباره استراتژی‌های بازاریابی مدرن
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">بازاریاب حرفه‌ای</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۱۱:۱۵ صبح
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجانی دپ" src="dist/images/users/user7-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درتام هنکس" src="dist/images/users/user1-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (29+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/marketing-workshop
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    کنفرانس تکنولوژی
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    کنفرانس سالانه تکنولوژی برای توسعه‌دهندگان
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">شرکت رویداد‌های فناوری</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            ۰۹:۰۰ صبح
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دربرد پیت" src="dist/images/users/user5-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجولیا رابرتز" src="dist/images/users/user10-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده دردنزل واشنگتن" src="dist/images/users/user9-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (91+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/tech-conference
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box box--stacked col-span-12 flex flex-col p-5 md:col-span-6 xl:col-span-4">
-                                <a class="text-[0.94rem] font-medium text-primary" href="">
-                                    وبینار: هوش مصنوعی در مراقبت‌های بهداشتی
-                                </a>
-                                <div class="mb-5 mt-1 leading-relaxed text-slate-500">
-                                    وبینار آنلاین در مورد برنامه های کاربردی هوش مصنوعی در مراقبت های بهداشتی
-                                </div>
-                                <div data-tw-merge="" data-tw-placement="bottom-start" class="dropdown absolute rtl:left-0 ltr:right-0 top-0 rtl:ml-5 ltr:mr-5 mt-5">
-                                    <button data-tw-toggle="dropdown" aria-expanded="false" class="cursor-pointer h-5 w-5 text-slate-500">
-                                        <i data-tw-merge="" data-lucide="more-vertical" class="stroke-[1] w-5 h-5 fill-slate-400/70 stroke-slate-400/70"></i>
-                                    </button>
-                                    <div data-transition="" data-selector=".show" data-enter="transition-all ease-linear duration-150" data-enter-from="absolute !mt-5 invisible opacity-0 translate-y-1" data-enter-to="!mt-1 visible opacity-100 translate-y-0" data-leave="transition-all ease-linear duration-150" data-leave-from="!mt-1 visible opacity-100 translate-y-0" data-leave-to="absolute !mt-5 invisible opacity-0 translate-y-1" class="dropdown-menu absolute z-[9999] hidden">
-                                        <div data-tw-merge="" class="dropdown-content rounded-md border-transparent bg-white p-2 shadow-[0px_3px_10px_#00000017] dark:border-transparent dark:bg-darkmode-600 w-40">
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="copy" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                کپی
-                                                پیوند
-                                            </a>
-                                            <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                                <i data-tw-merge="" data-lucide="trash" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-auto flex flex-col gap-3 border-t border-dashed border-slate-300/70 pt-5">
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">برگزارکننده:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center rounded-md border border-success/10 bg-success/10 px-1.5 py-px text-xs text-success">
-                                                <span class="-mt-px">متخصصان هوش مصنوعی</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">صندلی‌های در دسترس:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center">
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 active [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                                <i data-tw-merge="" data-lucide="armchair" class="stroke-[1] w-5 h-5 rtl:ml-1 ltr:mr-1 text-slate-400 fill-slate-100 [&amp;.active]:text-pending/80 [&amp;.active]:fill-pending/10 [&.active]:text-pending/80 [&.active]:fill-pending/10"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">زمان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto text-slate-500">
-                                            03:00 بعدازظهر
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">شرکت‌کنندگان:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <div class="flex items-center justify-center">
-                                                <div class="image-fit zoom-in h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درمریل استریپ" src="dist/images/users/user2-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درکیت بلانچت" src="dist/images/users/user8-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجنیفر لارنس" src="dist/images/users/user6-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="image-fit zoom-in rtl:-mr-2 ltr:-ml-2 h-6 w-6">
-                                                    <img data-placement="top" title="بارگذاری شده درجانی دپ" src="dist/images/users/user7-50x50.jpg" alt="تیل وایز - قالب داشبورد مدیریتی" class="tooltip cursor-pointer rounded-full border-2 border-white">
-                                                </div>
-                                                <div class="rtl:mr-1 ltr:ml-1 text-slate-500">
-                                                    (21+)
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <div class="text-slate-500">لینک ثبت نام:</div>
-                                        <div class="rtl:mr-auto ltr:ml-auto">
-                                            <a class="block w-40 truncate whitespace-nowrap rtl:text-left ltr:text-right text-slate-500 underline decoration-slate-500/30 decoration-dotted underline-offset-[3px] md:w-52" href="">
-                                                https://eltheme.ir/ai-webinar
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <!--لیست منطقه-->
