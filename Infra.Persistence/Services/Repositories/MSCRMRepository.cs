@@ -25,6 +25,15 @@ namespace Persistence.Services.Repositories
             return await _marketerRepository.CreateAsync(marketer);
         }
 
+        public async Task<Marketer?> GetMarketerById(int id)
+        {
+            var marketers = await _marketerRepository
+                .GetAllEntitiesAsync()
+                .ToListAsync(); // ابتدا تمام رکوردها را واکشی کنید
+
+            return marketers.SingleOrDefault(m => m.EmployeeId == id);
+        }
+
         #endregion
         public async Task<List<Employee>> GetListCRMEmployeesAsync()
         {
@@ -33,6 +42,8 @@ namespace Persistence.Services.Repositories
                 .Where(e => e.EmployeeID.StartsWith("CRM"))
                 .ToListAsync();
         }
+
+
 
     }
 }

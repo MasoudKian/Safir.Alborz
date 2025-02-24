@@ -42,19 +42,31 @@ namespace WEB.Areas.Admin.Controllers
             if (addMarketer == null || addMarketer.EmployeeId == 0 || addMarketer.ProvinceId == 0 ||
                 addMarketer.CityId == 0 || addMarketer.RegionId == 0)
             {
-                return Json(new { success = false, message = "تمام فیلدها را پر کنید!" });
+                TempData[WarningMessage] = "تمامی موارد باید انتخاب شوند!";
+                return Json(new { success = false });
             }
 
-           // try
-            //{
-                await _mscrmService.AddMarketer(addMarketer) ;
+            // بررسی تکراری نبودن بازاریاب
+            bool exists = await _mscrmService.CheckMarketerExists(addMarketer.EmployeeId);
+            if (exists)
+            {
+                TempData[ErrorMessage] = "این بازاریاب قبلاً ثبت شده است!";
+                return Json(new { success = false});
+            }
+
+            try
+            {
+                await _mscrmService.AddMarketer(addMarketer);
+                TempData[SuccessMessage] = "بازاریاب با موفقیت ثبت شد!";
                 return Json(new { success = true });
-            //}
-            //catch (Exception ex)
-            //{
-                //return Json(new { success = false, message = "خطا در ذخیره‌سازی اطلاعات!" });
-            //}
+            }
+            catch (Exception)
+            {
+                TempData[ErrorMessage] = "خطا در ذخیره‌سازی اطلاعات!";
+                return Json(new { success = false });
+            }
         }
+
 
 
 
@@ -96,7 +108,7 @@ namespace WEB.Areas.Admin.Controllers
             bool isDuplicate = await _addressService.CheckDuplicateRegionName(dto);
             if (isDuplicate)
             {
-                TempData[ErrorMessage] = "نام منطقه قبلاً برای این استان و شهر ثبت شده است.";
+                TempData[ErrorMessage] = "نام منطقه قبلاً ثبت شده است.";
                 return RedirectToAction("AddRegion");
             }
 

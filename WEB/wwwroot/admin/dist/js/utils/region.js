@@ -124,29 +124,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //  Get Regions
 
-
-// add marketer
-
+// Add Marketer
 document.addEventListener("DOMContentLoaded", function () {
-    let submitBtn = document.getElementById("submitBtn");
+    let submitBtn = document.getElementById("submitMarketer");
 
-    if (submitBtn) {
+    
         submitBtn.addEventListener("click", function (event) {
             event.preventDefault();
 
             let employee = document.getElementById("employee")?.value;
             let province = document.getElementById("province")?.value;
             let city = document.getElementById("city")?.value;
-            let region = document.getElementById("region").value;
+            let region = document.getElementById("region")?.value;
 
-             //ارسال اطلاعات به سرور
+            // ارسال اطلاعات به سرور
             let formData = {
                 EmployeeId: employee,
                 ProvinceId: province,
                 CityId: city,
                 RegionId: region
             };
-            alert(formData);
 
             fetch("/add-marketer", {
                 method: "POST",
@@ -158,31 +155,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'موفق!',
-                            text: 'بازاریاب با موفقیت ثبت شد!',
-                            confirmButtonText: 'باشه'
-                        }).then(() => {
-                            document.getElementById("marketerForm").reset();
-                        });
+                        // صفحه را رفرش کن تا پیام TempData نمایش داده شود
+                        window.location.reload();
                     } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'خطا!',
-                            text: 'مشکلی در ثبت اطلاعات پیش آمد!',
-                            confirmButtonText: 'متوجه شدم'
-                        });
+                        window.location.reload();
                     }
                 })
                 .catch(error => {
                     console.error("Error:", error);
                 });
         });
-    } else {
-        console.error("دکمه ارسال فرم (submitBtn) یافت نشد!");
-    }
+   
 });
+
 
 
 // add marketer

@@ -4,7 +4,9 @@ using Application.Utils;
 using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Entities.MSCRM;
+using Domain.Enums;
 using Domain.Interfaces.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Contracts.Services.ImplementationServices.MSCRM
 {
@@ -26,7 +28,14 @@ namespace Application.Contracts.Services.ImplementationServices.MSCRM
 
         #endregion
 
-        public async Task<Marketer> AddMarketer(AddMarketerDTO addMarketerDTO)
+        public async Task<bool> CheckMarketerExists(int marketerId)
+        {
+            var marketer = await _mscrmRepository.GetMarketerById(marketerId);
+            return marketer != null; // اگر مقدار نال نبود، یعنی این بازاریاب وجود دارد
+        }
+
+
+        public async Task<ValidationsResult> AddMarketer(AddMarketerDTO addMarketerDTO)
         {
             var marketer = _mapper.Map<Marketer>(addMarketerDTO);
 
@@ -41,7 +50,7 @@ namespace Application.Contracts.Services.ImplementationServices.MSCRM
             // ذخیره در دیتابیس
             await _mscrmRepository.CreateMarketer(marketer);
 
-            return marketer;
+            return ValidationsResult.Success;
         }
 
 

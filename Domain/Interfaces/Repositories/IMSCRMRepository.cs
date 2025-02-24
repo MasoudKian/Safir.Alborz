@@ -7,5 +7,7 @@ namespace Domain.Interfaces.Repositories
     {
         Task<Marketer> CreateMarketer(Marketer marketer);
         Task<List<Employee>> GetListCRMEmployeesAsync();
+
+        Task<Marketer> GetMarketerById(int id);
     }
 }
