@@ -83,8 +83,6 @@ namespace WEB.Areas.Admin.Controllers
             return Json(regions);
         }
 
-
-
         [HttpGet("add-region")]
         public async Task<IActionResult> AddRegion()
         {
@@ -96,29 +94,32 @@ namespace WEB.Areas.Admin.Controllers
         [HttpPost("add-region")]
         public async Task<IActionResult> AddRegion(CreateRegionDto dto)
         {
-            if (string.IsNullOrEmpty(dto.CityId.ToString()))
+            if (string.IsNullOrEmpty(dto.Name) || 
+                string.IsNullOrEmpty(dto.ProvinceId.ToString())
+                || string.IsNullOrEmpty(dto.CityId.ToString()))
             {
-                TempData[WarningMessage] = $"{dto.CityId}, لطفاً یک شهر انتخاب کنید.";
+                TempData[ErrorMessage] = "لطفاً همه فیلدها را پر کنید.";
+                return Json(new { success = false });
             }
 
-            if (!ModelState.IsValid)
-                return View(dto);
-
-            // بررسی تکراری بودن نام منطقه
             bool isDuplicate = await _addressService.CheckDuplicateRegionName(dto);
             if (isDuplicate)
             {
-                TempData[ErrorMessage] = "نام منطقه قبلاً ثبت شده است.";
-                return RedirectToAction("AddRegion");
+                TempData[WarningMessage] = "نام منطقه قبلاً ثبت شده است.";
+                return Json(new { success = false });
             }
 
-            // ایجاد منطقه
-            await _addressService.CreateRegionAsync(dto);
-
-            // ارسال پیام موفقیت
-            TempData[SuccessMessage] = "منطقه با موفقیت ثبت شد.";
-
-            return RedirectToAction("AddRegion");
+            try
+            {
+                await _addressService.CreateRegionAsync(dto);
+                TempData[SuccessMessage] = "منطقه با موفقیت ثبت شد.";
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                TempData[ErrorMessage] = "خطایی رخ داد! لطفاً مجدداً تلاش کنید.";
+                return Json(new { success = false });
+            }
         }
 
 

@@ -1,65 +1,48 @@
-﻿// add region
-document.addEventListener("DOMContentLoaded", function () {
-    let submitBtn = document.getElementById("submitBtn");
-    if (submitBtn) {
-        submitBtn.addEventListener("click", function (event) {
-            event.preventDefault();
+﻿
+debugger;
+// add region
+document.addEventListener("click", async function (event) {
+    if (event.target && event.target.id === "submitBtnRegion") {
+        event.preventDefault();
 
-            // دریافت مقادیر درست از فیلدها
-            //let province = document.getElementById("province")?.value;
-            //let city = document.getElementById("city")?.value;
-            //let name = document.getElementById("validation-form-1")?.value;
+        //دریافت مقادیر درست از فیلدها
+        // دریافت مقادیر فیلدها
+        let province = document.getElementById("province")?.value.trim();
+        let city = document.getElementById("city")?.value.trim();
+        let name = document.getElementById("validation-form-1")?.value.trim();
 
-            //
-            //// اعتبارسنجی مقدار استان
-            //if (!province || province.trim() === "" || province === "0") {
-            //    Swal.fire({
-            //        icon: 'error',
-            //        title: 'خطا!',
-            //        text: 'لطفاً یک استان را انتخاب کنید.',
-            //        confirmButtonText: 'باشه'
-            //    });
-            //    return;
-            //}
+        // بررسی مقدار نال یا خالی بودن فیلدها
+        if (!province || !city || !name) {
+            window.location.reload();
+        }
 
-            //// اعتبارسنجی مقدار شهر
-            //if (!city || city.trim() === "" || city === "0") {
-            //    Swal.fire({
-            //        icon: 'warning',
-            //        title: 'خطا!',
-            //        text: 'لطفاً یک شهر را انتخاب کنید.',
-            //        confirmButtonText: 'متوجه شدم'
-            //    });
-            //    return;
-            //}
-
-            //// اعتبارسنجی مقدار نام منطقه
-            //if (!name || name.trim() === "") {
-            //    Swal.fire({
-            //        icon: 'warning',
-            //        title: 'خطا!',
-            //        text: 'لطفاً نام منطقه را وارد کنید.',
-            //        confirmButtonText: 'متوجه شدم'
-            //    });
-            //    return;
-            //}
+        debugger;
+        // ارسال اطلاعات با استفاده از FormData
+        let formData = new FormData();
+        formData.append("ProvinceId", province);
+        formData.append("CityId", city);
+        formData.append("Name", name);
 
 
+        fetch("/add-region", {
+            method: "POST",
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.reload();
+                } else {
+                    window.location.reload();
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    };
 
-            // اگر همه فیلدها پر باشند، فرم ارسال شود
-
-            console.log("دکمه ارسال کلیک شد.");
-            document.getElementById("regionForm").submit();
-        });
-    } else {
-        console.error("دکمه ارسال فرم (submitBtn) یافت نشد!");
-    }
 });
 // add region
-
-
-
-
 
 // get cities
 document.addEventListener("DOMContentLoaded", function () {
@@ -122,50 +105,47 @@ document.addEventListener("DOMContentLoaded", function () {
     provinceDropdown.addEventListener("change", loadRegions);
     cityDropdown.addEventListener("change", loadRegions);
 });
-//  Get Regions
+//  Get Regions 
 
 // Add Marketer
-document.addEventListener("DOMContentLoaded", function () {
-    let submitBtn = document.getElementById("submitMarketer");
+document.addEventListener("click", async function (event) {
+    if (event.target && event.target.id === "submitMarketer") {
+        event.preventDefault();
 
-    
-        submitBtn.addEventListener("click", function (event) {
-            event.preventDefault();
+        let employee = document.getElementById("employee")?.value;
+        let province = document.getElementById("province")?.value;
+        let city = document.getElementById("city")?.value;
+        let region = document.getElementById("region")?.value;
 
-            let employee = document.getElementById("employee")?.value;
-            let province = document.getElementById("province")?.value;
-            let city = document.getElementById("city")?.value;
-            let region = document.getElementById("region")?.value;
+        // ارسال اطلاعات به سرور
+        let formData = {
+            EmployeeId: employee,
+            ProvinceId: province,
+            CityId: city,
+            RegionId: region
+        };
 
-            // ارسال اطلاعات به سرور
-            let formData = {
-                EmployeeId: employee,
-                ProvinceId: province,
-                CityId: city,
-                RegionId: region
-            };
-
-            fetch("/add-marketer", {
-                method: "POST",
-                body: JSON.stringify(formData),
-                headers: {
-                    "Content-Type": "application/json"
+        fetch("/add-marketer", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // صفحه را رفرش کن تا پیام TempData نمایش داده شود
+                    window.location.reload();
+                } else {
+                    window.location.reload();
                 }
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        // صفحه را رفرش کن تا پیام TempData نمایش داده شود
-                        window.location.reload();
-                    } else {
-                        window.location.reload();
-                    }
-                })
-                .catch(error => {
-                    console.error("Error:", error);
-                });
-        });
-   
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    };
+
 });
 
 
