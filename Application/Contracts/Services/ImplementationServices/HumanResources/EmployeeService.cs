@@ -44,6 +44,18 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
         public async Task<GetEmployeeByCode> GetEmployeeByCode(string code)
         {
             var employee =await _employeeRepository.GetEmployeeByCode(code);
+            if (employee == null)
+            {
+                return new GetEmployeeByCode()
+                {
+                    EmployeeID = "N/A",  // مقدار پیش‌فرض
+                    FullName = "مدیر ارشد سیستم",
+                    Image = "default-avatar.png", // تصویر پیش‌فرض
+                    DepartmentName = "مدیریت",
+                    PositionName = "PowerAdmin",
+                    Phone = "نامشخص"
+                };
+            }
 
             return new GetEmployeeByCode()
             {

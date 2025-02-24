@@ -16,8 +16,6 @@
                     <div class="w-full h-full relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-texture-white before:-mt-[50rem] after:content-[''] after:absolute after:inset-0 after:bg-texture-white after:-mt-[50rem]"></div>
                     <div class="absolute inset-x-0 top-0 mx-auto mt-24 h-32 w-32">
                         <div class="box image-fit h-full w-full overflow-hidden rounded-full border-[6px] border-white">
-                            <p>آدرس تصویر: @Model.Image</p>
-                            @* <img src="/Images/Employees/@Model.Image" alt="@Model.FullName"> *@
                             <img src="@(Model.Image.StartsWith("/") ? Model.Image : "/Images/Employees/" + Model.Image)" alt="@Model.FullName">
 
                         </div>
