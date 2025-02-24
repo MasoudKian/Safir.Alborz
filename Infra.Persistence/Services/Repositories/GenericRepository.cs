@@ -1,5 +1,6 @@
 ﻿
 using Domain.Entities;
+using Domain.Entities.Address;
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -68,10 +69,9 @@ namespace Persistence.Services.Repository
             return await _dbSet.AnyAsync(e => e.Id == id && !e.IsDelete);
         }
 
-        public async Task<bool> IsExistEntityName(string entityName)
+        public async Task<bool> IsExistEntity(Expression<Func<T, bool>> predicate)
         {
-            return await _dbSet.OfType<T>()
-                .AnyAsync(e => EF.Property<string>(e, "Name") == entityName);
+            return await _dbSet.AnyAsync(predicate);
         }
         public void Update(T entity)
         {

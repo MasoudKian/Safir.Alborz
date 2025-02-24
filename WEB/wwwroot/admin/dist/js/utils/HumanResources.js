@@ -29,7 +29,7 @@ document.addEventListener("click", async function (event) {
         const departmentId = document.getElementById("position-department").value.trim();
         const alertModal = document.getElementById("alert-modal");
         const alertMessage = document.getElementById("alert-message");
-        alert(departmentId)
+
 
         if (!positionTitle || !departmentId) {
             alertMessage.textContent = "لطفاً نام سمت و دپارتمان را وارد کنید!";

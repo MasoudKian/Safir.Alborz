@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
 
             // دریافت مقادیر درست از فیلدها
-            let province = document.getElementById("province")?.value;
-            let city = document.getElementById("city")?.value;
-            let name = document.getElementById("validation-form-1")?.value;
+            //let province = document.getElementById("province")?.value;
+            //let city = document.getElementById("city")?.value;
+            //let name = document.getElementById("validation-form-1")?.value;
 
             //
             //// اعتبارسنجی مقدار استان

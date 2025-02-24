@@ -9,7 +9,7 @@ namespace Domain.Interfaces
         Task<T> GetEntityById(int id);
         Task<T?> FindNameAsync(Expression<Func<T, bool>> predicate);
         Task<bool> IsEntityExist(int id);
-        Task<bool> IsExistEntityName(string entityName);
+        Task<bool> IsExistEntity(Expression<Func<T, bool>> predicate);
         Task<T> CreateAsync(T entity);
         void Update(T entity);
         void Delete(T entity);

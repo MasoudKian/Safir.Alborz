@@ -29,9 +29,15 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
         {
             var departments = await _departmentRepository.GetAllAsync();
 
-            var mappedDepartments = _mapper.Map<List<DepartmentListDTO>>(departments);
+            var dto = departments.Select(d => new DepartmentListDTO
+            {
+                Id = d.Id,
+                Name = d.Name,
+                EmployeeCount = d.Employees.Count(),
+                RegisteredDate = d.RegisteredDate,
+            }).ToList();
 
-            return mappedDepartments;
+            return dto;
         }
 
 

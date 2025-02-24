@@ -54,7 +54,9 @@ namespace Application.Profiles
             #region Department
 
             CreateMap<AddDepartmentDTO,Department>().ReverseMap();
-            CreateMap<Department, DepartmentListDTO>().ReverseMap();
+            //CreateMap<Department, DepartmentListDTO>()
+            //.ForMember(dest => dest.EmployeeCount, opt => opt.MapFrom
+            //(src => src.Employees.Count()));
 
             #endregion
 

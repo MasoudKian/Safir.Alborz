@@ -18,4 +18,11 @@ namespace Application.DTOs.Address.CRUD
         [Required]
         public int CityId { get; set; }
     }
+
+    public enum CreateResult
+    {
+        Success, 
+        Error,
+        IsThere,
+    }
 }

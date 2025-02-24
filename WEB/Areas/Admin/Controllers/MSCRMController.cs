@@ -84,24 +84,31 @@ namespace WEB.Areas.Admin.Controllers
         [HttpPost("add-region")]
         public async Task<IActionResult> AddRegion(CreateRegionDto dto)
         {
-            Console.WriteLine($"CityId: {dto.CityId}");
-
             if (string.IsNullOrEmpty(dto.CityId.ToString()))
             {
-                ModelState.AddModelError("CityId", "لطفاً یک شهر انتخاب کنید.");
+                TempData[WarningMessage] = $"{dto.CityId}, لطفاً یک شهر انتخاب کنید.";
             }
 
             if (!ModelState.IsValid)
                 return View(dto);
 
+            // بررسی تکراری بودن نام منطقه
+            bool isDuplicate = await _addressService.CheckDuplicateRegionName(dto);
+            if (isDuplicate)
+            {
+                TempData[ErrorMessage] = "نام منطقه قبلاً برای این استان و شهر ثبت شده است.";
+                return RedirectToAction("AddRegion");
+            }
+
             // ایجاد منطقه
             await _addressService.CreateRegionAsync(dto);
 
-            // استفاده از TempData برای ارسال پیام به ویو
-            TempData["SuccessMessage"] = "منطقه با موفقیت ثبت شد.";
+            // ارسال پیام موفقیت
+            TempData[SuccessMessage] = "منطقه با موفقیت ثبت شد.";
 
             return RedirectToAction("AddRegion");
         }
+
 
         [HttpGet("get-cities/{provinceId}")]
         public async Task<IActionResult> GetCities(int provinceId)

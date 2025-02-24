@@ -5,6 +5,7 @@ using Application.Utils;
 using AutoMapper;
 using Domain.Entities.Address;
 using Domain.Interfaces.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace Application.Contracts.Services.ImplementationServices.Address
 {
@@ -157,16 +158,33 @@ namespace Application.Contracts.Services.ImplementationServices.Address
         //    region = await _addressRepository.CreateRegionAsync(region);
         //    return _mapper.Map<RegionDto>(region);
         //}
-        public async Task CreateRegionAsync(CreateRegionDto dto)
+        public async Task<CreateResult> CreateRegionAsync(CreateRegionDto dto)
         {
             var region = _mapper.Map<Region>(dto);
+
+
 
             // مقداردهی فیلد Code بر اساس نام منطقه
             region.Code = CodeGeneratorRegion.GenerateRegionCode(region.Name);
 
+            
+
             await _addressRepository.CreateRegionAsync(region);
+
+            return CreateResult.Success;
         }
 
+        /// <summary>
+        /// بررسی تکراری بودن منطقه
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public async Task<bool> CheckDuplicateRegionName(CreateRegionDto check)
+        {
+            return await _addressRepository.CheckDuplicateRegionByName
+                (check.Name, check.ProvinceId, check.CityId);
+
+        }
 
         /// <summary>
         /// لیست تمام بخش ها
@@ -204,20 +222,7 @@ namespace Application.Contracts.Services.ImplementationServices.Address
             return await _addressRepository.UpdateRegionAsync(existingRegion);
         }
 
-        /// <summary>
-        /// بررسی تکراری بودن منطقه
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        public async Task<bool> CheckDuplicateRegionName(CheckRegion dto)
-        {
-            var region = _mapper.Map<CheckRegion>(dto);
-
-            var existRegion = await _addressRepository.CheckDuplicateRegionByName(region.Name);
-            if (existRegion == null) return false;
-
-            return true;
-        }
+       
         #endregion
     }
 }

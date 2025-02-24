@@ -1,7 +1,9 @@
-﻿using Domain.Entities.Address;
+﻿using Application.DTOs.Address.CRUD;
+using Domain.Entities.Address;
 using Domain.Interfaces;
 using Domain.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Services.Repository;
 
 namespace Persistence.Services.Repositories
 {
@@ -159,15 +161,15 @@ namespace Persistence.Services.Repositories
             return true;
         }
 
-        public async Task<bool> CheckDuplicateRegionByName(string name)
+        public async Task<bool> CheckDuplicateRegionByName(string name, int provinceId, int cityId)
         {
-            var existRegion = await _regionRepository.IsExistEntityName(name);
-            if (existRegion)
-                return true;
-
-            return false;
+            return await _regionRepository.IsExistEntity
+                (r => r.Name == name && r.ProvinceId == provinceId && r.CityId == cityId);
 
         }
+
+
+
         #endregion
     }
 }

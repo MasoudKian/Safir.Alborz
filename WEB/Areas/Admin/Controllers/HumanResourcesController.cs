@@ -30,7 +30,6 @@ namespace WEB.Areas.Admin.Controllers
         [HttpGet("Employee-Management")]
         public IActionResult EmployeeManagement()
         {
-
             return View();
         }
 
@@ -41,8 +40,9 @@ namespace WEB.Areas.Admin.Controllers
         [HttpGet("Add-Employee")]
         public async Task<IActionResult> AddEmployee()
         {
+            
             var departments = await _departmentService.GetAllDepartmentsAsync();
-            ViewBag.Departments = new SelectList(departments, "DepartmentId", "Name");
+            ViewBag.Departments = new SelectList(departments, "Id", "Name");
 
             var positions = await _positionService.GetAllPositionAsync();
             ViewBag.Positions = new SelectList(positions, "PositionId", "Title");
@@ -68,7 +68,7 @@ namespace WEB.Areas.Admin.Controllers
             switch (result)
             {
                 case AddEmployeeResult.Success:
-                    TempData[SuccessMessage] = "کارمند جدید با موفقیت ثبت شد";
+                    TempData[SuccessMessage] = $"کارمند با کد ملی  :{addEmployee.IRCode} ثبت شد.";
                     break;
                 case AddEmployeeResult.ThereIs:
                     TempData[WarningMessage] = $"کارمند با کد ملی : {addEmployee.IRCode} قبلا در س";

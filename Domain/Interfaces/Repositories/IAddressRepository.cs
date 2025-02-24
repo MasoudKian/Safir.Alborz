@@ -31,7 +31,7 @@ namespace Domain.Interfaces.Repositories
         Task<Region?> GetRegionByIdAsync(int id);
         Task<Region> CreateRegionAsync(Region region);
         Task<bool> UpdateRegionAsync(Region region);
-        Task<bool> CheckDuplicateRegionByName(string name);
+        Task<bool> CheckDuplicateRegionByName(string name, int provinceId, int cityId);
         #endregion
     }
 }

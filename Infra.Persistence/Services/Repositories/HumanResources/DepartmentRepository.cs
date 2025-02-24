@@ -38,7 +38,9 @@ namespace Persistence.Services.Repositories.HumanResources
 
         public async Task<List<Department>> GetAllAsync()
         {
-            return await _context.Departments.Where(d => !d.IsDelete).ToListAsync();
+            var department =  await _context.Departments.Where(d => !d.IsDelete)
+                .Include(d=>d.Employees).ToListAsync();
+            return department;
         }
     }
 }
