@@ -1,5 +1,6 @@
 ﻿using Application.Contracts.Interfaces.APIs;
 using Application.Contracts.Interfaces.UserServices;
+using Application.Models.AuthenticationIdentity;
 using Identity.DbContext;
 using Identity.Model;
 using Identity.PersistenceServices.Services;

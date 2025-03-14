@@ -9,6 +9,9 @@ namespace Domain.Entities.Site.SiteMenu
         [Required, MaxLength(200)]
         public string Title { get; set; } = string.Empty;
 
+        [Display(Name = "اولویت نمایش")]
+        public int DisplayOrder { get; set; } 
+
         [Display(Name = "آیکون")]
         public string? Icon { get; set; }
 

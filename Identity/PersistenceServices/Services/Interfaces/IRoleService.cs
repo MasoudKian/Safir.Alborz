@@ -7,6 +7,8 @@ namespace Identity.PersistenceServices.Services.Interfaces
     {
         Task<RolesResponseDTO> GetAllRoles();
         Task<bool> CreateRole(CreateRoleDTO role);
+        Task<bool> EditRole(EditRoleDTO role); // متد جدید برای ویرایش
+
 
         Task<List<UserDTO>> GetUsersAsync();
         Task<List<RoleDTO>> GetRolesAsync();

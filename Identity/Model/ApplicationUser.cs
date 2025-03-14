@@ -10,7 +10,7 @@ namespace Identity.Model
 
         [MaxLength(200)]
         public string? LastName { get; set; }
-
+        public DateTime? DateOfBirth { get; set; }
 
         public bool IsDelete { get; set; }
         public DateTime? CreatedDate { get; set; } = DateTime.Now;

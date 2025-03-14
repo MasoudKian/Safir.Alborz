@@ -75,6 +75,10 @@ namespace Persistence.Context
             
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<Menu>()
+            .HasIndex(m => new { m.Title, m.Url })
+            .IsUnique();
+
             modelBuilder.Entity<Region>()
             .HasIndex(r => r.Code)
             .IsUnique();

@@ -59,6 +59,21 @@ namespace Identity.PersistenceServices.Services.Implementation
             return result.Succeeded;
         }
 
+        public async Task<bool> EditRole(EditRoleDTO model)
+        {
+            var role = await _roleManager.FindByIdAsync(model.RoleId);
+            if (role == null)
+                return false;
+
+            // آپدیت فیلدها
+            role.Name = model.RoleName;
+            role.Description = model.Description;
+            role.LastUpdateDate = DateTime.UtcNow;
+
+            var result = await _roleManager.UpdateAsync(role);
+            return result.Succeeded;
+        }
+
         public async Task<RolesResponseDTO> GetAllRoles()
         {
             var roles = await _roleManager.Roles.ToListAsync();
