@@ -132,4 +132,8 @@ namespace WEB.Areas.Admin.ViewComponents
     }
 
     #endregion
+
+    #region MyRegion
+
+    #endregion
 }

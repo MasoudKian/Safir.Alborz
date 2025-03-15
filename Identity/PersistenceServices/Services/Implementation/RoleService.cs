@@ -59,10 +59,33 @@ namespace Identity.PersistenceServices.Services.Implementation
             return result.Succeeded;
         }
 
+        public async Task<bool> DeactivateRole(string roleId)
+        {
+            var role = await _roleManager.FindByIdAsync(roleId);
+            if (role == null)
+                return false;
+
+            role.IsDelete = true;
+            role.LastUpdateDate = DateTime.UtcNow;
+
+            var result = await _roleManager.UpdateAsync(role);
+            return result.Succeeded;
+        }
+
+        public async Task<bool> IsRoleValid(string roleName)
+        {
+            return await _roleManager.RoleExistsAsync(roleName);
+        }
+
         public async Task<bool> EditRole(EditRoleDTO model)
         {
             var role = await _roleManager.FindByIdAsync(model.RoleId);
             if (role == null)
+                return false;
+
+            // چک کردن تکراری بودن نام نقش
+            var isRoleValid = await IsRoleValid(model.RoleName);
+            if (isRoleValid && model.RoleName != role.Name) // اگه وجود داره و با اسم فعلی فرق داره
                 return false;
 
             // آپدیت فیلدها
@@ -70,13 +93,13 @@ namespace Identity.PersistenceServices.Services.Implementation
             role.Description = model.Description;
             role.LastUpdateDate = DateTime.UtcNow;
 
-            var result = await _roleManager.UpdateAsync(role);
+              var result = await _roleManager.UpdateAsync(role);
             return result.Succeeded;
         }
 
         public async Task<RolesResponseDTO> GetAllRoles()
         {
-            var roles = await _roleManager.Roles.ToListAsync();
+            var roles = await _roleManager.Roles.Where(r=> !r.IsDelete).ToListAsync();
             var totalCount = roles.Count;
 
             var roleList = new List<RolesListDTO>();
@@ -91,6 +114,7 @@ namespace Identity.PersistenceServices.Services.Implementation
 
                 roleList.Add(new RolesListDTO
                 {
+                    RoleId = role.Id, // اضافه کردن آیدی
                     RoleName = role.Name,
                     Description = role.Description,
                     CreatedDate = (DateTime)role.CreatedDate!, // مقدار تاریخ ثبت
@@ -105,6 +129,8 @@ namespace Identity.PersistenceServices.Services.Implementation
                 Roles = roleList
             };
         }
+
+
 
         #endregion
 
@@ -129,5 +155,7 @@ namespace Identity.PersistenceServices.Services.Implementation
                 FullName = $"{u.FirstName} {u.LastName}"
             }).ToList();
         }
+
+
     }
 }

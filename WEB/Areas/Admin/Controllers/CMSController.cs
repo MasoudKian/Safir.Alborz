@@ -7,19 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WEB.Areas.Admin.Controllers
 {
-    public class CMSController : AdminBaseController
+    public class CMSController(IRoleService roleService, IUserService userService) : AdminBaseController
     {
 
         #region ctor DI
 
-        private readonly IRoleService _roleService;
-        private readonly IUserService _userService;
-
-        public CMSController(IRoleService roleService, IUserService userService)
-        {
-            _roleService = roleService;
-            _userService = userService;
-        }
+        private readonly IRoleService _roleService = roleService;
+        private readonly IUserService _userService = userService;
 
         #endregion
 
@@ -87,10 +81,6 @@ namespace WEB.Areas.Admin.Controllers
 
         #region Role Management
 
-        public IActionResult RoleManager()
-        {
-            return View();
-        }
 
         [HttpGet("role-list")]
         public async Task<IActionResult> SiteRoleList()
@@ -122,15 +112,75 @@ namespace WEB.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditRole()
+        public async Task<IActionResult> EditRole(string id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id))
+            {
+                TempData[WarningMessage] = "مشکلی پیش آمده!";
+                return View();
+            }
+            var role = await _roleService.GetRolesAsync();
+            var currentRole = role.FirstOrDefault(r => r.Id == id);
+
+            if (currentRole == null)
+            {
+                TempData[WarningMessage] = "نقش مورد نظر پیدا نشد ! ";
+                return View();
+            }
+
+            // پر کردن DTO برای نمایش توی ویو
+            var result = new EditRoleDTO
+            {
+                RoleId = currentRole.Id,
+                RoleName = currentRole.Name,
+                Description = (await _roleService.GetAllRoles()).Roles
+                    .FirstOrDefault(r => r.RoleName == currentRole.Name)?.Description ?? string.Empty
+            };
+
+            return View(result);
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditRole(EditRoleDTO editRole)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                TempData[InfoMessage] = "لطفا اطلاعات را به درستی وارد کنید !";
+                return View();
+            }
+
+            var result = await _roleService.EditRole(editRole);
+            if (result != true)
+            {
+                TempData[WarningMessage] = "این نقش قبلا در سیستم ثبت شده !";
+                return View();
+            }
+             
+            TempData[SuccessMessage] = "نقش با موفقیت ویرایش شد";
+            return RedirectToAction("SiteRoleList");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeactiveRole(string roleId)
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData[InfoMessage] = "لطفا اطلاعات را به درستی وارد کنید !";
+                return RedirectToAction("SiteRoleList");
+            }
+
+            var result = await _roleService.DeactivateRole(roleId);
+            if (!result)
+            {
+                TempData[ErrorMessage] = "در دریافت اطلاعات مشکلی به وجود آمده است !";
+                return RedirectToAction("SiteRoleList");
+            }
+
+            TempData[SuccessMessage] = "نقش با موفقیت حذف شد !";
+            return RedirectToAction("SiteRoleList");
+
         }
 
         #endregion

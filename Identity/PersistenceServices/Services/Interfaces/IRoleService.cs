@@ -9,6 +9,8 @@ namespace Identity.PersistenceServices.Services.Interfaces
         Task<bool> CreateRole(CreateRoleDTO role);
         Task<bool> EditRole(EditRoleDTO role); // متد جدید برای ویرایش
 
+        Task<bool> DeactivateRole(string roleId); // متد جدید برای غیرفعال کردن
+        Task<bool> IsRoleValid(string roleName); // متد جدید برای اعتبارسنجی نقش
 
         Task<List<UserDTO>> GetUsersAsync();
         Task<List<RoleDTO>> GetRolesAsync();

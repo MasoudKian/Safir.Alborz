@@ -2,6 +2,8 @@
 {
     public class RolesListDTO
     {
+        public string RoleId { get; set; } = string.Empty;
+
         public string RoleName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public DateTime CreatedDate { get; set; } // تاریخ ثبت رول
