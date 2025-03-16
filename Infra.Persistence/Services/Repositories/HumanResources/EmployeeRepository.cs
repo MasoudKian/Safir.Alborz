@@ -86,10 +86,8 @@ namespace Persistence.Services.Repositories.HumanResources
             existEmployee.UpdateDate = DateTime.Now;
             existEmployee.LastModifiedBy = currentUser;
 
-            _context.SaveChanges();
-            
-
-            return true;
+            var result = await _context.SaveChangesAsync();
+            return result > 0;
         }
     }
 }

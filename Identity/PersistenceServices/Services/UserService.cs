@@ -121,8 +121,8 @@ namespace Identity.PersistenceServices.Services
 
         public async Task<bool> DeactivateUserAsync(string userId)
         {
-            
-            var user = await _userManager.FindByIdAsync(userId) 
+
+            var user = await _userManager.FindByIdAsync(userId)
                 ?? throw new Exception("کاربر مورد نظر یافت نشد.");
 
             user.IsDelete = true; // غیرفعال کردن کاربر
@@ -144,5 +144,24 @@ namespace Identity.PersistenceServices.Services
             var result = await _userManager.UpdateAsync(user);
             return result.Succeeded;
         }
+
+        public async Task<bool> FindByUserNameAndDeactiveAsync(string userName)
+        {
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null) return false;
+
+            user.IsDelete = true;
+            user.LastUpdateDate = DateTime.Now;
+            //user.LockoutEnabled = true;
+            //user.LockoutEnd = DateTimeOffset.MaxValue; 
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded) return false; 
+
+            return true;
+
+        }
+
+
     }
 }

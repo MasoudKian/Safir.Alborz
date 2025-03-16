@@ -6,6 +6,7 @@ using Identity.Model;
 using Identity.PersistenceServices.Services;
 using Identity.PersistenceServices.Services.Implementation;
 using Identity.PersistenceServices.Services.Interfaces;
+using Identity.UtilsIdentity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -96,7 +97,8 @@ namespace Identity.PersistenceServices
                 options.Lockout.AllowedForNewUsers = true;
             })
                 .AddEntityFrameworkStores<SafirIdentityDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders()
+                .AddErrorDescriber<CustomIdentityErrorDescriber>(); // استفاده از کلاس سفارشی;
 
             #endregion
 

@@ -21,6 +21,7 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
         private readonly IDepartmentService _departmentService;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
+        
 
         public EmployeeService(IEmployeeRepository employeeRepository
             , IGenericRepository<Employee> employeeGenericRepository
@@ -222,15 +223,36 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
 
         public async Task<bool> DeactiveEmployeeAsync(int employeeId, string currentUser)
         {
-            //var employee = await _employeeRepository.DeactiveEmployee(employeeId,currentUser);
-            var employee = await _employeeRepository.GetEmployeeById(employeeId);
-            
-            if (employee)
+            using var transaction = await _employeeGenericRepository.BeginTransactionAsync();
+            try
             {
-                // Deactive User in Table AspUser
+                // غیر فعال کردن کارمند در جدول Employee
+                var deactiveEmployee = await _employeeRepository.DeactiveEmployee(employeeId, currentUser);
+                if (!deactiveEmployee) return false;
+
+                // دریافت کارمند بر اساس ID
+                var employee = await _employeeRepository.GetEmployeeById(employeeId);
+                if (employee == null) return false;
+
+                // غیر فعال کردن یوزر در AspNetUser
+                var deactiveUser = await _userService.FindByUserNameAndDeactiveAsync(employee.EmployeeID);
+                if (!deactiveUser)
+                {
+                    // اگر غیرفعال کردن کاربر موفق نبود، تراکنش را لغو کنیم
+                    await transaction.RollbackAsync();
+                    return false;
+                }
+
+                // اگر همه عملیات موفق بود، تراکنش را ذخیره کنیم
+                await transaction.CommitAsync();
                 return true;
             }
-            return false;
+            catch (Exception ex)
+            {
+                // اگر خطایی رخ دهد، تراکنش را لغو کنیم
+                await transaction.RollbackAsync();
+                return false;
+            }
         }
 
         #region List Employee & Count 

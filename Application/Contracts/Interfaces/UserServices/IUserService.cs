@@ -19,6 +19,7 @@ namespace Application.Contracts.Interfaces.UserServices
 
         Task<bool> DeactivateUserAsync(string userId);
         Task<bool> ActivateUserAsync(string userId);
-        
+
+        Task<bool> FindByUserNameAndDeactiveAsync(string userName);
     }
 }
