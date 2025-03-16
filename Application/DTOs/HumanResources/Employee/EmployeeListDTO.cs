@@ -29,6 +29,7 @@ namespace Application.DTOs.HumanResources.Employee
         public string? ProfileImage { get; set; }
 
         public DateTime RegisteredDate { get; set; }
+        public DateTime ExitDate { get; set; }
         
 
 

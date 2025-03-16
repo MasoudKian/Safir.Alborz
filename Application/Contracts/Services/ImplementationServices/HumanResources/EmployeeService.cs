@@ -220,10 +220,29 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
 
         #endregion
 
+        public async Task<bool> DeactiveEmployeeAsync(int employeeId, string currentUser)
+        {
+            //var employee = await _employeeRepository.DeactiveEmployee(employeeId,currentUser);
+            var employee = await _employeeRepository.GetEmployeeById(employeeId);
+            
+            if (employee)
+            {
+                // Deactive User in Table AspUser
+                return true;
+            }
+            return false;
+        }
+
         #region List Employee & Count 
         public async Task<List<EmployeeListDTO>> GetEmployeeListsAsync()
         {
             var employees = await _employeeRepository.GetAllEmployees();
+            var employeeMapper = _mapper.Map<List<EmployeeListDTO>>(employees);
+            return employeeMapper;
+        }        
+        public async Task<List<EmployeeListDTO>> GetDeactiveEmployeeListsAsync()
+        {
+            var employees = await _employeeRepository.GetAllDeactiveEmployees();
             var employeeMapper = _mapper.Map<List<EmployeeListDTO>>(employees);
             return employeeMapper;
         }
@@ -233,6 +252,7 @@ namespace Application.Contracts.Services.ImplementationServices.HumanResources
             return await _employeeRepository.GetTotalEmployeesCount();
         }
         #endregion
+
 
     }
 }

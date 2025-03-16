@@ -92,6 +92,21 @@ namespace WEB.Areas.Admin.ViewComponents
         }
     }
 
+    public class DeactiveEmployeeListViewComponent : ViewComponent
+    {
+        private readonly IEmployeeService _employeeService;
+
+        public DeactiveEmployeeListViewComponent(IEmployeeService employeeService)
+        {
+            _employeeService = employeeService;
+        }
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var list = await _employeeService.GetDeactiveEmployeeListsAsync();
+            return View("DeactiveEmployeeList",list);
+        }
+
+    }
 
     public class EmployeeCountViewComponent : ViewComponent
     {
@@ -109,6 +124,8 @@ namespace WEB.Areas.Admin.ViewComponents
             return View("EmployeeCount");
         }
     }
+
+
 
     #endregion
 

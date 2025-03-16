@@ -28,6 +28,7 @@ namespace Application.Profiles
                 .ForMember(e => e.Email, el => el.MapFrom(eld => eld.Email))
                 .ForMember(e => e.Address, el => el.MapFrom(eld => eld.Address))
                 .ForMember(e => e.RegisteredDate, el => el.MapFrom(eld => eld.RegisteredDate))
+                .ForMember(e => e.ExitDate, el => el.MapFrom(eld => eld.UpdateDate))
                 .ForMember(e => e.EmployeeCode, el => el.MapFrom(eld => eld.EmployeeID))
                 .ForMember(e => e.ProfileImage, el => el.MapFrom(eld => eld.ImageAddress))
                 .ForMember(e => e.Education, el => el.MapFrom(eld => eld.Education))

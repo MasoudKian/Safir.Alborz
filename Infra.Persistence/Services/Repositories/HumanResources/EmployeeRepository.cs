@@ -6,13 +6,10 @@ using Persistence.Services.Repository;
 
 namespace Persistence.Services.Repositories.HumanResources
 {
-    public class EmployeeRepository : GenericRepository<Employee>, IEmployeeRepository
+    public class EmployeeRepository(SafirDbContext context) : GenericRepository<Employee>(context)
+        , IEmployeeRepository
     {
-        private readonly SafirDbContext _context;
-        public EmployeeRepository(SafirDbContext context) : base(context)
-        {
-            _context = context;
-        }
+        private readonly SafirDbContext _context = context;
 
 
         public async Task<Employee> GetEmployeeByCode(string code)
@@ -49,6 +46,11 @@ namespace Persistence.Services.Repositories.HumanResources
             return isEmailExist!;
         }
 
+        public async Task<int> GetTotalEmployeesCount()
+        {
+            return await _context.Employees.CountAsync();
+        }
+
         public async Task<List<Employee>> GetAllEmployees()
         {
             var employees = await _context.Employees
@@ -57,11 +59,37 @@ namespace Persistence.Services.Repositories.HumanResources
                 .Where(e => !e.IsDelete).ToListAsync();
 
             return employees;
+        }        
+        public async Task<List<Employee>> GetAllDeactiveEmployees()
+        {
+            var employees = await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Position)
+                .Where(e => e.IsDelete).ToListAsync();
+
+            return employees;
         }
 
-        public async Task<int> GetTotalEmployeesCount()
+        public async Task<Employee> GetEmployeeById(int employeeId)
         {
-            return await _context.Employees.CountAsync();
+            var employee = await _context.Employees.Where(e => e.Id == employeeId).FirstOrDefaultAsync();
+
+            return employee!;
+        }
+
+        public async Task<bool> DeactiveEmployee(int employeeId,string currentUser)
+        {
+            var existEmployee = await GetEmployeeById(employeeId);
+            if (existEmployee == null) return false;    
+
+            existEmployee.IsDelete = true;
+            existEmployee.UpdateDate = DateTime.Now;
+            existEmployee.LastModifiedBy = currentUser;
+
+            _context.SaveChanges();
+            
+
+            return true;
         }
     }
 }

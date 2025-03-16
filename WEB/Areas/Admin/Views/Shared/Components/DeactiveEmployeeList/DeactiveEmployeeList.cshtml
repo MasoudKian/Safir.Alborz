@@ -5,9 +5,7 @@
 <table data-tw-merge="" class="w-full rtl:text-right ltr:text-left border-b border-slate-200/60">
     <thead data-tw-merge="" class="">
         <tr data-tw-merge="" class="">
-            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-5 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
-                <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50">
-            </td>
+
             <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
                 نام و نام خانوادگی
             </td>
@@ -17,17 +15,13 @@
             <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-52 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
                 کد ملی
             </td>
-            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-52 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
-                شماره شناسنامه
-            </td>
+
             <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-52 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
                 موبایل
             </td>
-            <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 text-center font-medium text-slate-500">
-                وضعیت
-            </td>
+
             <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-t border-slate-200/60 bg-slate-50 py-4 font-medium text-slate-500">
-                تاریخ پیوستن
+                تاریخ خروج
             </td>
             <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-20 border-t border-slate-200/60 bg-slate-50 py-4 text-center font-medium text-slate-500">
                 عملیات
@@ -40,9 +34,7 @@
         {
             <tbody>
                 <tr data-tw-merge="" class="[&_td]:last:border-b-0">
-                    <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
-                        <input data-tw-merge="" type="checkbox" class="transition-all duration-100 ease-in-out shadow-sm border-slate-200 cursor-pointer rounded focus:ring-4 focus:ring-offset-0 focus:ring-primary focus:ring-opacity-20 dark:bg-darkmode-800 dark:border-transparent dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&[type='radio']]:checked:bg-primary [&[type='radio']]:checked:border-primary [&[type='radio']]:checked:border-opacity-10 [&[type='checkbox']]:checked:bg-primary [&[type='checkbox']]:checked:border-primary [&[type='checkbox']]:checked:border-opacity-10 [&:disabled:not(:checked)]:bg-slate-100 [&:disabled:not(:checked)]:cursor-not-allowed [&:disabled:not(:checked)]:dark:bg-darkmode-800/50 [&:disabled:checked]:opacity-70 [&:disabled:checked]:cursor-not-allowed [&:disabled:checked]:dark:bg-darkmode-800/50">
-                    </td>
+
                     <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 w-80 border-dashed py-4 dark:bg-darkmode-600">
                         <div class="flex items-center">
                             <div class="image-fit zoom-in h-9 w-9">
@@ -75,39 +67,15 @@
                             @employee.IRCode
                         </div>
                     </td>
-                    <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
-                        <div class="whitespace-nowrap">
-                            @employee.BirthCertificateNumber
-                        </div>
-                    </td>
+
                     <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
                         <div class="whitespace-nowrap">
                             @employee.Mobile
                         </div>
                     </td>
                     <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
-                        @if (employee.IsDelete)
-                        {
-                            <div class="flex items-center justify-center text-danger">
-                                <i data-tw-merge="" data-lucide="database" class="h-3.5 w-3.5 stroke-[1.7]"></i>
-                                <div class="rtl:mr-1.5 ltr:ml-1.5 whitespace-nowrap">
-                                    غیر فعال
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div class="flex items-center justify-center text-success">
-                                <i data-tw-merge="" data-lucide="database" class="h-3.5 w-3.5 stroke-[1.7]"></i>
-                                <div class="rtl:mr-1.5 ltr:ml-1.5 whitespace-nowrap">
-                                    فعال
-                                </div>
-                            </div>
-                        }
-                    </td>
-                    <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 border-dashed py-4 dark:bg-darkmode-600">
                         <div class="whitespace-nowrap">
-                            @employee.RegisteredDate.ToShamsi()
+                            @employee.ExitDate.ToShamsi()
                         </div>
                     </td>
                     <td data-tw-merge="" class="px-5 border-b dark:border-darkmode-300 relative border-dashed py-4 dark:bg-darkmode-600">
@@ -122,22 +90,6 @@
                                             <i data-tw-merge data-lucide="alert-circle" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
                                             جزئیات
                                         </a>
-                                        <a class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item">
-                                            <i data-tw-merge="" data-lucide="check-square" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                            ویرایش
-                                        </a>
-                                        <form asp-area="Admin"
-                                              asp-controller="HumanResources"
-                                              asp-action="DeactiveEmployee"
-                                              method="post">
-                                            <input type="hidden"
-                                                   name="employeeId"
-                                                   value="@employee.EId" />
-                                            <button type="submit" class="cursor-pointer flex items-center p-2 transition duration-300 ease-in-out rounded-md hover:bg-slate-200/60 dark:bg-darkmode-600 dark:hover:bg-darkmode-400 dropdown-item text-danger">
-                                                <i data-tw-merge="" data-lucide="trash2" class="stroke-[1] rtl:ml-2 ltr:mr-2 h-4 w-4"></i>
-                                                حذف
-                                            </button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>

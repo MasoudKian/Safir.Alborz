@@ -121,9 +121,9 @@ namespace Identity.PersistenceServices.Services
 
         public async Task<bool> DeactivateUserAsync(string userId)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
-                throw new Exception("کاربر مورد نظر یافت نشد.");
+            
+            var user = await _userManager.FindByIdAsync(userId) 
+                ?? throw new Exception("کاربر مورد نظر یافت نشد.");
 
             user.IsDelete = true; // غیرفعال کردن کاربر
             user.LastUpdateDate = DateTime.Now; // به‌روزرسانی تاریخ آخرین تغییر

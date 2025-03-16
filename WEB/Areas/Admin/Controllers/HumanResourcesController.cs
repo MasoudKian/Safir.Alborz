@@ -35,19 +35,21 @@ namespace WEB.Areas.Admin.Controllers
 
         #endregion
 
+        #region Employee Managment
+
         #region Add Employee
 
         [HttpGet("Add-Employee")]
         public async Task<IActionResult> AddEmployee()
         {
-            
+
             var departments = await _departmentService.GetAllDepartmentsAsync();
             ViewBag.Departments = new SelectList(departments, "Id", "Name");
 
             var positions = await _positionService.GetAllPositionAsync();
             ViewBag.Positions = new SelectList(positions, "PositionId", "Title");
 
-            return View();  
+            return View();
         }
 
         [HttpPost("Add-Employee")]
@@ -84,6 +86,34 @@ namespace WEB.Areas.Admin.Controllers
             }
             return RedirectToAction("EmployeeManagement");
         }
+
+        #endregion
+
+        #region Deactive Employee
+
+        [HttpPost]
+        public async Task<IActionResult> DeactiveEmployee(int employeeId)
+        {
+            var currentUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (currentUserId == null)
+            {
+                return NotFound();
+            }
+
+            var employee =  await _employeeService.DeactiveEmployeeAsync(employeeId, currentUserId);
+
+            if (!employee)
+            {
+                TempData[WarningMessage] = "کارمند مورد نظر با یافت نشد !";
+                return RedirectToAction("EmployeeManagement");
+            }
+
+            TempData[SuccessMessage] = "کارمند مورد نظر با موفقیت غیر فعال شد.";
+            return RedirectToAction("EmployeeManagement");
+        }
+
+        #endregion
+
 
         #endregion
 

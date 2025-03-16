@@ -14,8 +14,13 @@ namespace Domain.Interfaces.Repositories.HumanResources
 
         Task<Employee> EmployeeExistsByEmailAsync(string email);
 
-        Task<List<Employee>> GetAllEmployees();
-
         Task<int> GetTotalEmployeesCount();
+
+        Task<List<Employee>> GetAllEmployees();
+        Task<List<Employee>> GetAllDeactiveEmployees();
+
+        Task<Employee> GetEmployeeById(int employeeId);
+        Task<bool> DeactiveEmployee(int employeeId, string currentUser);
+
     }
 }

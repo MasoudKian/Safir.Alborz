@@ -37,7 +37,7 @@
                             <div class="flex flex-col gap-x-3 gap-y-2 w-full">
 
                                 <partial name="_AddPositionPartial" />
-              
+
 
                             </div>
                         </div>
@@ -100,9 +100,9 @@
                                  id="example-5" role="tabpanel" aria-labelledby="example-5-tab" class="tab-pane active leading-relaxed">
                                 <!--لیست نمایش کارمندان-->
                                 <!--تعداد کارمندان-->
-                                
+
                                 <partial name="_EmployeeCountPartial" />
-                                
+
                                 <!--تعداد کارمندان-->
                                 <!--فیلتر-->
                                 <div class="flex flex-col gap-y-2 p-5 sm:flex-row sm:items-center">
@@ -195,13 +195,22 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="text-center">
+                                            <!-- BEGIN: Super بزرگ مودال Toggle -->
+                                            <a data-tw-merge data-tw-toggle="modal"
+                                               data-tw-target="#superlarge-modal-size-preview"
+                                               href="#" class="transition duration-200 border shadow-sm inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mb-2 rtl:ml-1 ltr:mr-1 mb-2 rtl:ml-1 ltr:mr-1">
+                                                لیست کارمندان غیر فعال
+                                            </a>
+                                            <!-- END: Super بزرگ مودال Toggle -->
+                                        </div>
                                     </div>
                                 </div>
                                 <!--فیلتر-->
 
                                 <div class="overflow-auto xl:overflow-visible">
                                     @await Component.InvokeAsync("EmployeeList")
-                                    
+
                                 </div>
 
                                 <!--صفحه بندی-->
@@ -310,7 +319,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="overflow-auto xl:overflow-visible">
-                                                          
+
                                                             @await Component.InvokeAsync("PositionList")
 
                                                         </div>
@@ -370,3 +379,17 @@
 </div>
 
 
+<!-- BEGIN: Super بزرگ مودال Content -->
+<div data-tw-backdrop="" aria-hidden="true" tabindex="-1" id="superlarge-modal-size-preview" class="modal group bg-gradient-to-b from-theme-1/50 via-theme-2/50 to-black/50 transition-[visibility,opacity] w-screen h-screen fixed rtl:right-0 ltr:left-0 top-0 [&:not(.show)]:duration-[0s,0.2s] [&:not(.show)]:delay-[0.2s,0s] [&:not(.show)]:invisible [&:not(.show)]:opacity-0 [&.show]:visible [&.show]:opacity-100 [&.show]:duration-[0s,0.4s]">
+    <div data-tw-merge
+         class="w-[90%] mx-auto bg-white relative rounded-md shadow-md transition-[margin-top,transform] duration-[0.4s,0.3s] -mt-16 group-[.show]:mt-16 group-[.modal-static]:scale-[1.05] dark:bg-darkmode-600    sm:w-[600px] lg:w-[900px] p-10 text-center">
+        <div class="overflow-auto xl:overflow-visible">
+            <div class="w-full rtl:text-right ltr:text-left border-b border-slate-200/60">
+
+
+                @await Component.InvokeAsync("DeactiveEmployeeList")
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Super بزرگ مودال Content -->
