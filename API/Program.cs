@@ -19,6 +19,7 @@ builder.Services.ConfigurePersistenceServices(builder.Configuration);
 builder.Services.AddScoped<IAuthIdentityAPIService, AuthIdentityAPIService>();
 #endregion
 
+
 builder.Services.AddCors(o =>
 {
     o.AddPolicy("CorsPolicy", b =>
