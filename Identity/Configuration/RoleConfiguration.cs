@@ -22,6 +22,13 @@ namespace Identity.Configuration
                     Name = "User",
                     NormalizedName = "USER",
                     Description = "Just User site ... ",
+                },
+                new ApplicationRole
+                {
+                    Id= "4d3dcfaf-9228-41d4-947e-b267194a5355",
+                    Name="AdminPanel",
+                    NormalizedName="ADMINPANEL",
+                    Description ="With For Accepted Admin Panel"
                 }
 
             //new ApplicationRole
